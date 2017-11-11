@@ -19,7 +19,10 @@ import nl.slompweij.jabberpoint.view.SlideViewerComponent;
 public class Presentation {
 	private String showTitle; // de titel van de presentatie
 	private ArrayList<Slide> showList = null; // een ArrayList met de Slides
+
+	// TODO: geen currentSlideNumber!
 	private int currentSlideNumber = 0; // het slidenummer van de huidige Slide
+	// TODO SlideViewerComponent moet verdwijnselen
 	private SlideViewerComponent slideViewComponent = null; // de viewcomponent voor de Slides
 
 	public Presentation() {
@@ -27,6 +30,7 @@ public class Presentation {
 		clear();
 	}
 
+	// TODO: drama
 	public Presentation(SlideViewerComponent slideViewerComponent) {
 		this.slideViewComponent = slideViewerComponent;
 		clear();
@@ -44,15 +48,18 @@ public class Presentation {
 		showTitle = nt;
 	}
 
+	// TODO: Dit moet anders
 	public void setShowView(SlideViewerComponent slideViewerComponent) {
 		this.slideViewComponent = slideViewerComponent;
 	}
 
+	// TODO: Remove!
 	// geef het nummer van de huidige slide
 	public int getSlideNumber() {
 		return currentSlideNumber;
 	}
 
+	// TODO: Remove!
 	// verander het huidige-slide-nummer en laat het aan het window weten.
 	public void setSlideNumber(int number) {
 		currentSlideNumber = number;
@@ -61,6 +68,7 @@ public class Presentation {
 		}
 	}
 
+	// TODO: Remove!
 	// ga naar de vorige slide tenzij je aan het begin van de presentatie bent
 	public void prevSlide() {
 		if (currentSlideNumber > 0) {
@@ -68,6 +76,7 @@ public class Presentation {
 	    }
 	}
 
+	// TODO: Remove!
 	// Ga naar de volgende slide tenzij je aan het einde van de presentatie bent.
 	public void nextSlide() {
 		if (currentSlideNumber < (showList.size()-1)) {
@@ -75,12 +84,14 @@ public class Presentation {
 		}
 	}
 
+	// TODO: Er wordt een nieuwe presentatie gemaakt door juiste factory; deze instantie is overbodig en clear zal dus NOOIT gebruikt MOGEN worden	
 	// Verwijder de presentatie, om klaar te zijn voor de volgende
 	void clear() {
 		showList = new ArrayList<Slide>();
 		setSlideNumber(-1);
 	}
 
+	// TODO: Dit moet gebeuren dmv een factory REWORK
 	// Voeg een slide toe aan de presentatie
 	public void append(Slide slide) {
 		showList.add(slide);
@@ -94,11 +105,14 @@ public class Presentation {
 			return (Slide)showList.get(number);
 	}
 
+	// TODO: Verwijder dit; een presentatie weet niet waar die zelf is; conceptueel is dit onjuist (Presentatie bevat daadwerkelijk de informatie die 
+	// getoont moet worden met informatie die hiervoor relevant is)
 	// Geef de huidige Slide
 	public Slide getCurrentSlide() {
 		return getSlide(currentSlideNumber);
 	}
 
+	// TODO: Exit???
 	public void exit(int n) {
 		System.exit(n);
 	}
