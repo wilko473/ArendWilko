@@ -9,6 +9,13 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
+
+import nl.slompweij.jabberpoint.model.BitmapItem;
+import nl.slompweij.jabberpoint.model.Presentation;
+import nl.slompweij.jabberpoint.model.Slide;
+import nl.slompweij.jabberpoint.model.SlideItem;
+import nl.slompweij.jabberpoint.model.TextItem;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;

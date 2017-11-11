@@ -1,3 +1,4 @@
+package nl.slompweij.jabberpoint.model;
 import java.awt.Color;
 import java.awt.Font;
 

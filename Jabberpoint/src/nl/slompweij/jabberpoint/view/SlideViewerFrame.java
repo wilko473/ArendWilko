@@ -1,7 +1,13 @@
+package nl.slompweij.jabberpoint.view;
+
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowAdapter;
 import javax.swing.JFrame;
+
+import nl.slompweij.jabberpoint.control.KeyController;
+import nl.slompweij.jabberpoint.control.MenuController;
+import nl.slompweij.jabberpoint.model.Presentation;
 
 /**
  * <p>Het applicatiewindow voor een slideviewcomponent</p>

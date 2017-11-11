@@ -1,3 +1,4 @@
+package nl.slompweij.jabberpoint.control;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
 

@@ -1,3 +1,5 @@
+package nl.slompweij.jabberpoint.view;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Dimension;
@@ -5,6 +7,9 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+
+import nl.slompweij.jabberpoint.model.Presentation;
+import nl.slompweij.jabberpoint.model.Slide;
 
 
 /** <p>SlideViewerComponent is een grafische component die Slides kan laten zien.</p>

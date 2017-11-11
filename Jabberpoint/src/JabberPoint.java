@@ -1,5 +1,9 @@
 import javax.swing.JOptionPane;
 
+import nl.slompweij.jabberpoint.model.Presentation;
+import nl.slompweij.jabberpoint.model.Style;
+import nl.slompweij.jabberpoint.view.SlideViewerFrame;
+
 import java.io.IOException;
 
 /** JabberPoint Main Programma

@@ -1,5 +1,7 @@
 import java.io.IOException;
 
+import nl.slompweij.jabberpoint.model.Presentation;
+
 /**
  * <p>Een Accessor maakt het mogelijk om gegevens voor een presentatie
  * te lezen of te schrijven.</p>
