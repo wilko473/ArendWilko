@@ -1,3 +1,4 @@
+package nl.slompweij.jabberpoint.io;
 import java.io.IOException;
 
 import nl.slompweij.jabberpoint.model.Presentation;

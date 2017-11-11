@@ -1,5 +1,8 @@
 package nl.slompweij.jabberpoint.control;
 import java.awt.event.KeyEvent;
+
+import nl.slompweij.jabberpoint.model.Presentation;
+
 import java.awt.event.KeyAdapter;
 
 /** <p>This is the KeyController (KeyListener)</p>

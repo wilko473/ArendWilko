@@ -1,3 +1,4 @@
+package nl.slompweij.jabberpoint.io;
 import javax.swing.JOptionPane;
 
 import nl.slompweij.jabberpoint.model.Presentation;

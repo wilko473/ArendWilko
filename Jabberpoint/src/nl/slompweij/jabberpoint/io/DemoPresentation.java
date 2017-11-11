@@ -1,3 +1,4 @@
+package nl.slompweij.jabberpoint.io;
 import nl.slompweij.jabberpoint.model.BitmapItem;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Slide;

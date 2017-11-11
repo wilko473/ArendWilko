@@ -10,7 +10,10 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import nl.slompweij.jabberpoint.io.Accessor;
+import nl.slompweij.jabberpoint.io.XMLAccessor;
 import nl.slompweij.jabberpoint.model.Presentation;
+import nl.slompweij.jabberpoint.view.AboutBox;
 
 /** <p>De controller voor het menu</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -56,7 +59,8 @@ public class MenuController extends MenuBar {
 		fileMenu.add(menuItem = mkMenuItem(OPEN));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.clear();
+				// TODO: fix dit!
+			//	presentation.clear();
 				Accessor xmlAccessor = new XMLAccessor();
 				try {
 					xmlAccessor.loadFile(presentation, TESTFILE);
@@ -71,7 +75,8 @@ public class MenuController extends MenuBar {
 		fileMenu.add(menuItem = mkMenuItem(NEW));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.clear();
+				// TODO: fix dit
+				//presentation.clear();
 				parent.repaint();
 			}
 		});

@@ -1,6 +1,8 @@
 package nl.slompweij.jabberpoint.model;
 import java.util.ArrayList;
 
+import nl.slompweij.jabberpoint.view.SlideViewerComponent;
+
 
 /**
  * <p>Presentation houdt de slides in de presentatie bij.</p>
