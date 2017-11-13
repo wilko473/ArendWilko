@@ -31,10 +31,12 @@ public abstract class SlideItem {
 	}
 
 // Geef de bounding box
+	// TODO: geen verantwoordelijkheid van model
 	public abstract Rectangle getBoundingBox(Graphics g, 
 			ImageObserver observer, float scale, Style style);
 
 // teken het item
+	// TODO: geen verantwoordelijkheid van model
 	public abstract void draw(int x, int y, float scale, 
 			Graphics g, Style style, ImageObserver observer);
 }

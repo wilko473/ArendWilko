@@ -13,7 +13,7 @@ import java.util.Vector;
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
-
+// 
 public class Slide {
 	public final static int WIDTH = 1200;
 	public final static int HEIGHT = 800;
@@ -39,16 +39,18 @@ public class Slide {
 		title = newTitle;
 	}
 
+	// TODO: SlideFactory is verantwoordelijk voor zoiets
 	// Maak een TextItem van String, en voeg het TextItem toe
 	public void append(int level, String message) {
 		append(new TextItem(level, message));
 	}
 
 	// geef het betreffende SlideItem
+	
 	public SlideItem getSlideItem(int number) {
 		return (SlideItem)items.elementAt(number);
 	}
-
+	// TODO: Item Iterator maken
 	// geef alle SlideItems in een Vector
 	public Vector<SlideItem> getSlideItems() {
 		return items;
@@ -60,6 +62,7 @@ public class Slide {
 	}
 
 	// teken de slide
+	// TODO: Weg!!!
 	public void draw(Graphics g, Rectangle area, ImageObserver view) {
 		float scale = getScale(area);
 	    int y = area.y;
@@ -77,6 +80,7 @@ public class Slide {
 	  }
 
 	// geef de schaal om de slide te kunnen tekenen
+	// TODO: Is niet verantwoordelijkheid van Slide, maar van UI
 	private float getScale(Rectangle area) {
 		return Math.min(((float)area.width) / ((float)WIDTH), ((float)area.height) / ((float)HEIGHT));
 	}
