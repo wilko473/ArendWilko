@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -49,6 +48,10 @@ public class SlideViewerComponent extends JComponent {
 	private static final int FONTHEIGHT = 10;
 	private static final int XPOS = 1100;
 	private static final int YPOS = 20;
+	
+	// TODO: Anders dan 
+	public final static int WIDTH = 1200;
+	public final static int HEIGHT = 800;
 
 	public SlideViewerComponent(PresentationController presentationController, JFrame frame) {
 		this.presentationController = presentationController;
@@ -62,16 +65,16 @@ public class SlideViewerComponent extends JComponent {
 		return new Dimension(PREFERRED_WIDTH, PREFERRED_HEIGHT);
 	}
 
-//	public void update(PresentationController presentationController, Slide data) {
+	public void update() {
 //		if (data == null) {
 //			repaint();
 //			return;
 //		}
-//		this.presentationController = presentationController;
-//		this.slide = data;
-//		repaint();
-//		frame.setTitle(presentationController.getPresentation().getTitle());
-//	}
+		//this.presentationController = presentationController;
+		//this.slide = data;
+		repaint();
+		//frame.setTitle(presentationController.getPresentation().getTitle());
+	}
 
 // teken de slide
 	public void paintComponent(Graphics g) {
@@ -85,10 +88,10 @@ public class SlideViewerComponent extends JComponent {
 		g.drawString("Slide " + (1 + presentationController.getCurrentSlide()) + " of " +
 				presentationController.getPresentation().getSize(), XPOS, YPOS);
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
-		drawSlide(g, area, this);
+		drawSlide(g, area);
 	}
 	
-	private void drawSlide(Graphics g, Rectangle area, ImageObserver view) {
+	private void drawSlide(Graphics g, Rectangle area/*, ImageObserver view*/) {
 		float scale = getScale(area);
 		
 		//Style style = Style.getStyle(slideItem.getLevel());// 
@@ -101,8 +104,8 @@ public class SlideViewerComponent extends JComponent {
 		
 		// De titel wordt apart behandeld
 		SlideItem slideItemTitle = SlideItemFactory.createTextItem(0, slide.getTitle());// TODO: betere oplossing?
-		slideItemTitle.draw(area.x, y, scale, g, style, view);
-		y += slideItemTitle.getBoundingBox(g, view, scale, style).height;
+		slideItemTitle.draw(area.x, y, scale, g, style, this/*view*/);
+		y += slideItemTitle.getBoundingBox(g, this/*view*/, scale, style).height;
 		
 		// TODO: Iterator Pattern?
 		for (int number = 0; number < presentation.getSize(); number++) {
@@ -113,8 +116,8 @@ public class SlideViewerComponent extends JComponent {
 			
 			SlideItem slideItem = slide.getSlideItems().get(number);
 			Style itemStyle = presentation.getTheme().getStyles().get(slideItem.getLevel());
-			slideItem.draw(area.x, y, scale, g, itemStyle, view);
-			y += slideItem.getBoundingBox(g, view, scale, itemStyle).height;
+			slideItem.draw(area.x, y, scale, g, itemStyle, this/*view*/);
+			y += slideItem.getBoundingBox(g, this/*view*/, scale, itemStyle).height;
 		}
 	}
 

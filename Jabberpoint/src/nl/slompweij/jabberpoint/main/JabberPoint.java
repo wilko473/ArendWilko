@@ -2,6 +2,7 @@ package nl.slompweij.jabberpoint.main;
 
 import nl.slompweij.jabberpoint.control.KeyController;
 import nl.slompweij.jabberpoint.control.PresentationController;
+import nl.slompweij.jabberpoint.control.ViewController;
 import nl.slompweij.jabberpoint.factory.PresentationFactory;
 import nl.slompweij.jabberpoint.factory.ThemeFactory;
 import nl.slompweij.jabberpoint.model.Presentation;
@@ -57,6 +58,9 @@ public class JabberPoint {
 		
 		SlideViewerFrame frame = new SlideViewerFrame(JABVERSION, presentationController);
 		frame.addKeyListener(keyController);
+		
+		ViewController viewController = new ViewController(frame);
+		presentationController.setViewController(viewController);
 		
 //		try {
 //			if (argv.length == 0) { // een demo presentatie

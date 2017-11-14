@@ -27,10 +27,11 @@ public class SlideViewerFrame extends JFrame {
 	
 	public final static int WIDTH = 1200;
 	public final static int HEIGHT = 800;
+	private SlideViewerComponent slideViewerComponent = null;
 	
 	public SlideViewerFrame(String title, PresentationController presentationController) {
 		super(title);
-		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentationController, this);
+		slideViewerComponent = new SlideViewerComponent(presentationController, this);
 		//presentation.setShowView(slideViewerComponent);
 		setupWindow(slideViewerComponent, presentationController);
 	}
@@ -52,5 +53,9 @@ public class SlideViewerFrame extends JFrame {
 		setMenuBar(new MenuController(this, presentationController));	// nog een controller toevoegen
 		setSize(new Dimension(WIDTH, HEIGHT)); // Dezelfde maten als Slide hanteert.
 		setVisible(true);
+	}
+	
+	public void update() {
+		slideViewerComponent.repaint();
 	}
 }

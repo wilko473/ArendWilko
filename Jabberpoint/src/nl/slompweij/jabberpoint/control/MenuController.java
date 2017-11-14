@@ -90,7 +90,7 @@ public class MenuController extends MenuBar {
 			}
 		});
 		add(fileMenu);
-		Menu viewMenu = new Menu(LabelsBundle_en_US.Label.VIEW.name());
+		Menu viewMenu = new Menu(labels.getString(LabelsBundle_en_US.Label.VIEW.name()));
 		viewMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.NEXT.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -113,7 +113,7 @@ public class MenuController extends MenuBar {
 		});
 		add(viewMenu);
 		Menu helpMenu = new Menu(labels.getString(LabelsBundle_en_US.Label.HELP.name()));
-		helpMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.ABOUT.name()));
+		helpMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.ABOUT.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				AboutBox.show(parent);
