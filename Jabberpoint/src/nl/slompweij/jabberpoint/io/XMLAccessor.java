@@ -1,16 +1,18 @@
 package nl.slompweij.jabberpoint.io;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import nl.slompweij.jabberpoint.factory.SlideFactory;
@@ -20,11 +22,6 @@ import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Slide;
 import nl.slompweij.jabberpoint.model.SlideItem;
 import nl.slompweij.jabberpoint.model.TextItem;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.NodeList;
 
 
 /** XMLAccessor, reads and writes XML files
@@ -73,7 +70,7 @@ public class XMLAccessor extends Accessor {
 			Element doc = document.getDocumentElement();
 			//presentation.setTitle(getTitle(doc, SHOWTITLE));
 
-			String presentationTitle = getTitle(doc, SHOWTITLE);
+			//String presentationTitle = getTitle(doc, SHOWTITLE);
 			List<Slide> slides = new ArrayList<Slide>();
 			
 			NodeList slideNodes = doc.getElementsByTagName(SLIDE);

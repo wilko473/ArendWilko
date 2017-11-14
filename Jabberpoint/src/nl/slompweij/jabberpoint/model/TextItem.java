@@ -89,10 +89,8 @@ public class TextItem extends SlideItem {
 		return new Rectangle((int) (myStyle.getIndent() * scale), 0, xsize, ysize);
 	}
 
-// teken het item
-	// TODO: geen verantwoordelijkheid van model
-	public void draw(int x, int y, float scale, Graphics g, 
-			Style myStyle, ImageObserver o) {
+	// teken het item. TODO: Nog verplaatsen TODO: geen verantwoordelijkheid van model
+	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver o) {
 		if (text == null || text.length() == 0) {
 			return;
 		}

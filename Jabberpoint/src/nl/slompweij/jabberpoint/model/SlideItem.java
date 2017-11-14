@@ -37,9 +37,9 @@ public abstract class SlideItem {
 		return level;
 	}
 
-	// Geef de bounding box TODO: Move
+	// Geef de bounding box TODO: Move // TODO: geen verantwoordelijkheid van model
 	public abstract Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style);
 	
-	// teken het item TODO: move
+	// teken het item TODO: move // TODO: geen verantwoordelijkheid van model
 	public abstract void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer);
 }
