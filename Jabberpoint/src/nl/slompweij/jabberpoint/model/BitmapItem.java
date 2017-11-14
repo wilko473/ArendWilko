@@ -59,6 +59,7 @@ public class BitmapItem extends SlideItem {
 	}
 
 // teken de afbeelding
+	// TODO: geen verantwoordelijkheid van model
 	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
 		int width = x + (int) (myStyle.getIndent() * scale);
 		int height = y + (int) (myStyle.getLeading() * scale);

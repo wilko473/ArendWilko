@@ -89,8 +89,10 @@ public class TextItem extends SlideItem {
 		return new Rectangle((int) (myStyle.getIndent() * scale), 0, xsize, ysize);
 	}
 
-	// teken het item. TODO: Nog verplaatsen
-	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver o) {
+// teken het item
+	// TODO: geen verantwoordelijkheid van model
+	public void draw(int x, int y, float scale, Graphics g, 
+			Style myStyle, ImageObserver o) {
 		if (text == null || text.length() == 0) {
 			return;
 		}
@@ -107,6 +109,7 @@ public class TextItem extends SlideItem {
 		}
 	}
 	// TODO: verplaatsen
+	// TODO: geen verantwoordelijkheid van model
 	private List<TextLayout> getLayouts(Graphics g, Style s, float scale) {
 		List<TextLayout> layouts = new ArrayList<TextLayout>();
 		AttributedString attrStr = getAttributedString(s, scale);
