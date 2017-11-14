@@ -41,7 +41,7 @@ public class MenuController extends MenuBar {
 		parent = frame;
 		//this.presentationController = presentationController;
 		
-		ResourceBundle labels = new LabelsBundle_en_US();// TODO: ResourceBundle.getBundle("LabelsBundle");
+		final ResourceBundle labels = new LabelsBundle_en_US();// TODO: ResourceBundle.getBundle("LabelsBundle");
 		
 		MenuItem menuItem;
 		Menu fileMenu = new Menu(labels.getString(LabelsBundle_en_US.Label.FILE.name()));
@@ -61,7 +61,7 @@ public class MenuController extends MenuBar {
 //				parent.repaint();
 			}
 		} );
-		fileMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.NEW.name()));
+		fileMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.NEW.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				// TODO: fix dit
@@ -69,7 +69,7 @@ public class MenuController extends MenuBar {
 				parent.repaint();
 			}
 		});
-		fileMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.SAVE.name()));
+		fileMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.SAVE.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO
@@ -83,7 +83,7 @@ public class MenuController extends MenuBar {
 			}
 		});
 		fileMenu.addSeparator();
-		fileMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.EXIT.name()));
+		fileMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.EXIT.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				// TODO: applicationController.exit(0);
@@ -91,28 +91,28 @@ public class MenuController extends MenuBar {
 		});
 		add(fileMenu);
 		Menu viewMenu = new Menu(LabelsBundle_en_US.Label.VIEW.name());
-		viewMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.NEXT.name()));
+		viewMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.NEXT.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				presentationController.nextSlide();
 			}
 		});
-		viewMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.PREV.name()));
+		viewMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.PREV.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				presentationController.previousSlide();
 			}
 		});
-		viewMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.GOTO.name()));
+		viewMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.GOTO.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				String pageNumberStr = JOptionPane.showInputDialog((Object)LabelsBundle_en_US.Label.PAGENR.name());
+				String pageNumberStr = JOptionPane.showInputDialog((Object)labels.getString(LabelsBundle_en_US.Label.PAGENR.name()));
 				int pageNumber = Integer.parseInt(pageNumberStr);
 				presentationController.setSlideNumber(pageNumber - 1);
 			}
 		});
 		add(viewMenu);
-		Menu helpMenu = new Menu(LabelsBundle_en_US.Label.HELP.name());
+		Menu helpMenu = new Menu(labels.getString(LabelsBundle_en_US.Label.HELP.name()));
 		helpMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.ABOUT.name()));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
