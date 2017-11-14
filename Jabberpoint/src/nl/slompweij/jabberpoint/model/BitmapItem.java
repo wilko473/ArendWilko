@@ -20,7 +20,7 @@ import java.io.IOException;
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
 */
-
+// TODO: Rename to ImageItem?
 public class BitmapItem extends SlideItem {
   private BufferedImage bufferedImage;
   private String imageName;
@@ -41,9 +41,9 @@ public class BitmapItem extends SlideItem {
 	}
 
 // Een leeg bitmap-item
-	public BitmapItem() {
-		this(0, null);
-	}
+//	public BitmapItem() {
+//		this(0, null);
+//	}
 
 // geef de bestandsnaam van de afbeelding
 	public String getName() {
@@ -52,16 +52,16 @@ public class BitmapItem extends SlideItem {
 
 // geef de bounding box van de afbeelding
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-		return new Rectangle((int) (myStyle.indent * scale), 0,
+		return new Rectangle((int) (myStyle.getIndent() * scale), 0,
 				(int) (bufferedImage.getWidth(observer) * scale),
-				((int) (myStyle.leading * scale)) + 
+				((int) (myStyle.getLeading() * scale)) + 
 				(int) (bufferedImage.getHeight(observer) * scale));
 	}
 
 // teken de afbeelding
 	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
-		int width = x + (int) (myStyle.indent * scale);
-		int height = y + (int) (myStyle.leading * scale);
+		int width = x + (int) (myStyle.getIndent() * scale);
+		int height = y + (int) (myStyle.getLeading() * scale);
 		g.drawImage(bufferedImage, width, height,(int) (bufferedImage.getWidth(observer)*scale),
                 (int) (bufferedImage.getHeight(observer)*scale), observer);
 	}

@@ -1,19 +1,17 @@
 package nl.slompweij.jabberpoint.control;
-import java.awt.MenuBar;
 import java.awt.Frame;
 import java.awt.Menu;
+import java.awt.MenuBar;
 import java.awt.MenuItem;
 import java.awt.MenuShortcut;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
+import java.awt.event.ActionListener;
+import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
-import nl.slompweij.jabberpoint.io.Accessor;
-import nl.slompweij.jabberpoint.io.XMLAccessor;
-import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.view.AboutBox;
+import nl.slompweij.jabberpoint.view.LabelsBundle_en_US;
 
 /** <p>De controller voor het menu</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -27,52 +25,43 @@ import nl.slompweij.jabberpoint.view.AboutBox;
 public class MenuController extends MenuBar {
 	
 	private Frame parent; // het frame, alleen gebruikt als ouder voor de Dialogs
-	private Presentation presentation; // Er worden commando's gegeven aan de presentatie
+	//private PresentationController presentationController;
 	
 	private static final long serialVersionUID = 227L;
-	
-	protected static final String ABOUT = "About";
-	protected static final String FILE = "File";
-	protected static final String EXIT = "Exit";
-	protected static final String GOTO = "Go to";
-	protected static final String HELP = "Help";
-	protected static final String NEW = "New";
-	protected static final String NEXT = "Next";
-	protected static final String OPEN = "Open";
-	protected static final String PAGENR = "Page number?";
-	protected static final String PREV = "Prev";
-	protected static final String SAVE = "Save";
-	protected static final String VIEW = "View";
 	
 	protected static final String TESTFILE = "test.xml";
 	protected static final String SAVEFILE = "dump.xml";
 	
+	// TODO: Labels
 	protected static final String IOEX = "IO Exception: ";
 	protected static final String LOADERR = "Load Error";
 	protected static final String SAVEERR = "Save Error";
 
-	public MenuController(Frame frame, Presentation pres) {
+	public MenuController(Frame frame, final PresentationController presentationController) {
 		parent = frame;
-		presentation = pres;
+		//this.presentationController = presentationController;
+		
+		ResourceBundle labels = new LabelsBundle_en_US();// TODO: ResourceBundle.getBundle("LabelsBundle");
+		
 		MenuItem menuItem;
-		Menu fileMenu = new Menu(FILE);
-		fileMenu.add(menuItem = mkMenuItem(OPEN));
+		Menu fileMenu = new Menu(labels.getString(LabelsBundle_en_US.Label.FILE.name()));
+		fileMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.OPEN.name()));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				// TODO: fix dit!
 			//	presentation.clear();
-				Accessor xmlAccessor = new XMLAccessor();
-				try {
-					xmlAccessor.loadFile(presentation, TESTFILE);
-					presentation.setSlideNumber(0);
-				} catch (IOException exc) {
-					JOptionPane.showMessageDialog(parent, IOEX + exc, 
-         			LOADERR, JOptionPane.ERROR_MESSAGE);
-				}
-				parent.repaint();
+//				Accessor xmlAccessor = new XMLAccessor();
+//				try {
+//					xmlAccessor.loadFile(presentationController, TESTFILE);
+//					presentationController.setSlideNumber(0);
+//				} catch (IOException exc) {
+//					JOptionPane.showMessageDialog(parent, IOEX + exc, 
+//         			LOADERR, JOptionPane.ERROR_MESSAGE);
+//				}
+//				parent.repaint();
 			}
 		} );
-		fileMenu.add(menuItem = mkMenuItem(NEW));
+		fileMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.NEW.name()));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				// TODO: fix dit
@@ -80,50 +69,51 @@ public class MenuController extends MenuBar {
 				parent.repaint();
 			}
 		});
-		fileMenu.add(menuItem = mkMenuItem(SAVE));
+		fileMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.SAVE.name()));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Accessor xmlAccessor = new XMLAccessor();
-				try {
-					xmlAccessor.saveFile(presentation, SAVEFILE);
-				} catch (IOException exc) {
-					JOptionPane.showMessageDialog(parent, IOEX + exc, 
-							SAVEERR, JOptionPane.ERROR_MESSAGE);
-				}
+				// TODO
+//				Accessor xmlAccessor = new XMLAccessor();
+//				try {
+//					xmlAccessor.saveFile(presentation, SAVEFILE);
+//				} catch (IOException exc) {
+//					JOptionPane.showMessageDialog(parent, IOEX + exc, 
+//							SAVEERR, JOptionPane.ERROR_MESSAGE);
+//				}
 			}
 		});
 		fileMenu.addSeparator();
-		fileMenu.add(menuItem = mkMenuItem(EXIT));
+		fileMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.EXIT.name()));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.exit(0);
+				// TODO: applicationController.exit(0);
 			}
 		});
 		add(fileMenu);
-		Menu viewMenu = new Menu(VIEW);
-		viewMenu.add(menuItem = mkMenuItem(NEXT));
+		Menu viewMenu = new Menu(LabelsBundle_en_US.Label.VIEW.name());
+		viewMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.NEXT.name()));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.nextSlide();
+				presentationController.nextSlide();
 			}
 		});
-		viewMenu.add(menuItem = mkMenuItem(PREV));
+		viewMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.PREV.name()));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.prevSlide();
+				presentationController.previousSlide();
 			}
 		});
-		viewMenu.add(menuItem = mkMenuItem(GOTO));
+		viewMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.GOTO.name()));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				String pageNumberStr = JOptionPane.showInputDialog((Object)PAGENR);
+				String pageNumberStr = JOptionPane.showInputDialog((Object)LabelsBundle_en_US.Label.PAGENR.name());
 				int pageNumber = Integer.parseInt(pageNumberStr);
-				presentation.setSlideNumber(pageNumber - 1);
+				presentationController.setSlideNumber(pageNumber - 1);
 			}
 		});
 		add(viewMenu);
-		Menu helpMenu = new Menu(HELP);
-		helpMenu.add(menuItem = mkMenuItem(ABOUT));
+		Menu helpMenu = new Menu(LabelsBundle_en_US.Label.HELP.name());
+		helpMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.ABOUT.name()));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				AboutBox.show(parent);

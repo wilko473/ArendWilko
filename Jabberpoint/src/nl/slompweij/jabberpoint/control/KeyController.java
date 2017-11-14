@@ -1,9 +1,6 @@
 package nl.slompweij.jabberpoint.control;
-import java.awt.event.KeyEvent;
-
-import nl.slompweij.jabberpoint.model.Presentation;
-
 import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /** <p>This is the KeyController (KeyListener)</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -13,13 +10,13 @@ import java.awt.event.KeyAdapter;
  * @version 1.4 2007/07/16 Sylvia Stuurman
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
+ * @version 2.0 2017/11/13 Arend and Wilko
 */
-
 public class KeyController extends KeyAdapter {
-	private Presentation presentation; // Er worden commando's gegeven aan de presentatie
+	private PresentationController presentationController; 
 
-	public KeyController(Presentation p) {
-		presentation = p;
+	public KeyController(PresentationController presentationController) {
+		this.presentationController = presentationController;
 	}
 
 	public void keyPressed(KeyEvent keyEvent) {
@@ -28,12 +25,12 @@ public class KeyController extends KeyAdapter {
 			case KeyEvent.VK_DOWN:
 			case KeyEvent.VK_ENTER:
 			case '+':
-				presentation.nextSlide();
+				presentationController.nextSlide();
 				break;
 			case KeyEvent.VK_PAGE_UP:
 			case KeyEvent.VK_UP:
 			case '-':
-				presentation.prevSlide();
+				presentationController.previousSlide();
 				break;
 			case 'q':
 			case 'Q':

@@ -1,4 +1,6 @@
 package nl.slompweij.jabberpoint.io;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 import java.io.File;
 import java.io.IOException;
@@ -11,6 +13,8 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
+import nl.slompweij.jabberpoint.factory.SlideFactory;
+import nl.slompweij.jabberpoint.factory.SlideItemFactory;
 import nl.slompweij.jabberpoint.model.BitmapItem;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Slide;
@@ -43,15 +47,10 @@ public class XMLAccessor extends Accessor {
     protected static final String SLIDETITLE = "title";
     protected static final String SLIDE = "slide";
     protected static final String ITEM = "item";
-    protected static final String LEVEL = "level";
-    protected static final String KIND = "kind";
-    protected static final String TEXT = "text";
-    protected static final String IMAGE = "image";
     
     /** tekst van messages */
     protected static final String PCE = "Parser Configuration Exception";
-    protected static final String UNKNOWNTYPE = "Unknown Element type";
-    protected static final String NFE = "Number Format Exception";
+
     
     
     private String getTitle(Element element, String tagName) {
@@ -60,29 +59,46 @@ public class XMLAccessor extends Accessor {
     	
     }
 
-	public void loadFile(Presentation presentation, String filename) throws IOException {
-		int slideNumber, itemNumber, max = 0, maxItems = 0;
+	@Override
+	public void loadFile(Presentation p, String fn) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+    
+	public void loadFile(String filename) throws IOException {
+		int slideNumber, itemNumber, maxItems = 0;
 		try {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();    
 			Document document = builder.parse(new File(filename)); // maak een JDOM document
 			Element doc = document.getDocumentElement();
-			presentation.setTitle(getTitle(doc, SHOWTITLE));
+			//presentation.setTitle(getTitle(doc, SHOWTITLE));
 
-			NodeList slides = doc.getElementsByTagName(SLIDE);
-			max = slides.getLength();
-			for (slideNumber = 0; slideNumber < max; slideNumber++) {
-				Element xmlSlide = (Element) slides.item(slideNumber);
-				Slide slide = new Slide();
-				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
-				presentation.append(slide);
+			String presentationTitle = getTitle(doc, SHOWTITLE);
+			List<Slide> slides = new ArrayList<Slide>();
+			
+			NodeList slideNodes = doc.getElementsByTagName(SLIDE);
+			for (slideNumber = 0; slideNumber < slideNodes.getLength(); slideNumber++) {
+				Element xmlSlide = (Element) slideNodes.item(slideNumber);
+				//Slide slide = new Slide();
+				//slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
+				String slideTitle = getTitle(xmlSlide, SLIDETITLE);
+				//presentation.append(slide);
 				
-				NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
-				maxItems = slideItems.getLength();
+				List<SlideItem> slideItems = new ArrayList<SlideItem>();
+				NodeList slideItemNodes = xmlSlide.getElementsByTagName(ITEM);
+				maxItems = slideItemNodes.getLength();
 				for (itemNumber = 0; itemNumber < maxItems; itemNumber++) {
-					Element item = (Element) slideItems.item(itemNumber);
-					loadSlideItem(slide, item);
+					Element item = (Element) slideItemNodes.item(itemNumber);
+					//loadSlideItem(slide, item);
+					SlideItem slideItem = SlideItemFactory.createSlideItem(item);
+					slideItems.add(slideItem);
 				}
+				
+				Slide slide = SlideFactory.createSlide(slideTitle, slideItems);
+				slides.add(slide);
 			}
+			
+			
 		} 
 		catch (IOException iox) {
 			System.err.println(iox.toString());
@@ -93,32 +109,6 @@ public class XMLAccessor extends Accessor {
 		catch (ParserConfigurationException pcx) {
 			System.err.println(PCE);
 		}	
-	}
-
-	protected void loadSlideItem(Slide slide, Element item) {
-		int level = 1; // default
-		NamedNodeMap attributes = item.getAttributes();
-		String leveltext = attributes.getNamedItem(LEVEL).getTextContent();
-		if (leveltext != null) {
-			try {
-				level = Integer.parseInt(leveltext);
-			}
-			catch(NumberFormatException x) {
-				System.err.println(NFE);
-			}
-		}
-		String type = attributes.getNamedItem(KIND).getTextContent();
-		if (TEXT.equals(type)) {
-			slide.append(new TextItem(level, item.getTextContent()));
-		}
-		else {
-			if (IMAGE.equals(type)) {
-				slide.append(new BitmapItem(level, item.getTextContent()));
-			}
-			else {
-				System.err.println(UNKNOWNTYPE);
-			}
-		}
 	}
 
 	public void saveFile(Presentation presentation, String filename) throws IOException {
@@ -133,9 +123,9 @@ public class XMLAccessor extends Accessor {
 			Slide slide = presentation.getSlide(slideNumber);
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
-			Vector<SlideItem> slideItems = slide.getSlideItems();
+			List<SlideItem> slideItems = slide.getSlideItems();
 			for (int itemNumber = 0; itemNumber<slideItems.size(); itemNumber++) {
-				SlideItem slideItem = (SlideItem) slideItems.elementAt(itemNumber);
+				SlideItem slideItem = (SlideItem) slideItems.get(itemNumber);
 				out.print("<item kind="); 
 				if (slideItem instanceof TextItem) {
 					out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");
@@ -157,4 +147,6 @@ public class XMLAccessor extends Accessor {
 		out.println("</presentation>");
 		out.close();
 	}
+
+
 }

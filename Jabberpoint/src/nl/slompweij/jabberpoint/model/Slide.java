@@ -1,10 +1,12 @@
 package nl.slompweij.jabberpoint.model;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
-import java.util.Vector;
 
-/** <p>Een slide. Deze klasse heeft tekenfunctionaliteit.</p>
+import java.util.List;
+
+/**
+ * <p>
+ * Represents a slide. Has a title and contains slide items.
+ * </p>
+ * 
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -12,72 +14,54 @@ import java.util.Vector;
  * @version 1.4 2007/07/16 Sylvia Stuurman
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
+ * @version 2.0 2017/11/13 Arend and Wilko
  */
 
-public class Slide {
-	public final static int WIDTH = 1200;
-	public final static int HEIGHT = 800;
-	protected String title; // de titel wordt apart bewaard
-	protected Vector<SlideItem> items; // de slide-items worden in een Vector bewaard
+public abstract class Slide {	
+	private String title;
+	private List<SlideItem> slideItems;
 
-	public Slide() {
-		items = new Vector<SlideItem>();
+	public Slide(String title, List<SlideItem> slideItems) {
+		if (title == null) {
+			throw new IllegalArgumentException("Title is required");
+		}
+		if (slideItems == null) {
+			throw new IllegalArgumentException("Slideitems are required");
+		}
+		this.title = title;
+		this.slideItems = slideItems;
 	}
 
 	// Voeg een SlideItem toe
-	public void append(SlideItem anItem) {
-		items.addElement(anItem);
-	}
+	// public void append(SlideItem anItem) {
+	// items.addElement(anItem);
+	// }
 
-	// geef de titel van de slide
 	public String getTitle() {
 		return title;
 	}
 
 	// verander de titel van de slide
-	public void setTitle(String newTitle) {
-		title = newTitle;
-	}
+	// public void setTitle(String newTitle) {
+	// title = newTitle;
+	// }
 
 	// Maak een TextItem van String, en voeg het TextItem toe
-	public void append(int level, String message) {
-		append(new TextItem(level, message));
-	}
+	// public void append(int level, String message) {
+	// append(new TextItem(level, message));
+	// }
 
 	// geef het betreffende SlideItem
-	public SlideItem getSlideItem(int number) {
-		return (SlideItem)items.elementAt(number);
-	}
+	// public SlideItem getSlideItem(int number) {
+	// return (SlideItem)items.elementAt(number);
+	// }
 
-	// geef alle SlideItems in een Vector
-	public Vector<SlideItem> getSlideItems() {
-		return items;
+	public List<SlideItem> getSlideItems() {
+		return slideItems;
 	}
 
 	// geef de afmeting van de Slide
-	public int getSize() {
-		return items.size();
-	}
-
-	// teken de slide
-	public void draw(Graphics g, Rectangle area, ImageObserver view) {
-		float scale = getScale(area);
-	    int y = area.y;
-	// De titel wordt apart behandeld
-	    SlideItem slideItem = new TextItem(0, getTitle());
-	    Style style = Style.getStyle(slideItem.getLevel());
-	    slideItem.draw(area.x, y, scale, g, style, view);
-	    y += slideItem.getBoundingBox(g, view, scale, style).height;
-	    for (int number=0; number<getSize(); number++) {
-	      slideItem = (SlideItem)getSlideItems().elementAt(number);
-	      style = Style.getStyle(slideItem.getLevel());
-	      slideItem.draw(area.x, y, scale, g, style, view);
-	      y += slideItem.getBoundingBox(g, view, scale, style).height;
-	    }
-	  }
-
-	// geef de schaal om de slide te kunnen tekenen
-	private float getScale(Rectangle area) {
-		return Math.min(((float)area.width) / ((float)WIDTH), ((float)area.height) / ((float)HEIGHT));
-	}
+	// public int getSize() {
+	// return items.size();
+	// }
 }

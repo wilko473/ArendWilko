@@ -1,14 +1,12 @@
 package nl.slompweij.jabberpoint.main;
 
-import javax.swing.JOptionPane;
-
-import nl.slompweij.jabberpoint.io.Accessor;
-import nl.slompweij.jabberpoint.io.XMLAccessor;
+import nl.slompweij.jabberpoint.control.KeyController;
+import nl.slompweij.jabberpoint.control.PresentationController;
+import nl.slompweij.jabberpoint.factory.PresentationFactory;
+import nl.slompweij.jabberpoint.factory.ThemeFactory;
 import nl.slompweij.jabberpoint.model.Presentation;
-import nl.slompweij.jabberpoint.model.Style;
+import nl.slompweij.jabberpoint.model.Theme;
 import nl.slompweij.jabberpoint.view.SlideViewerFrame;
-
-import java.io.IOException;
 
 /** JabberPoint Main Programma
  * <p>This program is distributed under the terms of the accompanying
@@ -30,22 +28,47 @@ public class JabberPoint {
 	protected static final String JABVERSION = "Jabberpoint 1.6 - OU version";
 
 	/** Het Main Programma */
-	public static void main(String argv[]) {
+//	public static void main(String argv[]) {
+//		
+//		Style.createStyles();
+//		Presentation presentation = new Presentation();
+//		new SlideViewerFrame(JABVERSION, presentation);
+//		try {
+//			if (argv.length == 0) { // een demo presentatie
+//				Accessor.getDemoAccessor().loadFile(presentation, "");
+//			} else {
+//				new XMLAccessor().loadFile(presentation, argv[0]);
+//			}
+//			presentation.setSlideNumber(0);
+//		} catch (IOException ex) {
+//			JOptionPane.showMessageDialog(null,
+//					IOERR + ex, JABERR,
+//					JOptionPane.ERROR_MESSAGE);
+//		}
+//	}
+	/** Het Main Programma */
+	public static void main(String args[]) {
 		
-		Style.createStyles();
-		Presentation presentation = new Presentation();
-		new SlideViewerFrame(JABVERSION, presentation);
-		try {
-			if (argv.length == 0) { // een demo presentatie
-				Accessor.getDemoAccessor().loadFile(presentation, "");
-			} else {
-				new XMLAccessor().loadFile(presentation, argv[0]);
-			}
-			presentation.setSlideNumber(0);
-		} catch (IOException ex) {
-			JOptionPane.showMessageDialog(null,
-					IOERR + ex, JABERR,
-					JOptionPane.ERROR_MESSAGE);
-		}
+		Theme theme = ThemeFactory.createTheme();
+
+		Presentation presentation = PresentationFactory.createPresentation(args, theme);
+		PresentationController presentationController = new PresentationController(presentation, 0);
+		KeyController keyController = new KeyController(presentationController);
+		
+		SlideViewerFrame frame = new SlideViewerFrame(JABVERSION, presentationController);
+		frame.addKeyListener(keyController);
+		
+//		try {
+//			if (argv.length == 0) { // een demo presentatie
+//				Accessor.getDemoAccessor().loadFile(presentation, "");
+//			} else {
+//				new XMLAccessor().loadFile(presentation, argv[0]);
+//			}
+//			presentation.setSlideNumber(0);
+//		} catch (IOException ex) {
+//			JOptionPane.showMessageDialog(null,
+//					IOERR + ex, JABERR,
+//					JOptionPane.ERROR_MESSAGE);
+//		}
 	}
 }
