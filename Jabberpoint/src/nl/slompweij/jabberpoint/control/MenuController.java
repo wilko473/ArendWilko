@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 import nl.slompweij.jabberpoint.view.AboutBox;
+import nl.slompweij.jabberpoint.view.LabelsBundle;
 import nl.slompweij.jabberpoint.view.LabelsBundle_en_US;
 
 /** <p>De controller voor het menu</p>
@@ -41,11 +42,11 @@ public class MenuController extends MenuBar {
 		parent = frame;
 		//this.presentationController = presentationController;
 		
-		final ResourceBundle labels = new LabelsBundle_en_US();// TODO: ResourceBundle.getBundle("LabelsBundle");
-		
+		final ResourceBundle labels = ResourceBundle.getBundle("nl.slompweij.jabberpoint.view.LabelsBundle", LabelsBundle.SUPPORTED_LOCALES_en_US);
+
 		MenuItem menuItem;
 		Menu fileMenu = new Menu(labels.getString(LabelsBundle_en_US.Label.FILE.name()));
-		fileMenu.add(menuItem = mkMenuItem(LabelsBundle_en_US.Label.OPEN.name()));
+		fileMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.OPEN.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				// TODO: fix dit!

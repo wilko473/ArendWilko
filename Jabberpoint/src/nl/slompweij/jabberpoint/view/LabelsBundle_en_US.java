@@ -1,15 +1,9 @@
 package nl.slompweij.jabberpoint.view;
 
-import java.util.ListResourceBundle;
-
 /**
  * Resourcebundle class to contain the labels of the application.
  */
-public class LabelsBundle_en_US extends ListResourceBundle {
-
-	public static enum Label {
-		ABOUT, FILE, EXIT, GOTO, HELP, NEW, NEXT, OPEN, PAGENR, PREV, SAVE, VIEW
-	}
+public class LabelsBundle_en_US extends LabelsBundle {
 	
 	private Object[][] contents = {
 	    { Label.ABOUT.name(), "About" },
