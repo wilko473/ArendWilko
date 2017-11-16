@@ -17,7 +17,7 @@ import org.xml.sax.SAXException;
 
 import nl.slompweij.jabberpoint.factory.SlideFactory;
 import nl.slompweij.jabberpoint.factory.SlideItemFactory;
-import nl.slompweij.jabberpoint.model.BitmapItem;
+import nl.slompweij.jabberpoint.model.ImageItem;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Slide;
 import nl.slompweij.jabberpoint.model.SlideItem;
@@ -129,9 +129,9 @@ public class XMLAccessor extends Accessor {
 					out.print( ( (TextItem) slideItem).getText());
 				}
 				else {
-					if (slideItem instanceof BitmapItem) {
+					if (slideItem instanceof ImageItem) {
 						out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
-						out.print( ( (BitmapItem) slideItem).getName());
+						out.print( ( (ImageItem) slideItem).getName());
 					}
 					else {
 						System.out.println("Ignoring " + slideItem);

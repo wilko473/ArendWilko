@@ -43,6 +43,7 @@ public class SlideViewerComponent extends JComponent {
 	
 	private static final Color BG_COLOR = Color.white;
 	private static final Color SLIDENR_COLOR = Color.black;
+	
 	private static final String FONTNAME = "Dialog";
 	private static final int FONTSTYLE = Font.BOLD;
 	private static final int FONTHEIGHT = 10;

@@ -20,8 +20,7 @@ import java.io.IOException;
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
 */
-// TODO: Rename to ImageItem?
-public class BitmapItem extends SlideItem {
+public class ImageItem extends SlideItem {
   private BufferedImage bufferedImage;
   private String imageName;
   
@@ -29,7 +28,7 @@ public class BitmapItem extends SlideItem {
   protected static final String NOTFOUND = " niet gevonden";
 
 // level staat voor het item-level; name voor de naam van het bestand met de afbeelding
-	public BitmapItem(int level, String name) {
+	public ImageItem(int level, String name) {
 		super(level);
 		imageName = name;
 		try {
@@ -41,7 +40,7 @@ public class BitmapItem extends SlideItem {
 	}
 
 // Een leeg bitmap-item
-//	public BitmapItem() {
+//	public ImageItem() {
 //		this(0, null);
 //	}
 
@@ -68,6 +67,6 @@ public class BitmapItem extends SlideItem {
 	}
 
 	public String toString() {
-		return "BitmapItem[" + getLevel() + "," + imageName + "]";
+		return "ImageItem[" + getLevel() + "," + imageName + "]";
 	}
 }

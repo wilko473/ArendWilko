@@ -3,7 +3,7 @@ package nl.slompweij.jabberpoint.factory;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 
-import nl.slompweij.jabberpoint.model.BitmapItem;
+import nl.slompweij.jabberpoint.model.ImageItem;
 import nl.slompweij.jabberpoint.model.SlideItem;
 import nl.slompweij.jabberpoint.model.TextItem;
 
@@ -37,7 +37,7 @@ public class SlideItemFactory {
 		}
 		else {
 			if (IMAGE.equals(type)) {
-				result = new BitmapItem(level, item.getTextContent());
+				result = new ImageItem(level, item.getTextContent());
 			}
 			else {
 				System.err.println(UNKNOWNTYPE);
@@ -51,6 +51,6 @@ public class SlideItemFactory {
 	}
 	
 	public static SlideItem createBitmapItem(int level, String name) {
-		return new BitmapItem(level, name);
+		return new ImageItem(level, name);
 	}
 }
