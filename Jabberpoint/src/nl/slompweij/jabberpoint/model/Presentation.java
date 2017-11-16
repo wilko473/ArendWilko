@@ -1,9 +1,12 @@
 package nl.slompweij.jabberpoint.model;
 import java.util.List;
+import java.util.Observable;
 
 
 /**
- * <p>Represents a presentation.</p>
+ * Represents a presentation. 
+ * This model class holds typical presentation properties such as title, theme and slides and is is also responsible for stepping through the slides.
+ * Changes are notified to registered observers. 
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -14,19 +17,13 @@ import java.util.List;
  * @version 2.0 2017/11/13 Arend and Wilko
  */
 
-public abstract class Presentation {
-	private String title;
+public abstract class Presentation extends Observable {
+	private String title = null;
 	private List<Slide> slides = null;
 	private Theme theme = null;
-
-	// TODO: geen currentSlideNumber!
-	//private int currentSlideNumber = 0; // het slidenummer van de huidige Slide
-	// TODO SlideViewerComponent moet verdwijnselen
-	//private SlideViewerComponent slideViewComponent = null; // de viewcomponent voor de Slides
+	private int currentSlideNumber = 0;
 
 	public Presentation(String title, List<Slide> slides, Theme theme) {
-//		slideViewComponent = null;
-//		clear();
 		if (title == null) {
 			throw new IllegalArgumentException("Title is required");
 		}
@@ -41,13 +38,7 @@ public abstract class Presentation {
 		this.theme = theme;
 	}
 
-	// TODO: drama
-//	public Presentation(SlideViewerComponent slideViewerComponent) {
-//		this.slideViewComponent = slideViewerComponent;
-//		clear();
-//	}
-
-	public int getSize() {
+	public int getNumberOfSlides() {
 		return slides.size();
 	}
 
@@ -56,82 +47,48 @@ public abstract class Presentation {
 	}
 	
 	public Theme getTheme() {
-		return theme;
+		return theme;	
+	}
+	
+	public void setTheme(Theme theme) {
+		this.theme = theme;
+		setChanged();
+		notifyObservers();
 	}
 
-//	public void setTitle(String nt) {
-//		showTitle = nt;
-//	}
-
-	// TODO: Dit moet anders
-//	public void setShowView(SlideViewerComponent slideViewerComponent) {
-//		this.slideViewComponent = slideViewerComponent;
-//	}
-
-	// TODO: Remove!
-	// geef het nummer van de huidige slide
-//	public int getSlideNumber() {
-//		return currentSlideNumber;
-//	}
-
-	// TODO: Remove!
-	// verander het huidige-slide-nummer en laat het aan het window weten.
-//	public void setSlideNumber(int number) {
-//		currentSlideNumber = number;
-//		if (slideViewComponent != null) {
-//			slideViewComponent.update(this, getCurrentSlide());
-//		}
-//	}
-
-	// TODO: Remove!
-	// ga naar de vorige slide tenzij je aan het begin van de presentatie bent
-//	public void prevSlide() {
-//		if (currentSlideNumber > 0) {
-//			setSlideNumber(currentSlideNumber - 1);
-//	    }
-//	}
-
-	// TODO: Remove!
-	// Ga naar de volgende slide tenzij je aan het einde van de presentatie bent.
-//	public void nextSlide() {
-//		if (currentSlideNumber < (showList.size()-1)) {
-//			setSlideNumber(currentSlideNumber + 1);
-//		}
-//	}
-
-	// TODO: Er wordt een nieuwe presentatie gemaakt door juiste factory; deze instantie is overbodig en clear zal dus NOOIT gebruikt MOGEN worden	
-	// Verwijder de presentatie, om klaar te zijn voor de volgende
-//	void clear() {
-//		showList = new ArrayList<Slide>();
-//		setSlideNumber(-1);
-//	}
-
-	// TODO: Dit moet gebeuren dmv een factory REWORK
-	// Voeg een slide toe aan de presentatie
-//	public void append(Slide slide) {
-//		showList.add(slide);
-//	}
-
-	/**
-	 * Returns the slide at specified index.
-	 * Throws IndexOutOfBoundsException if the index is invalid.
-	 * @param index
-	 * @return The Slide at index
-	 * @throws IndexOutOfBoundsException if there is no slide with specified index (runtime exception)
-	 */
-	public Slide getSlide(int index) {
-		return slides.get(index);
+	public Slide getCurrentSlide() {
+		return slides.get(currentSlideNumber);
+	}
+	
+	public void nextSlide() {
+		if (currentSlideNumber < slides.size() - 1) {
+			currentSlideNumber++;
+			setChanged();
+			notifyObservers();
+		}
 	}
 
-	// TODO: Verwijder dit; een presentatie weet niet waar die zelf is; conceptueel is dit onjuist (Presentatie bevat daadwerkelijk de informatie die 
-	// getoont moet worden met informatie die hiervoor relevant is)
-	// Geef de huidige Slide
-//	public Slide getCurrentSlide() {
-//		return getSlide(currentSlideNumber);
-//	}
+	public void previousSlide() {
+		if (currentSlideNumber > 0) {
+			currentSlideNumber--;
+			setChanged();
+			notifyObservers();
+		}
+	}
 
-	// TODO: Exit???
-//	public void exit(int n) {
-//		System.exit(n);
-//	}
+	public int getCurrentSlideNumber() {
+		return currentSlideNumber;
+	}
+	
+	public void setCurrentSlideNumber(int newSlideNumber) {
+		if (newSlideNumber > -1 && newSlideNumber < slides.size() - 1) {
+			this.currentSlideNumber = newSlideNumber;
+			setChanged();
+			notifyObservers();
+		}
+	}
+
+	public List<Slide> getSlides() {
+		return slides;
+	}
 }

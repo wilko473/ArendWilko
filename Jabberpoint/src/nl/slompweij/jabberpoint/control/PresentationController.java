@@ -4,47 +4,50 @@ import nl.slompweij.jabberpoint.model.Presentation;
 
 public class PresentationController {
 
-	private Presentation presentation;
-	private int currentSlide;
-	private ViewController viewController = null;
+	private Presentation presentation = null;
+	//private int currentSlide;
+	//private ViewController viewController = null;
 	
-	public PresentationController(Presentation presentation, int currentSlide) {
+	public PresentationController(Presentation presentation/*, int currentSlide*/) {
 		this.presentation = presentation;
-		this.currentSlide = currentSlide;
+		//this.currentSlide = currentSlide;
 	}
 	
 	public void nextSlide() {
-		if (currentSlide < presentation.getSize() - 1) {
-			currentSlide++;
-			viewController.updateView();
-		}
+//		if (currentSlide < presentation.getNumberOfSlides() - 1) {
+//			currentSlide++;
+//			viewController.updateView();
+//		}
+		presentation.nextSlide();
 	}
 
 	public void previousSlide() {
-		if (currentSlide > 0) {
-			currentSlide--;
-			viewController.updateView();
-		}
+//		if (currentSlide > 0) {
+//			currentSlide--;
+//			viewController.updateView();
+//		}
+		presentation.previousSlide();
 	}
 
-	public void setSlideNumber(int newSlide) {
-		if (newSlide > -1 && newSlide < presentation.getSize() - 1) {
-			this.currentSlide = newSlide;
-			viewController.updateView();
-		}
+	public void setCurrentSlideNumber(int newSlideNumber) {
+//		if (newSlide > -1 && newSlide < presentation.getNumberOfSlides() - 1) {
+//			this.currentSlide = newSlide;
+//			viewController.updateView();
+//		}
+		presentation.setCurrentSlideNumber(newSlideNumber);
 	}
 
 	public Presentation getPresentation() {
 		return presentation;
 	}
 
-	public int getCurrentSlide() {
-		return currentSlide;
-	}
+//	public int getCurrentSlide() {
+//		return currentSlide;
+//	}
 
-	public void setViewController(ViewController viewController) {
-		this.viewController = viewController;
-	}
+//	public void setViewController(ViewController viewController) {
+//		this.viewController = viewController;
+//	}
 	
 	
 }

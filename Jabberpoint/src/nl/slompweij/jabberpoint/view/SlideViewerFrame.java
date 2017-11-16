@@ -3,6 +3,7 @@ package nl.slompweij.jabberpoint.view;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Observable;
 
 import javax.swing.JFrame;
 
@@ -18,6 +19,7 @@ import nl.slompweij.jabberpoint.control.PresentationController;
  * @version 1.4 2007/07/16 Sylvia Stuurman
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
+ * @version 2.0 2017/11/16 Arend and Wilko
 */
 
 public class SlideViewerFrame extends JFrame {
@@ -25,13 +27,14 @@ public class SlideViewerFrame extends JFrame {
 	
 	private static final String JABTITLE = "Jabberpoint 1.6 - OU";// TODO: Naar Labels
 	
-	public final static int WIDTH = 1200;
+	public final static int WIDTH = 1200;// TODO: WIDTH en HEIGHT zijn elders al gedefinieerd
 	public final static int HEIGHT = 800;
 	private SlideViewerComponent slideViewerComponent = null;
 	
 	public SlideViewerFrame(String title, PresentationController presentationController) {
 		super(title);
-		slideViewerComponent = new SlideViewerComponent(presentationController, this);
+		slideViewerComponent = new SlideViewerComponent();
+		
 		//presentation.setShowView(slideViewerComponent);
 		setupWindow(slideViewerComponent, presentationController);
 	}
@@ -55,7 +58,11 @@ public class SlideViewerFrame extends JFrame {
 		setVisible(true);
 	}
 	
-	public void update() {
-		slideViewerComponent.repaint();
+	// TODO: add listener to presentation creation
+	public void observe(Observable presentation) {
+		presentation.addObserver(slideViewerComponent);
 	}
+//	public void update() {
+//		slideViewerComponent.repaint();
+//	}
 }

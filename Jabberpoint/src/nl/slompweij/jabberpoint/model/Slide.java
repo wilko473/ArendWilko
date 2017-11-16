@@ -18,8 +18,8 @@ import java.util.List;
  */
 
 public abstract class Slide {	
-	private String title;
-	private List<SlideItem> slideItems;
+	//private String title;TODO: Remove?
+	private List<SlideItem> slideItems = null;
 
 	public Slide(String title, List<SlideItem> slideItems) {
 		if (title == null) {
@@ -28,17 +28,15 @@ public abstract class Slide {
 		if (slideItems == null) {
 			throw new IllegalArgumentException("Slideitems are required");
 		}
-		this.title = title;
+		//this.title = title;
 		this.slideItems = slideItems;
 	}
 
-	// Voeg een SlideItem toe
-	// public void append(SlideItem anItem) {
-	// items.addElement(anItem);
-	// }
-
 	public String getTitle() {
-		return title;
+		if (slideItems != null && !slideItems.isEmpty() && slideItems.get(0) instanceof TextItem) {
+			return ((TextItem) slideItems.get(0)).getText();
+		}
+		throw new IllegalStateException("Title is not set. Should be first element.");
 	}
 
 	// verander de titel van de slide

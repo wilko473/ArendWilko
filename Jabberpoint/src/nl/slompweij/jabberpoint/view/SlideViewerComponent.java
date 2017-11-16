@@ -5,16 +5,16 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 
-import nl.slompweij.jabberpoint.control.PresentationController;
-import nl.slompweij.jabberpoint.factory.SlideItemFactory;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Slide;
 import nl.slompweij.jabberpoint.model.SlideItem;
 import nl.slompweij.jabberpoint.model.Style;
+import nl.slompweij.jabberpoint.model.Theme;
 
 
 /** <p>SlideViewerComponent is een grafische component die Slides kan laten zien.</p>
@@ -28,21 +28,17 @@ import nl.slompweij.jabberpoint.model.Style;
  * @version 2.0 2017/11/13 Arend and Wilko
  */
 
-public class SlideViewerComponent extends JComponent {
-	
-	private PresentationController presentationController = null;
-	private Slide slide;
+public class SlideViewerComponent extends JComponent implements Observer {
+	private Presentation presentation = null;
 	private Font labelFont = null; // het font voor labels
-	
-	//private JFrame frame = null;
 	
 	private static final long serialVersionUID = 227L;
 	
 	public final static int PREFERRED_WIDTH = 1200;// TODO: afhankelijkheid weghalen en private maken
 	private final static int PREFERRED_HEIGHT = 800;
 	
-	private static final Color BG_COLOR = Color.white;
-	private static final Color SLIDENR_COLOR = Color.black;
+	//private static final Color BG_COLOR = Color.white;// TODO: from theme
+	private static final Color SLIDENR_COLOR = Color.black;// TODO: from theme
 	
 	private static final String FONTNAME = "Dialog";
 	private static final int FONTSTYLE = Font.BOLD;
@@ -50,15 +46,11 @@ public class SlideViewerComponent extends JComponent {
 	private static final int XPOS = 1100;
 	private static final int YPOS = 20;
 	
-	// TODO: Anders dan 
-	public final static int WIDTH = 1200;
-	public final static int HEIGHT = 800;
+	public final static int DEFAULT_WIDTH = 1200;
+	public final static int DEFAULT_HEIGHT = 800;
 
-	public SlideViewerComponent(PresentationController presentationController, JFrame frame) {
-		this.presentationController = presentationController;
-		//this.frame = frame;
-		
-		setBackground(BG_COLOR); 
+	public SlideViewerComponent() {
+		//setBackground(BG_COLOR); 
 		labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
 	}
 
@@ -66,68 +58,63 @@ public class SlideViewerComponent extends JComponent {
 		return new Dimension(PREFERRED_WIDTH, PREFERRED_HEIGHT);
 	}
 
-	public void update() {
-//		if (data == null) {
-//			repaint();
-//			return;
-//		}
-		//this.presentationController = presentationController;
-		//this.slide = data;
-		repaint();
-		//frame.setTitle(presentationController.getPresentation().getTitle());
-	}
-
-// teken de slide
 	public void paintComponent(Graphics g) {
-		g.setColor(BG_COLOR);
-		g.fillRect(0, 0, getSize().width, getSize().height);
-//		if (presentation.getSlideNumber() < 0 || slide == null) {
-//			return;
-//		}
-		g.setFont(labelFont);
-		g.setColor(SLIDENR_COLOR);
-		g.drawString("Slide " + (1 + presentationController.getCurrentSlide()) + " of " +
-				presentationController.getPresentation().getSize(), XPOS, YPOS);
-		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
-		drawSlide(g, area);
+		if (presentation == null) {
+			// Nothing to paint
+			return;
+		}
+		Theme theme = presentation.getTheme();
+		Slide slide = presentation.getCurrentSlide();
+		
+		drawSlide(g, slide, theme);
 	}
 	
-	private void drawSlide(Graphics g, Rectangle area/*, ImageObserver view*/) {
-		float scale = getScale(area);
+	private void drawSlide(Graphics g, Slide slide, Theme theme) {
+		// Set background colour from theme
+		g.setColor(theme.getBackgroundColour());
+		g.fillRect(0, 0, getSize().width, getSize().height);
 		
-		//Style style = Style.getStyle(slideItem.getLevel());// 
-		Presentation presentation = presentationController.getPresentation();
-		Style style = presentation.getTheme().getStyles().get(0);// TODO: method maken in presentation of theme?
+		// Draw slide number with hardcoded style. TODO: move to theme? 
+		g.setFont(labelFont);
+		g.setColor(SLIDENR_COLOR);
+		g.drawString("Slide " + (1 + presentation.getCurrentSlideNumber()) + " of " +
+				presentation.getNumberOfSlides(), XPOS, YPOS);
 		
-		slide = presentation.getSlide(presentationController.getCurrentSlide());
+		// Calculate some drawing properties
+		Rectangle drawingArea = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
+		float scale = getScale(drawingArea);
+		int y = drawingArea.y;
 		
-		int y = area.y;
+		// Title is handled separately. TODO: Remove
+//		Style titleStyle = presentation.getTheme().getStyle(0);
+//		SlideItem slideItemTitle = SlideItemFactory.createTextItem(0, slide.getTitle());
+//		slideItemTitle.draw(drawingArea.x, drawingArea.y, scale, g, titleStyle, this);
+//		y += slideItemTitle.getBoundingBox(g, this, scale, titleStyle).height;
+
+//		for (int number = 0; number < presentation.getNumberOfSlides(); number++) {
+//			SlideItem slideItem = slide.getSlideItems().get(number);
+//			Style itemStyle = presentation.getTheme().getStyles().get(slideItem.getLevel());
+//			slideItem.draw(drawingArea.x, y, scale, g, itemStyle, this/*view*/);
+//			y += slideItem.getBoundingBox(g, this/*view*/, scale, itemStyle).height;
+//		}
 		
-		// De titel wordt apart behandeld
-		SlideItem slideItemTitle = SlideItemFactory.createTextItem(0, slide.getTitle());// TODO: betere oplossing?
-		slideItemTitle.draw(area.x, y, scale, g, style, this/*view*/);
-		y += slideItemTitle.getBoundingBox(g, this/*view*/, scale, style).height;
-		
-		// TODO: Iterator Pattern?
-		for (int number = 0; number < presentation.getSize(); number++) {
-//			slideItem = (SlideItem) getSlideItems().elementAt(number);
-//			style = Style.getStyle(slideItem.getLevel());
-//			slideItem.draw(area.x, y, scale, g, style, view);
-//			y += slideItem.getBoundingBox(g, view, scale, style).height;
-			
-			SlideItem slideItem = slide.getSlideItems().get(number);
-			Style itemStyle = presentation.getTheme().getStyles().get(slideItem.getLevel());
-			slideItem.draw(area.x, y, scale, g, itemStyle, this/*view*/);
-			y += slideItem.getBoundingBox(g, this/*view*/, scale, itemStyle).height;
+		for (SlideItem slideItem : slide.getSlideItems()) {
+			Style itemStyle = theme.getStyle(slideItem.getLevel());
+			slideItem.draw(drawingArea.x, y, scale, g, itemStyle, this);
+			y += slideItem.getBoundingBox(g, this, scale, itemStyle).height;
 		}
 	}
 
-	/**
-	 * Calculates the scale to draw the slide.
-	 * @param area
-	 * @return
-	 */
-	private float getScale(Rectangle area) {
-		return Math.min(((float) area.width) / ((float) WIDTH), ((float) area.height) / ((float) HEIGHT));
+	private float getScale(Rectangle drawingArea) {
+		return Math.min(((float) drawingArea.width) / ((float) DEFAULT_WIDTH),
+				((float) drawingArea.height) / ((float) DEFAULT_HEIGHT));
+	}
+
+	@Override
+	public void update(Observable observable, Object arg) {
+		if (observable instanceof Presentation) {
+			this.presentation = (Presentation) observable;
+			repaint();
+		}
 	}
 }

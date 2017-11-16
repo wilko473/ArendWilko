@@ -116,8 +116,7 @@ public class XMLAccessor extends Accessor {
 		out.print("<showtitle>");
 		out.print(presentation.getTitle());
 		out.println("</showtitle>");
-		for (int slideNumber=0; slideNumber<presentation.getSize(); slideNumber++) {
-			Slide slide = presentation.getSlide(slideNumber);
+		for (Slide slide : presentation.getSlides()) {
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
 			List<SlideItem> slideItems = slide.getSlideItems();
