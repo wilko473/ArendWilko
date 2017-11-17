@@ -1,8 +1,11 @@
 package nl.slompweij.jabberpoint.factory;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import nl.slompweij.jabberpoint.io.Accessor;
+import nl.slompweij.jabberpoint.io.XMLAccessor;
 import nl.slompweij.jabberpoint.model.ConcretePresentation;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Slide;
@@ -11,12 +14,15 @@ import nl.slompweij.jabberpoint.model.Theme;
 
 public class PresentationFactory {
 	
-	public static Presentation createPresentation(String[] parameters, Theme theme) {
+	public static Presentation createPresentation(String[] parameters, Theme theme) throws IOException {
 		Presentation result = null;
 		if (parameters == null || parameters.length == 0) {
 			result = createDemoPresentation(theme);
 		} else {
-			// TODO: Accessor
+			Accessor accessor = new XMLAccessor();
+			
+			result = accessor.loadFile(parameters[0]);
+			
 		}
 		return result;
 	}

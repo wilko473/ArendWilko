@@ -17,6 +17,8 @@ import org.xml.sax.SAXException;
 
 import nl.slompweij.jabberpoint.factory.SlideFactory;
 import nl.slompweij.jabberpoint.factory.SlideItemFactory;
+import nl.slompweij.jabberpoint.factory.ThemeFactory;
+import nl.slompweij.jabberpoint.model.ConcretePresentation;
 import nl.slompweij.jabberpoint.model.ImageItem;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Slide;
@@ -57,14 +59,13 @@ public class XMLAccessor extends Accessor {
     }
 
 	@Override
-	public void loadFile(Presentation p, String fn) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
+	
     
-	public void loadFile(String filename) throws IOException {
+	public Presentation loadFile(String filename) throws IOException {
 		int slideNumber, itemNumber, maxItems = 0;
+		Presentation result=null;
 		try {
+			
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();    
 			Document document = builder.parse(new File(filename)); // maak een JDOM document
 			Element doc = document.getDocumentElement();
@@ -94,6 +95,8 @@ public class XMLAccessor extends Accessor {
 				Slide slide = SlideFactory.createSlide(slideTitle, slideItems);
 				slides.add(slide);
 			}
+			// TODO: Theme mag hier niet gebruikt worden!
+			result=  new ConcretePresentation("titel", slides, ThemeFactory.createTheme());
 			
 			
 		} 
@@ -106,6 +109,7 @@ public class XMLAccessor extends Accessor {
 		catch (ParserConfigurationException pcx) {
 			System.err.println(PCE);
 		}	
+		return result;
 	}
 
 	public void saveFile(Presentation presentation, String filename) throws IOException {

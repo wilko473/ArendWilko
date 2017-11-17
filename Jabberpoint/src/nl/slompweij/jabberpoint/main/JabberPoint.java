@@ -1,5 +1,8 @@
 package nl.slompweij.jabberpoint.main;
 
+import java.io.IOException;
+
+import nl.slompweij.jabberpoint.control.ApplicationController;
 import nl.slompweij.jabberpoint.control.KeyController;
 import nl.slompweij.jabberpoint.control.PresentationController;
 import nl.slompweij.jabberpoint.factory.PresentationFactory;
@@ -51,17 +54,8 @@ public class JabberPoint {
 		
 		Theme theme = ThemeFactory.createTheme();
 
-		Presentation presentation = PresentationFactory.createPresentation(args, theme);
 		
-		PresentationController presentationController = new PresentationController(presentation);
-		KeyController keyController = new KeyController(presentationController);
-		
-		SlideViewerFrame frame = new SlideViewerFrame(JABVERSION, presentationController);
-		frame.addKeyListener(keyController);
-		
-		frame.observe(presentation);
-		
-		presentation.setCurrentSlideNumber(0);
+		new ApplicationController(args);
 		
 		//ViewController viewController = new ViewController(frame);
 		//presentationController.setViewController(viewController);

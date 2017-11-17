@@ -15,6 +15,11 @@ import java.awt.event.KeyEvent;
 public class KeyController extends KeyAdapter {
 	private PresentationController presentationController; 
 
+	private ApplicationController applicationController;
+	
+	public KeyController(ApplicationController applicationController) {
+		this.applicationController = applicationController;
+	}
 	public KeyController(PresentationController presentationController) {
 		this.presentationController = presentationController;
 	}
@@ -25,16 +30,17 @@ public class KeyController extends KeyAdapter {
 			case KeyEvent.VK_DOWN:
 			case KeyEvent.VK_ENTER:
 			case '+':
-				presentationController.nextSlide();
+				applicationController.nextSlide();
+				//presentationController.nextSlide();
 				break;
 			case KeyEvent.VK_PAGE_UP:
 			case KeyEvent.VK_UP:
 			case '-':
-				presentationController.previousSlide();
+				applicationController.previousSlide();
 				break;
 			case 'q':
 			case 'Q':
-				System.exit(0);
+				applicationController.ExitApplication();
 				break; // wordt nooit bereikt als het goed is
 			default:
 				break;

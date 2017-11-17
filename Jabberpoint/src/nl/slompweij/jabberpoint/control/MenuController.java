@@ -6,10 +6,16 @@ import java.awt.MenuItem;
 import java.awt.MenuShortcut;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ResourceBundle;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import nl.slompweij.jabberpoint.factory.PresentationFactory;
+import nl.slompweij.jabberpoint.io.Accessor;
+import nl.slompweij.jabberpoint.io.XMLAccessor;
+import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.view.AboutBox;
 import nl.slompweij.jabberpoint.view.LabelsBundle;
 import nl.slompweij.jabberpoint.view.LabelsBundle_en_US;
@@ -38,28 +44,26 @@ public class MenuController extends MenuBar {
 	protected static final String LOADERR = "Load Error";
 	protected static final String SAVEERR = "Save Error";
 
-	public MenuController(Frame frame, final PresentationController presentationController) {
+	public MenuController(final Frame frame, final ApplicationController applicationController) {
 		parent = frame;
 		//this.presentationController = presentationController;
 		
 		final ResourceBundle labels = ResourceBundle.getBundle("nl.slompweij.jabberpoint.view.LabelsBundle", LabelsBundle.SUPPORTED_LOCALES_en_US);
-
+		
 		MenuItem menuItem;
 		Menu fileMenu = new Menu(labels.getString(LabelsBundle_en_US.Label.FILE.name()));
 		fileMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.OPEN.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				// TODO: fix dit!
-			//	presentation.clear();
-//				Accessor xmlAccessor = new XMLAccessor();
-//				try {
-//					xmlAccessor.loadFile(presentationController, TESTFILE);
-//					presentationController.setSlideNumber(0);
-//				} catch (IOException exc) {
-//					JOptionPane.showMessageDialog(parent, IOEX + exc, 
-//         			LOADERR, JOptionPane.ERROR_MESSAGE);
-//				}
-//				parent.repaint();
+				JFileChooser fc = new JFileChooser();
+				int result = fc.showDialog(frame, null);
+				if (result == 0)
+				{
+						
+				applicationController.loadPresentation(fc.getSelectedFile().getName() );
+					
+				}
 			}
 		} );
 		fileMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.NEW.name())));
@@ -87,7 +91,7 @@ public class MenuController extends MenuBar {
 		fileMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.EXIT.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				// TODO: applicationController.exit(0);
+				applicationController.ExitApplication();			
 			}
 		});
 		add(fileMenu);
@@ -95,13 +99,22 @@ public class MenuController extends MenuBar {
 		viewMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.NEXT.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentationController.nextSlide();
+				applicationController.nextSlide();
 			}
+		});
+		
+		viewMenu.add(menuItem = mkMenuItem("Theme"));
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event)
+			{
+				
+			}
+		
 		});
 		viewMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.PREV.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentationController.previousSlide();
+				applicationController.previousSlide();
 			}
 		});
 		viewMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.GOTO.name())));
@@ -109,7 +122,7 @@ public class MenuController extends MenuBar {
 			public void actionPerformed(ActionEvent actionEvent) {
 				String pageNumberStr = JOptionPane.showInputDialog((Object)labels.getString(LabelsBundle_en_US.Label.PAGENR.name()));
 				int pageNumber = Integer.parseInt(pageNumberStr);
-				presentationController.setCurrentSlideNumber(pageNumber - 1);
+				applicationController.setCurrentSlideNumber(pageNumber - 1);
 			}
 		});
 		add(viewMenu);

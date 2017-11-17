@@ -7,6 +7,7 @@ import java.util.Observable;
 
 import javax.swing.JFrame;
 
+import nl.slompweij.jabberpoint.control.ApplicationController;
 import nl.slompweij.jabberpoint.control.MenuController;
 import nl.slompweij.jabberpoint.control.PresentationController;
 
@@ -31,17 +32,17 @@ public class SlideViewerFrame extends JFrame {
 	public final static int HEIGHT = 800;
 	private SlideViewerComponent slideViewerComponent = null;
 	
-	public SlideViewerFrame(String title, PresentationController presentationController) {
+	public SlideViewerFrame(String title, ApplicationController applicationController) {
 		super(title);
 		slideViewerComponent = new SlideViewerComponent();
 		
 		//presentation.setShowView(slideViewerComponent);
-		setupWindow(slideViewerComponent, presentationController);
+		setupWindow(slideViewerComponent, applicationController);
 	}
 
 // De GUI opzetten
 	public void setupWindow(SlideViewerComponent 
-			slideViewerComponent, PresentationController presentationController) {
+			slideViewerComponent, ApplicationController applicationController) {
 		setTitle(JABTITLE);
 		
 		//TODO: naar controller
@@ -53,7 +54,7 @@ public class SlideViewerFrame extends JFrame {
 		getContentPane().add(slideViewerComponent);
 		
 //		addKeyListener(new KeyController(presentation)); // een controller toevoegen
-		setMenuBar(new MenuController(this, presentationController));	// nog een controller toevoegen
+		setMenuBar(new MenuController(this, applicationController));	// nog een controller toevoegen
 		setSize(new Dimension(WIDTH, HEIGHT)); // Dezelfde maten als Slide hanteert.
 		setVisible(true);
 	}
