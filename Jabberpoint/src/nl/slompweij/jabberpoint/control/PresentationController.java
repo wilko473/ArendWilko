@@ -15,6 +15,10 @@ public class PresentationController {
 		//this.currentSlide = currentSlide;
 	}
 	
+	public PresentationController() {
+		
+		//this.currentSlide = currentSlide;
+	}
 	public void nextSlide() {
 //		if (currentSlide < presentation.getNumberOfSlides() - 1) {
 //			currentSlide++;

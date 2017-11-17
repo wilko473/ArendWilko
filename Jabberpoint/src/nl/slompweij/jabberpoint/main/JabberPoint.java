@@ -52,7 +52,6 @@ public class JabberPoint {
 	/** Het Main Programma */
 	public static void main(String args[]) {
 		
-		Theme theme = ThemeFactory.createTheme();
 
 		
 		new ApplicationController(args);

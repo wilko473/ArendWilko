@@ -21,24 +21,21 @@ public class ApplicationController {
 		
 		theme = ThemeFactory.createTheme();
 		presentation=null;
-		try {
-			presentation = PresentationFactory.createPresentation(args, theme);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-		presentationController = new PresentationController(presentation);
+		presentationController = new PresentationController();
 		keyController = new KeyController(this);
-		
 		frame = new SlideViewerFrame(JABVERSION, this);
+		loadPresentation(args);
+		
 		frame.addKeyListener(keyController);
 		
-		frame.observe(presentation);
+		
 		
 		presentation.setCurrentSlideNumber(0);
 		
 	}
+	
+	
 	
 	public void ExitApplication() {
 		System.exit(0);
@@ -54,12 +51,16 @@ public class ApplicationController {
 		presentationController.previousSlide();
 	}
 
-	public void loadPresentation(String name) {
-		// TODO Auto-generated method stub
-		String[] param = new String[] { name};
+	public void loadPresentation(String[] params) {
+		
 		try {
-			Presentation p = PresentationFactory.createPresentation(param, theme);
+			Presentation p = PresentationFactory.createPresentation(params, theme);
 			presentationController.setPresentation(p);
+			this.presentation  =p;
+//			frame.observe(p);
+			frame.observe(presentation);
+			
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

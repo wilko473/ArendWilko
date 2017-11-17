@@ -61,7 +61,7 @@ public class MenuController extends MenuBar {
 				if (result == 0)
 				{
 						
-				applicationController.loadPresentation(fc.getSelectedFile().getName() );
+				applicationController.loadPresentation(new String[] { fc.getSelectedFile().getName() });
 					
 				}
 			}
