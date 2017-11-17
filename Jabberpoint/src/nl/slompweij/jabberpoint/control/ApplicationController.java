@@ -75,14 +75,10 @@ public class ApplicationController {
 			JOptionPane.showMessageDialog(null,
 					IOERR + ex, JABERR,
 					JOptionPane.ERROR_MESSAGE);
-		}
-			
-		
+		}		
 	}
 
 	public void setCurrentSlideNumber(int i) {		
 		presentationController.setCurrentSlideNumber(i);
 	}
-	
-
 }

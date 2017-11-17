@@ -53,8 +53,8 @@ public class ThemeFactory {
 			NamedNodeMap attributes = styleList.item(i).getAttributes();
 			String level = attributes.getNamedItem("level").getTextContent();
 			String color = attributes.getNamedItem("color").getTextContent();
-			String fontSize= attributes.getNamedItem("font-size" ).getTextContent();
-			String fontName = attributes.getNamedItem("font-face" ).getTextContent();
+			String fontSize= attributes.getNamedItem("font-size").getTextContent();
+			String fontName = attributes.getNamedItem("font-face").getTextContent();
 			int leading = 3;
 			Font font = new Font(fontName, Font.BOLD, Integer.parseInt(fontSize));
 			styles.add(StyleFactory.createStyle(Integer.parseInt(level), new Color(Integer.parseInt(color, 16)), font, leading));

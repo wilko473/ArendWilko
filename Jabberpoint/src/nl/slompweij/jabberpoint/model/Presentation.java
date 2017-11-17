@@ -17,6 +17,7 @@ import java.util.Observable;
  * @version 2.0 2017/11/13 Arend and Wilko
  */
 
+@SuppressWarnings("deprecation")
 public abstract class Presentation extends Observable {
 	private String title = null;
 	private List<Slide> slides = null;
@@ -32,8 +33,7 @@ public abstract class Presentation extends Observable {
 		}
 		
 		this.title = title;
-		this.slides = slides;
-		//this.theme = theme;
+		this.slides = slides;		
 	}
 
 	public int getNumberOfSlides() {
