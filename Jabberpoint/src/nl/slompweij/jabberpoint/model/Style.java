@@ -17,16 +17,18 @@ import java.awt.Font;
  */
 
 public abstract class Style {
-	private static final String FONTNAME = "Helvetica";// TODO: support other fonts?
+	
 	private int indent;
 	private Font font;
 	private Color fontColor;
 	private int fontSize;
 	private int leading;
+	
 
-	public Style(int indent, Color fontColor, int points, int leading) {
+	public Style(int indent, Color fontColor, Font font, int leading) {
 		this.indent = indent;
-		this.font = new Font(FONTNAME, Font.BOLD, fontSize=points);
+		this.font = font;
+		this.fontSize = font.getSize();
 		this.fontColor = fontColor;
 		this.leading = leading;
 	}
@@ -48,7 +50,7 @@ public abstract class Style {
 	}
 
 	public int getFontSize() {
-		return fontSize;
+		return font.getSize();
 	}
 
 	public int getLeading() {

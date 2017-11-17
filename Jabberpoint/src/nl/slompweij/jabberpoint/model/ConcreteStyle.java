@@ -1,10 +1,11 @@
 package nl.slompweij.jabberpoint.model;
 
 import java.awt.Color;
+import java.awt.Font;
 
 public class ConcreteStyle extends Style {
 
-	public ConcreteStyle(int indent, Color color, int points, int leading) {
-		super(indent, color, points, leading);
+	public ConcreteStyle(int indent, Color color, Font font, int leading) {
+		super(indent, color, font, leading);
 	}
 }
