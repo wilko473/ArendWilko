@@ -14,10 +14,10 @@ import nl.slompweij.jabberpoint.model.Theme;
 
 public class PresentationFactory {
 	
-	public static Presentation createPresentation(String[] parameters, Theme theme) throws IOException {
+	public static Presentation createPresentation(String[] parameters) throws IOException {
 		Presentation result = null;
 		if (parameters == null || parameters.length == 0) {
-			result = createDemoPresentation(theme);
+			result = createDemoPresentation();
 		} else {
 			Accessor accessor = new XMLAccessor();
 			
@@ -27,7 +27,7 @@ public class PresentationFactory {
 		return result;
 	}
 	
-	private static Presentation createDemoPresentation(Theme theme) {
+	private static Presentation createDemoPresentation() {
 
 		List<Slide> slides = new ArrayList<Slide>();
 		
@@ -62,6 +62,6 @@ public class PresentationFactory {
 		slideItems2.add(SlideItemFactory.createBitmapItem(1, "JabberPoint.jpg"));
 		slides.add(SlideFactory.createSlide("De derde slide", slideItems2));
 		
-		return new ConcretePresentation("Demo Presentation", slides, theme);
+		return new ConcretePresentation("Demo Presentation", slides);
 	}
 }

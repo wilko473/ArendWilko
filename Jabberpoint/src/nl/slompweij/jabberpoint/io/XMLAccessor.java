@@ -24,6 +24,7 @@ import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Slide;
 import nl.slompweij.jabberpoint.model.SlideItem;
 import nl.slompweij.jabberpoint.model.TextItem;
+import nl.slompweij.jabberpoint.model.Theme;
 
 
 /** XMLAccessor, reads and writes XML files
@@ -95,8 +96,22 @@ public class XMLAccessor extends Accessor {
 				Slide slide = SlideFactory.createSlide(slideTitle, slideItems);
 				slides.add(slide);
 			}
-			// TODO: Theme mag hier niet gebruikt worden!
-			result=  new ConcretePresentation("titel", slides, ThemeFactory.createTheme());
+			
+			// TODO: Magic strings laten verdwijnen
+						
+			result=  new ConcretePresentation("titel", slides);
+			
+			NodeList theme = doc.getElementsByTagName("theme");
+			if (theme.getLength() > 0) {
+				ThemeFactory themeFactory = new ThemeFactory();
+				Theme t = themeFactory.createTheme(theme);
+				result.setTheme(t);
+			}
+			
+			// TODO: haal theme eventueel op uit bestand
+			// laat ThemeFactory een Theme maken
+			// pas deze toe op het result
+			
 			
 			
 		} 

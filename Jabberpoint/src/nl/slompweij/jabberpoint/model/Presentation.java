@@ -23,19 +23,20 @@ public abstract class Presentation extends Observable {
 	private Theme theme = null;
 	private int currentSlideNumber = 0;
 
-	public Presentation(String title, List<Slide> slides, Theme theme) {
+	public Presentation(String title, List<Slide> slides) {
 		if (title == null) {
 			throw new IllegalArgumentException("Title is required");
 		}
 		if (slides == null) {
 			throw new IllegalArgumentException("Slides is required");
 		}
-		if (theme == null) {
+		/*if (theme == null) {
 			throw new IllegalArgumentException("Theme is required");
-		}
+		}*/
+		
 		this.title = title;
 		this.slides = slides;
-		this.theme = theme;
+		//this.theme = theme;
 	}
 
 	public int getNumberOfSlides() {
@@ -91,4 +92,5 @@ public abstract class Presentation extends Observable {
 	public List<Slide> getSlides() {
 		return slides;
 	}
+
 }

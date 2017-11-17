@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.w3c.dom.NodeList;
+
 import nl.slompweij.jabberpoint.model.ConcreteTheme;
 import nl.slompweij.jabberpoint.model.Style;
 import nl.slompweij.jabberpoint.model.Theme;
@@ -27,4 +29,12 @@ public class ThemeFactory {
 
 		return new ConcreteTheme("theme1", styles);
 	}
+
+	public Theme createTheme(NodeList theme) {
+		List<Style> styles = new ArrayList<Style>();
+		
+		return new ConcreteTheme("theme1", styles);
+	}
+	
+	
 }

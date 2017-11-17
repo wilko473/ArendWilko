@@ -7,16 +7,17 @@ import nl.slompweij.jabberpoint.model.Theme;
 public class PresentationController {
 
 	private Presentation presentation = null;
+	private Theme theme = null;
 	//private int currentSlide;
 	//private ViewController viewController = null;
 	
-	public PresentationController(Presentation presentation/*, int currentSlide*/) {
-		this.presentation = presentation;
+	//public PresentationController(Presentation presentation/*, int currentSlide*/) {
+///		this.presentation = presentation;
 		//this.currentSlide = currentSlide;
-	}
+	//}
 	
-	public PresentationController() {
-		
+	public PresentationController(Theme defaultTheme) {
+		this.theme = defaultTheme;
 		//this.currentSlide = currentSlide;
 	}
 	public void nextSlide() {
@@ -51,12 +52,16 @@ public class PresentationController {
 		// TODO Auto-generated method stub
 		presentation = p;
 		setCurrentSlideNumber(0);
-		
+		presentation.setTheme(theme);
 	}
 
 	public Theme getTheme() {
 		// TODO Auto-generated method stub
 		return ThemeFactory.createTheme();
+	}
+	public void setTheme(Theme theme) {
+		this.theme = theme;
+		presentation.setTheme(theme);
 	}
 
 //	public int getCurrentSlide() {
