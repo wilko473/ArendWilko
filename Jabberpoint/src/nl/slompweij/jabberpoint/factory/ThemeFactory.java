@@ -63,6 +63,28 @@ public class ThemeFactory {
 		
 		return new ConcreteTheme("theme1", styles);
 	}
+
+	public static Theme getPredefined(int optie) {
+		List<Style> styles = new ArrayList<Style>();    
+		// Hard coded styles
+		String fname = "";
+		switch (optie) {
+			case 1: fname="Helvetica";break;
+			case 2: fname="Times New Roman";break;		
+			case 3: fname="Calibri";break;
+		default:
+			fname="Arial"; break;
+		}
+		
+		styles.add(StyleFactory.createStyle(0, Color.red,  createFont(fname, Font.BOLD,  48), 20));
+		styles.add(StyleFactory.createStyle(20, Color.blue,  createFont(fname, Font.BOLD,40), 10));
+		styles.add(StyleFactory.createStyle(50, Color.black, createFont(fname, Font.BOLD,36), 10));
+		styles.add(StyleFactory.createStyle(70, Color.black, createFont(fname, Font.BOLD,30), 10));
+		styles.add(StyleFactory.createStyle(90, Color.black, createFont(fname, Font.BOLD,24), 10));
+		
+		return new ConcreteTheme("theme1", styles);
+		
+	}
 	
 	
 }

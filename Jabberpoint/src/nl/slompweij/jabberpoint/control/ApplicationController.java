@@ -81,4 +81,12 @@ public class ApplicationController {
 	public void setCurrentSlideNumber(int i) {		
 		presentationController.setCurrentSlideNumber(i);
 	}
+
+
+	public void setTheme(int optie) {
+		presentationController.setTheme(ThemeFactory.getPredefined(optie));
+		JOptionPane.showMessageDialog(null, "Hallo"+ optie);
+		// TODO Auto-generated method stub
+		
+	}
 }

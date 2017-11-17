@@ -62,6 +62,7 @@ public class PresentationController {
 	public void setTheme(Theme theme) {
 		this.theme = theme;
 		presentation.setTheme(theme);
+		
 	}
 
 //	public int getCurrentSlide() {

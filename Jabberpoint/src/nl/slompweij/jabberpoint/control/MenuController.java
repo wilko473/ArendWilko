@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import nl.slompweij.jabberpoint.factory.ThemeFactory;
 import nl.slompweij.jabberpoint.view.AboutBox;
 import nl.slompweij.jabberpoint.view.LabelsBundle;
 import nl.slompweij.jabberpoint.view.LabelsBundle_en_US;
@@ -96,14 +97,42 @@ public class MenuController extends MenuBar {
 			}
 		});
 		
-		viewMenu.add(menuItem = mkMenuItem("Theme"));
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event)
-			{
-				
-			}
+		Menu themeMenu = new Menu("Theme");
 		
-		});
+		class ThemeAction implements ActionListener {
+			
+			private int optie;
+			private ApplicationController app;
+			
+			public ThemeAction(int optie, ApplicationController app)
+			{
+				this.app = app;
+				this.optie=optie;
+			}
+			
+			public void actionPerformed(ActionEvent arg0) {
+				
+				app.setTheme(optie);
+			}
+			
+		}
+		
+		themeMenu.add(menuItem = mkMenuItem("Stijl 1"));
+		menuItem.addActionListener(new ThemeAction(1, applicationController));
+		
+		themeMenu.add(menuItem = mkMenuItem("Stijl 2"));
+		menuItem.addActionListener(new ThemeAction(2, applicationController));
+		
+		themeMenu.add(menuItem = mkMenuItem("Stijl 3"));
+		menuItem.addActionListener(new ThemeAction(3, applicationController));
+		
+		themeMenu.add(menuItem = mkMenuItem("Stijl 4"));
+		menuItem.addActionListener(new ThemeAction(4, applicationController));
+		
+		
+		viewMenu.add(themeMenu);
+		
+		
 		viewMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.PREV.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
