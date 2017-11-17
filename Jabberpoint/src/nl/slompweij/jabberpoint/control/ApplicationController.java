@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 import nl.slompweij.jabberpoint.factory.PresentationFactory;
 import nl.slompweij.jabberpoint.factory.ThemeFactory;
+import nl.slompweij.jabberpoint.io.Accessor;
 import nl.slompweij.jabberpoint.model.*;
 import nl.slompweij.jabberpoint.view.SlideViewerFrame;
 
@@ -30,11 +31,12 @@ public class ApplicationController {
 		presentationController = new PresentationController(theme);
 		keyController = new KeyController(this);
 		frame = new SlideViewerFrame(JABVERSION, this);
+		frame.addKeyListener(keyController);
 		loadPresentation(args);
 		
-		frame.addKeyListener(keyController);
+	
 		
-		presentation.setCurrentSlideNumber(0);
+		
 		
 	}
 	
@@ -67,7 +69,7 @@ public class ApplicationController {
 			presentationController.setPresentation(presentation);
 			
 			frame.observe(presentation);
-			
+			presentation.setCurrentSlideNumber(0);	
 			
 		} catch (IOException ex) {
 			// TODO Auto-generated catch block
@@ -78,6 +80,10 @@ public class ApplicationController {
 		}		
 	}
 
+	public void savePresentation(String filename)
+	{
+	    PresentationFactory.savePresentation(presentation, filename);
+	}
 	public void setCurrentSlideNumber(int i) {		
 		presentationController.setCurrentSlideNumber(i);
 	}
@@ -85,8 +91,5 @@ public class ApplicationController {
 
 	public void setTheme(int optie) {
 		presentationController.setTheme(ThemeFactory.getPredefined(optie));
-		JOptionPane.showMessageDialog(null, "Hallo"+ optie);
-		// TODO Auto-generated method stub
-		
 	}
 }

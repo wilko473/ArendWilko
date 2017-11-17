@@ -23,6 +23,7 @@ import nl.slompweij.jabberpoint.model.ImageItem;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Slide;
 import nl.slompweij.jabberpoint.model.SlideItem;
+import nl.slompweij.jabberpoint.model.Style;
 import nl.slompweij.jabberpoint.model.TextItem;
 import nl.slompweij.jabberpoint.model.Theme;
 
@@ -161,6 +162,15 @@ public class XMLAccessor extends Accessor {
 			}
 			out.println("</slide>");
 		}
+		out.println("<theme>");
+		out.println("<styles>");
+		int teller = 0;
+		for (Style c : presentation.getTheme().getStyles())
+		{
+			out.println("<style level="+teller+" color="+c.getFontColor()+" font-face='"+c.getFont().getFontName()+"' font-size="+c.getFontSize()+"/>");
+		}
+		out.println("</styles>");
+		out.println("</theme");
 		out.println("</presentation>");
 		out.close();
 	}

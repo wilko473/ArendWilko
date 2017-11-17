@@ -71,14 +71,9 @@ public class MenuController extends MenuBar {
 		fileMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.SAVE.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO
-//				Accessor xmlAccessor = new XMLAccessor();
-//				try {
-//					xmlAccessor.saveFile(presentation, SAVEFILE);
-//				} catch (IOException exc) {
-//					JOptionPane.showMessageDialog(parent, IOEX + exc, 
-//							SAVEERR, JOptionPane.ERROR_MESSAGE);
-//				}
+				JFileChooser fc = new JFileChooser();
+				fc.showSaveDialog(parent);
+				applicationController.savePresentation(fc.getName());
 			}
 		});
 		fileMenu.addSeparator();

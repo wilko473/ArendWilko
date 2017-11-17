@@ -47,4 +47,9 @@ public abstract class Theme {
 	public Style getStyle(int level) {
 		return styles.get(level);
 	}
+
+	public List<Style> getStyles() {
+		
+		return styles;
+	}
 }

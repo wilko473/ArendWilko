@@ -63,4 +63,14 @@ public class PresentationFactory {
 		
 		return new ConcretePresentation("Demo Presentation", slides);
 	}
+
+	public static void savePresentation(Presentation presentation, String filename) {
+		Accessor accessor = new XMLAccessor();
+		try {
+			accessor.saveFile(presentation, filename);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
