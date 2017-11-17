@@ -10,6 +10,7 @@ import java.util.Observer;
 
 import javax.swing.JComponent;
 
+import nl.slompweij.jabberpoint.factory.SlideItemFactory;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Slide;
 import nl.slompweij.jabberpoint.model.SlideItem;
@@ -63,7 +64,7 @@ public class SlideViewerComponent extends JComponent implements Observer {
 			// Nothing to paint
 			return;
 		}
-		Theme theme = presentation.getTheme();
+		Theme theme = presentation.getThemeForCurrentSlide();
 		Slide slide = presentation.getCurrentSlide();
 		
 		drawSlide(g, slide, theme);
@@ -85,24 +86,21 @@ public class SlideViewerComponent extends JComponent implements Observer {
 		float scale = getScale(drawingArea);
 		int y = drawingArea.y;
 		
-		// Title is handled separately. TODO: Remove
-//		Style titleStyle = presentation.getTheme().getStyle(0);
-//		SlideItem slideItemTitle = SlideItemFactory.createTextItem(0, slide.getTitle());
-//		slideItemTitle.draw(drawingArea.x, drawingArea.y, scale, g, titleStyle, this);
-//		y += slideItemTitle.getBoundingBox(g, this, scale, titleStyle).height;
+		SlideItem slideItemTitle = SlideItemFactory.createTextItem(0, slide.getTitle());
+		
+		y+= drawSlideItem(g, theme, drawingArea, scale, y, slideItemTitle);
 
-//		for (int number = 0; number < presentation.getNumberOfSlides(); number++) {
-//			SlideItem slideItem = slide.getSlideItems().get(number);
-//			Style itemStyle = presentation.getTheme().getStyles().get(slideItem.getLevel());
-//			slideItem.draw(drawingArea.x, y, scale, g, itemStyle, this/*view*/);
-//			y += slideItem.getBoundingBox(g, this/*view*/, scale, itemStyle).height;
-//		}
 		
 		for (SlideItem slideItem : slide.getSlideItems()) {
-			Style itemStyle = theme.getStyle(slideItem.getLevel());
-			slideItem.draw(drawingArea.x, y, scale, g, itemStyle, this);
-			y += slideItem.getBoundingBox(g, this, scale, itemStyle).height;
+			y = drawSlideItem(g, theme, drawingArea, scale, y, slideItem);
 		}
+	}
+
+	private int drawSlideItem(Graphics g, Theme theme, Rectangle drawingArea, float scale, int y, SlideItem slideItem) {
+		Style itemStyle = theme.getStyle(slideItem.getLevel());
+		slideItem.draw(drawingArea.x, y, scale, g, itemStyle, this);
+		y += slideItem.getBoundingBox(g, this, scale, itemStyle).height;
+		return y;
 	}
 
 	private float getScale(Rectangle drawingArea) {

@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 public abstract class Slide {	
-	private String title;//TODO: Remove?
+	
 	private List<SlideItem> slideItems = null;
 
 	public Slide(String title, List<SlideItem> slideItems) {
@@ -28,12 +28,11 @@ public abstract class Slide {
 		if (slideItems == null) {
 			throw new IllegalArgumentException("Slideitems are required");
 		}
-		this.title = title;
+	
 		this.slideItems = slideItems;
 	}
 
 	public String getTitle() {
-		//return title;
 		if (slideItems != null && !slideItems.isEmpty() && slideItems.get(0) instanceof TextItem) {
 			return ((TextItem) slideItems.get(0)).getText();
 		}

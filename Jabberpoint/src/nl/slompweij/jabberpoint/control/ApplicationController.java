@@ -33,11 +33,7 @@ public class ApplicationController {
 		frame = new SlideViewerFrame(JABVERSION, this);
 		frame.addKeyListener(keyController);
 		loadPresentation(args);
-		
-	
-		
-		
-		
+				
 	}
 	
 	
@@ -71,8 +67,7 @@ public class ApplicationController {
 			frame.observe(presentation);
 			presentation.setCurrentSlideNumber(0);	
 			
-		} catch (IOException ex) {
-			// TODO Auto-generated catch block
+		} catch (IOException ex) {			
 			//ex.printStackTrace();
 			JOptionPane.showMessageDialog(null,
 					IOERR + ex, JABERR,

@@ -11,6 +11,7 @@ public abstract class Theme {
 	private String name = null;
 	private Color backgroundColour = Color.WHITE;
 	private List<Style> styles = new ArrayList<Style>();
+	 
 	
 	public Theme(String name, List<Style> styles) {
 		if (name == null) {

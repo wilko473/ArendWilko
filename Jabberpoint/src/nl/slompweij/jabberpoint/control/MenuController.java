@@ -11,7 +11,6 @@ import java.util.ResourceBundle;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import nl.slompweij.jabberpoint.factory.ThemeFactory;
 import nl.slompweij.jabberpoint.view.AboutBox;
 import nl.slompweij.jabberpoint.view.LabelsBundle;
 import nl.slompweij.jabberpoint.view.LabelsBundle_en_US;
@@ -42,7 +41,6 @@ public class MenuController extends MenuBar {
 
 	public MenuController(final Frame frame, final ApplicationController applicationController) {
 		parent = frame;
-		//this.presentationController = presentationController;
 		
 		final ResourceBundle labels = ResourceBundle.getBundle("nl.slompweij.jabberpoint.view.LabelsBundle", LabelsBundle.SUPPORTED_LOCALES_en_US);
 		
@@ -60,14 +58,8 @@ public class MenuController extends MenuBar {
 				}
 			}
 		} );
-		fileMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.NEW.name())));
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent actionEvent) {
-				// TODO: fix dit
-				//presentation.clear();
-				parent.repaint();
-			}
-		});
+		
+		
 		fileMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.SAVE.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -112,16 +104,16 @@ public class MenuController extends MenuBar {
 			
 		}
 		
-		themeMenu.add(menuItem = mkMenuItem("Stijl 1"));
+		themeMenu.add(menuItem = mkMenuItem("AStijl 1"));
 		menuItem.addActionListener(new ThemeAction(1, applicationController));
 		
-		themeMenu.add(menuItem = mkMenuItem("Stijl 2"));
+		themeMenu.add(menuItem = mkMenuItem("BStijl 2"));
 		menuItem.addActionListener(new ThemeAction(2, applicationController));
 		
-		themeMenu.add(menuItem = mkMenuItem("Stijl 3"));
+		themeMenu.add(menuItem = mkMenuItem("CStijl 3"));
 		menuItem.addActionListener(new ThemeAction(3, applicationController));
 		
-		themeMenu.add(menuItem = mkMenuItem("Stijl 4"));
+		themeMenu.add(menuItem = mkMenuItem("DStijl 4"));
 		menuItem.addActionListener(new ThemeAction(4, applicationController));
 		
 		

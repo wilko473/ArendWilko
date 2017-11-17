@@ -18,7 +18,8 @@ public class ThemeFactory {
 		
 	
 	public static Theme createTheme() {
-		List<Style> styles = new ArrayList<Style>();    
+		return getPredefined(1);
+		/*List<Style> styles = new ArrayList<Style>();    
 		// Hard coded styles
 		styles.add(StyleFactory.createStyle(0, Color.red,  createFont(FONTNAME, Font.BOLD,  48), 20));
 		styles.add(StyleFactory.createStyle(20, Color.blue,  createFont(FONTNAME, Font.BOLD,40), 10));
@@ -27,6 +28,7 @@ public class ThemeFactory {
 		styles.add(StyleFactory.createStyle(90, Color.black, createFont(FONTNAME, Font.BOLD,24), 10));
 		
 		return new ConcreteTheme("theme1", styles);
+		*/
 	}
 
 	private static Font createFont(String fontname, int type, int size)
@@ -56,7 +58,7 @@ public class ThemeFactory {
 			String fontSize= attributes.getNamedItem("font-size").getTextContent();
 			String fontName = attributes.getNamedItem("font-face").getTextContent();
 			int leading = 3;
-			Font font = new Font(fontName, Font.BOLD, Integer.parseInt(fontSize));
+			Font font = createFont(fontName, Font.BOLD, Integer.parseInt(fontSize));
 			styles.add(StyleFactory.createStyle(Integer.parseInt(level), new Color(Integer.parseInt(color, 16)), font, leading));
 			
 		}
