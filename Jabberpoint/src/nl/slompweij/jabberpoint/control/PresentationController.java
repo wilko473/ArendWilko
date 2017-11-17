@@ -1,6 +1,5 @@
 package nl.slompweij.jabberpoint.control;
 
-import nl.slompweij.jabberpoint.factory.ThemeFactory;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Theme;
 
@@ -52,12 +51,13 @@ public class PresentationController {
 		// TODO Auto-generated method stub
 		presentation = p;
 		setCurrentSlideNumber(0);
-		presentation.setTheme(theme);
+		if (presentation.getTheme() == null) {
+			presentation.setTheme(theme);
+		}
 	}
 
 	public Theme getTheme() {
-		// TODO Auto-generated method stub
-		return ThemeFactory.createTheme();
+		return theme;
 	}
 	public void setTheme(Theme theme) {
 		this.theme = theme;

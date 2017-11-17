@@ -13,17 +13,14 @@ import java.awt.event.KeyEvent;
  * @version 2.0 2017/11/13 Arend and Wilko
 */
 public class KeyController extends KeyAdapter {
-	private PresentationController presentationController; 
+	
 
 	private ApplicationController applicationController;
 	
 	public KeyController(ApplicationController applicationController) {
 		this.applicationController = applicationController;
 	}
-	public KeyController(PresentationController presentationController) {
-		this.presentationController = presentationController;
-	}
-
+	
 	public void keyPressed(KeyEvent keyEvent) {
 		switch(keyEvent.getKeyCode()) {
 			case KeyEvent.VK_PAGE_DOWN:
@@ -31,7 +28,6 @@ public class KeyController extends KeyAdapter {
 			case KeyEvent.VK_ENTER:
 			case '+':
 				applicationController.nextSlide();
-				//presentationController.nextSlide();
 				break;
 			case KeyEvent.VK_PAGE_UP:
 			case KeyEvent.VK_UP:

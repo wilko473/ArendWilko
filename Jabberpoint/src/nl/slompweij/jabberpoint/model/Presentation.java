@@ -30,9 +30,6 @@ public abstract class Presentation extends Observable {
 		if (slides == null) {
 			throw new IllegalArgumentException("Slides is required");
 		}
-		/*if (theme == null) {
-			throw new IllegalArgumentException("Theme is required");
-		}*/
 		
 		this.title = title;
 		this.slides = slides;

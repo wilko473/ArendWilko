@@ -10,7 +10,6 @@ import nl.slompweij.jabberpoint.model.ConcretePresentation;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Slide;
 import nl.slompweij.jabberpoint.model.SlideItem;
-import nl.slompweij.jabberpoint.model.Theme;
 
 public class PresentationFactory {
 	

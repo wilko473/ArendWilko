@@ -1,15 +1,6 @@
 package nl.slompweij.jabberpoint.main;
 
-import java.io.IOException;
-
 import nl.slompweij.jabberpoint.control.ApplicationController;
-import nl.slompweij.jabberpoint.control.KeyController;
-import nl.slompweij.jabberpoint.control.PresentationController;
-import nl.slompweij.jabberpoint.factory.PresentationFactory;
-import nl.slompweij.jabberpoint.factory.ThemeFactory;
-import nl.slompweij.jabberpoint.model.Presentation;
-import nl.slompweij.jabberpoint.model.Theme;
-import nl.slompweij.jabberpoint.view.SlideViewerFrame;
 
 /** JabberPoint Main Programma
  * <p>This program is distributed under the terms of the accompanying
@@ -23,30 +14,14 @@ import nl.slompweij.jabberpoint.view.SlideViewerFrame;
  * @version 1.4 2007/07/16 Sylvia Stuurman
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
+ * @version 2.0 2017/11/17 Arend en Wilko
  */
 
 public class JabberPoint {
 	
 	
 	/** Het Main Programma */
-	public static void main(String args[]) {
-		
-
-		
-		new ApplicationController(args);
-		
-		//ViewController viewController = new ViewController(frame);
-		//presentationController.setViewController(viewController);
-		
-//		try {
-//			if (argv.length == 0) { // een demo presentatie
-//				Accessor.getDemoAccessor().loadFile(presentation, "");
-//			} else {
-//				new XMLAccessor().loadFile(presentation, argv[0]);
-//			}
-//			presentation.setSlideNumber(0);
-//		} catch (IOException ex) {
-//		
-//		}
+	public static void main(String args[]) {				
+		new ApplicationController(args);		
 	}
 }

@@ -6,16 +6,11 @@ import java.awt.MenuItem;
 import java.awt.MenuShortcut;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.ResourceBundle;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import nl.slompweij.jabberpoint.factory.PresentationFactory;
-import nl.slompweij.jabberpoint.io.Accessor;
-import nl.slompweij.jabberpoint.io.XMLAccessor;
-import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.view.AboutBox;
 import nl.slompweij.jabberpoint.view.LabelsBundle;
 import nl.slompweij.jabberpoint.view.LabelsBundle_en_US;
@@ -55,14 +50,12 @@ public class MenuController extends MenuBar {
 		fileMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.OPEN.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				// TODO: fix dit!
+				 
 				JFileChooser fc = new JFileChooser();
-				int result = fc.showDialog(frame, null);
+				int result = fc.showDialog(parent, null);
 				if (result == 0)
-				{
-						
-				applicationController.loadPresentation(new String[] { fc.getSelectedFile().getName() });
-					
+				{						
+					applicationController.loadPresentation(new String[] { fc.getSelectedFile().getName() });					
 				}
 			}
 		} );
