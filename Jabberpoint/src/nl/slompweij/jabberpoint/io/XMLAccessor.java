@@ -102,9 +102,11 @@ public class XMLAccessor extends Accessor {
 			result=  new ConcretePresentation("titel", slides);
 			
 			NodeList theme = doc.getElementsByTagName("theme");
+			
 			if (theme.getLength() > 0) {
+				NodeList styles = doc.getElementsByTagName("style");
 				ThemeFactory themeFactory = new ThemeFactory();
-				Theme t = themeFactory.createTheme(theme);
+				Theme t = themeFactory.createTheme(theme, styles);
 				result.setTheme(t);
 			}
 			

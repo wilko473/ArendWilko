@@ -71,7 +71,7 @@ public class ApplicationController {
 			
 		} catch (IOException ex) {
 			// TODO Auto-generated catch block
-			ex.printStackTrace();
+			//ex.printStackTrace();
 			JOptionPane.showMessageDialog(null,
 					IOERR + ex, JABERR,
 					JOptionPane.ERROR_MESSAGE);
