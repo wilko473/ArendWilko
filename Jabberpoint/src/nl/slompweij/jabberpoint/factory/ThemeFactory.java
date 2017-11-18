@@ -55,7 +55,7 @@ public class ThemeFactory {
 			
 		}
 		
-		return new ConcreteTheme("theme1", styles);
+		return new ConcreteTheme("theme1", styles, null);
 	}
 
 	public static Theme getPredefined(int optie) {
@@ -76,7 +76,7 @@ public class ThemeFactory {
 		styles.add(StyleFactory.createStyle(70, Color.black, createFont(fname, Font.BOLD,30), 10));
 		styles.add(StyleFactory.createStyle(90, Color.black, createFont(fname, Font.BOLD,24), 10));
 		
-		return new ConcreteTheme("theme1", styles);
+		return new ConcreteTheme("theme1", styles, null);
 		
 	}
 	

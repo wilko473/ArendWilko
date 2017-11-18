@@ -109,14 +109,7 @@ public class XMLAccessor extends Accessor {
 				ThemeFactory themeFactory = new ThemeFactory();
 				Theme t = themeFactory.createTheme(theme, styles);
 				result.setTheme(t);
-			}
-			
-			// TODO: haal theme eventueel op uit bestand
-			// laat ThemeFactory een Theme maken
-			// pas deze toe op het result
-			
-			
-			
+			}			
 		} 
 		catch (IOException iox) {
 			System.err.println(iox.toString());

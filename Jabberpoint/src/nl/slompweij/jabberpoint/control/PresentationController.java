@@ -49,8 +49,7 @@ public class PresentationController {
 	public void setPresentation(String[] params) {
 		try {
 			presentation = PresentationFactory.createPresentation(params);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException e) {		
 			e.printStackTrace();
 		}
 		setCurrentSlideNumber(0);

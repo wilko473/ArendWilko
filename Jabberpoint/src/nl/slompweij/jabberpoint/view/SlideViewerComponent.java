@@ -86,6 +86,13 @@ public class SlideViewerComponent extends JComponent implements Observer {
 		float scale = getScale(drawingArea);
 		int y = drawingArea.y;
 		
+		if (theme.getThemeSlideItems()!= null) {
+			for (SlideItem themeSlideItem : theme.getThemeSlideItems())
+			{
+				y = drawSlideItem(g, theme, drawingArea, scale, y, themeSlideItem);
+			}
+		}
+		
 		SlideItem slideItemTitle = SlideItemFactory.createTextItem(0, slide.getTitle());
 		
 		y+= drawSlideItem(g, theme, drawingArea, scale, y, slideItemTitle);

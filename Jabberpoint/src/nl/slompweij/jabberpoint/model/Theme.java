@@ -12,14 +12,17 @@ public abstract class Theme {
 	private Color backgroundColour = Color.WHITE;
 	private List<Style> styles = new ArrayList<Style>();
 	 
+	private List<SlideItem> defaultItems = new ArrayList<SlideItem>();
 	
-	public Theme(String name, List<Style> styles) {
+	public Theme(String name, List<Style> styles, List<SlideItem> defaultItems) {
 		if (name == null) {
 			throw new IllegalArgumentException("Name is required");
 		}
 		if (styles == null) {
 			throw new IllegalArgumentException("Styles is required");
 		}
+		
+		this.defaultItems = defaultItems;
 		this.name = name;
 		this.styles = styles;
 	}
@@ -32,6 +35,10 @@ public abstract class Theme {
 		return backgroundColour;
 	}
 
+	public List<SlideItem> getThemeSlideItems() {
+		return defaultItems;
+	}
+	
 	public void setBackgroundColour(Color backgroundColour) {
 		if (backgroundColour == null) {
 			throw new IllegalArgumentException("Invalid background colour!");
