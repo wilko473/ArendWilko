@@ -52,7 +52,7 @@ public class JabberMenuComponent extends MenuBar {
 				int result = fc.showDialog(parent, null);
 				if (result == 0)
 				{						
-					applicationController.loadPresentation(new String[] { fc.getSelectedFile().getName() });					
+					applicationController.loadPresentation(new String[] { fc.getSelectedFile().getAbsolutePath() });					
 				}
 			}
 		} );

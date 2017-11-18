@@ -54,12 +54,12 @@
 	   </defaultItems>
 	   <background>#000000</background>
 	   <styles>
-		 <style level="5" color="185C0A" font-face="Times New Roman" font-size="15" leading="20"/>		 
-		 <style level="0" color="185C0A" font-face="Times New Roman" font-size="15" leading="10"/>		 
-	     <style level="1" color="AABBCC" font-face="Calibri" font-size="30" leading="10"/>
-		 <style level="2" color="3F2B3C" font-face="Helvetica" font-size="25" leading="10"/>
-		 <style level="3" color="482C00" font-face="Times New Roman" font-size="20" leading="10"/>
-		 <style level="4" color="185C0A" font-face="Times New Roman" font-size="15" leading="10"/>		 
+		 <style level="5" color="#185C0A" font-face="Times New Roman" font-size="15" leading="20"/>		 
+		 <style level="0" color="#185C0A" font-face="Times New Roman" font-size="15" leading="10"/>		 
+	     <style level="1" color="#AABBCC" font-face="Calibri" font-size="30" leading="10"/>
+		 <style level="2" color="#3F2B3C" font-face="Helvetica" font-size="25" leading="10"/>
+		 <style level="3" color="#482C00" font-face="Times New Roman" font-size="20" leading="10"/>
+		 <style level="4" color="#185C0A" font-face="Times New Roman" font-size="15" leading="10"/>		 
 		</styles>
 	</theme>
 </presentation>

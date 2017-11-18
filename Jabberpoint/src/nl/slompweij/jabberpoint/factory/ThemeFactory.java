@@ -51,7 +51,7 @@ public class ThemeFactory {
 			String leadingStr = attributes.getNamedItem("leading").getTextContent();
 			int leading = Integer.parseInt(leadingStr);
 			Font font = createFont(fontName, Font.BOLD, Integer.parseInt(fontSize));
-			styles.add(StyleFactory.createStyle(Integer.parseInt(level), new Color(Integer.parseInt(color, 16)), font, leading));
+			styles.add(StyleFactory.createStyle(Integer.parseInt(level), Color.decode(color), font, leading));
 			
 		}
 		
