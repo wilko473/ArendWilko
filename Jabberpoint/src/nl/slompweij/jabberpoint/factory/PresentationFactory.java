@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import nl.slompweij.jabberpoint.io.Accessor;
 import nl.slompweij.jabberpoint.io.XMLAccessor;
 import nl.slompweij.jabberpoint.model.ConcretePresentation;
@@ -69,8 +71,8 @@ public class PresentationFactory {
 		try {
 			accessor.saveFile(presentation, filename);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "bestand kan niet worden opgeslagen");
+			
 		}
 	}
 }

@@ -28,7 +28,7 @@ public class ThemeFactory {
 		return new Font(fontname, type, size);
 	}
 	
-	public static Theme createTheme(NodeList theme, NodeList styleList, NodeList defaultItems) {
+	public static Theme createTheme(NodeList theme, NodeList styleList, NodeList defaultItems, String bgColor) {
 		/*
 		 * <theme>
 	   <background>#000000</background>
@@ -61,7 +61,9 @@ public class ThemeFactory {
 				items.add(SlideItemFactory.createSlideItem((Element)defaultItems.item(i)));
 			
 		}
-		return new ConcreteTheme("theme1", styles, items);
+		Theme result = new ConcreteTheme("theme1", styles, items);
+		result.setBackgroundColour(Color.decode(bgColor));
+		return result;
 	}
 
 	public static Theme getPredefined(int optie) {
