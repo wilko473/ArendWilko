@@ -1,6 +1,9 @@
 package nl.slompweij.jabberpoint.main;
 
 import nl.slompweij.jabberpoint.control.ApplicationController;
+import nl.slompweij.jabberpoint.control.PresentationController;
+import nl.slompweij.jabberpoint.factory.ThemeFactory;
+import nl.slompweij.jabberpoint.view.SlideViewerFrame;
 
 /** JabberPoint Main Programma
  * <p>This program is distributed under the terms of the accompanying
@@ -20,8 +23,18 @@ import nl.slompweij.jabberpoint.control.ApplicationController;
 public class JabberPoint {
 	
 	
+	private static final String JABVERSION = "2.0";
+
 	/** Het Main Programma */
-	public static void main(String args[]) {				
-		new ApplicationController(args);		
+	public static void main(String args[]) {
+		PresentationController presController = new PresentationController(ThemeFactory.createTheme());
+		
+		ApplicationController appController = new ApplicationController(presController, args);
+		
+		SlideViewerFrame frame = new SlideViewerFrame(JABVERSION, appController);
+		appController.setFrame(frame);
+		frame.addKeyListener(appController);
+		appController.loadPresentation(args);
+		
 	}
 }

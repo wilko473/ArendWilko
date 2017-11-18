@@ -14,21 +14,12 @@ import nl.slompweij.jabberpoint.model.Style;
 import nl.slompweij.jabberpoint.model.Theme;
 
 public class ThemeFactory {
-	private static final String FONTNAME = "Helvetica";
+	
 		
 	
 	public static Theme createTheme() {
 		return getPredefined(1);
-		/*List<Style> styles = new ArrayList<Style>();    
-		// Hard coded styles
-		styles.add(StyleFactory.createStyle(0, Color.red,  createFont(FONTNAME, Font.BOLD,  48), 20));
-		styles.add(StyleFactory.createStyle(20, Color.blue,  createFont(FONTNAME, Font.BOLD,40), 10));
-		styles.add(StyleFactory.createStyle(50, Color.black, createFont(FONTNAME, Font.BOLD,36), 10));
-		styles.add(StyleFactory.createStyle(70, Color.black, createFont(FONTNAME, Font.BOLD,30), 10));
-		styles.add(StyleFactory.createStyle(90, Color.black, createFont(FONTNAME, Font.BOLD,24), 10));
 		
-		return new ConcreteTheme("theme1", styles);
-		*/
 	}
 
 	private static Font createFont(String fontname, int type, int size)
@@ -57,7 +48,8 @@ public class ThemeFactory {
 			String color = attributes.getNamedItem("color").getTextContent();
 			String fontSize= attributes.getNamedItem("font-size").getTextContent();
 			String fontName = attributes.getNamedItem("font-face").getTextContent();
-			int leading = 3;
+			String leadingStr = attributes.getNamedItem("leading").getTextContent();
+			int leading = Integer.parseInt(leadingStr);
 			Font font = createFont(fontName, Font.BOLD, Integer.parseInt(fontSize));
 			styles.add(StyleFactory.createStyle(Integer.parseInt(level), new Color(Integer.parseInt(color, 16)), font, leading));
 			

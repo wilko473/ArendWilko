@@ -1,4 +1,4 @@
-package nl.slompweij.jabberpoint.control;
+package nl.slompweij.jabberpoint.view;
 import java.awt.Frame;
 import java.awt.Menu;
 import java.awt.MenuBar;
@@ -11,9 +11,7 @@ import java.util.ResourceBundle;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import nl.slompweij.jabberpoint.view.AboutBox;
-import nl.slompweij.jabberpoint.view.LabelsBundle;
-import nl.slompweij.jabberpoint.view.LabelsBundle_en_US;
+import nl.slompweij.jabberpoint.control.ApplicationController;
 
 /** <p>De controller voor het menu</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -24,7 +22,7 @@ import nl.slompweij.jabberpoint.view.LabelsBundle_en_US;
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
-public class MenuController extends MenuBar {
+public class JabberMenuComponent extends MenuBar {
 	
 	private Frame parent; // het frame, alleen gebruikt als ouder voor de Dialogs
 	//private PresentationController presentationController;
@@ -39,7 +37,7 @@ public class MenuController extends MenuBar {
 	protected static final String LOADERR = "Load Error";
 	protected static final String SAVEERR = "Save Error";
 
-	public MenuController(final Frame frame, final ApplicationController applicationController) {
+	public JabberMenuComponent(final Frame frame, final ApplicationController applicationController) {
 		parent = frame;
 		
 		final ResourceBundle labels = ResourceBundle.getBundle("nl.slompweij.jabberpoint.view.LabelsBundle", LabelsBundle.SUPPORTED_LOCALES_en_US);

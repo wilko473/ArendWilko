@@ -8,7 +8,6 @@ import java.util.Observable;
 import javax.swing.JFrame;
 
 import nl.slompweij.jabberpoint.control.ApplicationController;
-import nl.slompweij.jabberpoint.control.MenuController;
 import nl.slompweij.jabberpoint.control.PresentationController;
 
 /**
@@ -53,7 +52,7 @@ public class SlideViewerFrame extends JFrame {
 			});
 		getContentPane().add(slideViewerComponent);
 		
-		setMenuBar(new MenuController(this, applicationController));	// nog een controller toevoegen
+		setMenuBar(new JabberMenuComponent(this, applicationController));	// nog een controller toevoegen
 		setSize(new Dimension(WIDTH, HEIGHT)); // Dezelfde maten als Slide hanteert.
 		setVisible(true);
 	}

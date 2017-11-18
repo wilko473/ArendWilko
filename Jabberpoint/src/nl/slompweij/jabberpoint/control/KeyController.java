@@ -3,6 +3,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 /** <p>This is the KeyController (KeyListener)</p>
+ * Is responsible for pressing keys.
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -12,6 +13,7 @@ import java.awt.event.KeyEvent;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  * @version 2.0 2017/11/13 Arend and Wilko
 */
+
 public class KeyController extends KeyAdapter {
 	
 
@@ -21,25 +23,5 @@ public class KeyController extends KeyAdapter {
 		this.applicationController = applicationController;
 	}
 	
-	public void keyPressed(KeyEvent keyEvent) {
-		switch(keyEvent.getKeyCode()) {
-			case KeyEvent.VK_PAGE_DOWN:
-			case KeyEvent.VK_DOWN:
-			case KeyEvent.VK_ENTER:
-			case '+':
-				applicationController.nextSlide();
-				break;
-			case KeyEvent.VK_PAGE_UP:
-			case KeyEvent.VK_UP:
-			case '-':
-				applicationController.previousSlide();
-				break;
-			case 'q':
-			case 'Q':
-				applicationController.ExitApplication();
-				break; // wordt nooit bereikt als het goed is
-			default:
-				break;
-		}
-	}
+	
 }

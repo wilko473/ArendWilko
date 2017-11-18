@@ -1,45 +1,63 @@
 package nl.slompweij.jabberpoint.control;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
 import nl.slompweij.jabberpoint.factory.PresentationFactory;
 import nl.slompweij.jabberpoint.factory.ThemeFactory;
-import nl.slompweij.jabberpoint.io.Accessor;
-import nl.slompweij.jabberpoint.model.*;
+import nl.slompweij.jabberpoint.model.Presentation;
+import nl.slompweij.jabberpoint.model.Theme;
 import nl.slompweij.jabberpoint.view.SlideViewerFrame;
 
 
-public class ApplicationController {
+public class ApplicationController extends KeyAdapter{
 	// TODO: Remove deze static strings
 	protected static final String IOERR = "IO Error: ";
 	protected static final String JABERR = "Jabberpoint Error ";
 	protected static final String JABVERSION = "Jabberpoint 1.6 - OU version";
 
-	private Presentation presentation;
+	
 	private PresentationController presentationController;
 	private KeyController keyController;
 	private SlideViewerFrame frame;
-	private Theme theme;
+	//private Theme theme;
 	
-	public ApplicationController(String[] args) {
+	public ApplicationController(PresentationController presController, String[] args) {
 		
-		theme = ThemeFactory.createTheme();
-		presentation=null;
+		presentationController = presController;
 		
-		presentationController = new PresentationController(theme);
-		keyController = new KeyController(this);
-		frame = new SlideViewerFrame(JABVERSION, this);
-		frame.addKeyListener(keyController);
-		loadPresentation(args);
 				
 	}
 	
 	
+	public void keyPressed(KeyEvent keyEvent) {
+		switch(keyEvent.getKeyCode()) {
+			case KeyEvent.VK_PAGE_DOWN:
+			case KeyEvent.VK_DOWN:
+			case KeyEvent.VK_ENTER:
+			case '+':
+				nextSlide();
+				break;
+			case KeyEvent.VK_PAGE_UP:
+			case KeyEvent.VK_UP:
+			case '-':
+				previousSlide();
+				break;
+			case 'q':
+			case 'Q':
+				ExitApplication();
+				break;
+			default:
+				break;
+		}
+	}
+	
 	public void setTheme(Theme theme)
 	{
-		this.theme = theme;
+		
 		presentationController.setTheme(theme);
 	}
 	
@@ -59,26 +77,16 @@ public class ApplicationController {
 	}
 
 	public void loadPresentation(String[] params) {
-		
-		try {
-			presentation = PresentationFactory.createPresentation(params);
-			presentationController.setPresentation(presentation);
-			
-			frame.observe(presentation);
-			presentation.setCurrentSlideNumber(0);	
-			
-		} catch (IOException ex) {			
-			//ex.printStackTrace();
-			JOptionPane.showMessageDialog(null,
-					IOERR + ex, JABERR,
-					JOptionPane.ERROR_MESSAGE);
-		}		
+			presentationController.setPresentation(params);
+			frame.observe(presentationController.getPresentation());
+			presentationController.setCurrentSlideNumber(0);	
 	}
 
 	public void savePresentation(String filename)
 	{
-	    PresentationFactory.savePresentation(presentation, filename);
+	    PresentationFactory.savePresentation(presentationController.getPresentation(), filename);
 	}
+	
 	public void setCurrentSlideNumber(int i) {		
 		presentationController.setCurrentSlideNumber(i);
 	}
@@ -86,5 +94,11 @@ public class ApplicationController {
 
 	public void setTheme(int optie) {
 		presentationController.setTheme(ThemeFactory.getPredefined(optie));
+	}
+
+
+	public void setFrame(SlideViewerFrame frame) {
+		this.frame = frame;
+		
 	}
 }
