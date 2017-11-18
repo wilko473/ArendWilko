@@ -29,7 +29,7 @@ public class JabberPoint {
 	public static void main(String args[]) {
 		PresentationController presController = new PresentationController(ThemeFactory.createTheme());
 		
-		ApplicationController appController = new ApplicationController(presController, args);
+		ApplicationController appController = new ApplicationController(presController);
 		
 		SlideViewerFrame frame = new SlideViewerFrame(JABVERSION, appController);
 		appController.setFrame(frame);

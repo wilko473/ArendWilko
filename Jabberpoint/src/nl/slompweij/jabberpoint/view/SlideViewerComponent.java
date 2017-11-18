@@ -38,7 +38,7 @@ public class SlideViewerComponent extends JComponent implements Observer {
 	public final static int PREFERRED_WIDTH = 1200;// TODO: afhankelijkheid weghalen en private maken
 	private final static int PREFERRED_HEIGHT = 800;
 		
-	private static final Color SLIDENR_COLOR = Color.black;
+	private static final Color SLIDENR_COLOR = Color.black;// TODO: from theme
 	
 	private static final String FONTNAME = "Dialog";
 	private static final int FONTSTYLE = Font.BOLD;
@@ -50,7 +50,7 @@ public class SlideViewerComponent extends JComponent implements Observer {
 	public final static int DEFAULT_HEIGHT = 800;
 
 	public SlideViewerComponent() {
-		
+		//setBackground(BG_COLOR); 
 		labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
 	}
 

@@ -2,13 +2,9 @@ package nl.slompweij.jabberpoint.control;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
-
-import javax.swing.JOptionPane;
 
 import nl.slompweij.jabberpoint.factory.PresentationFactory;
 import nl.slompweij.jabberpoint.factory.ThemeFactory;
-import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Theme;
 import nl.slompweij.jabberpoint.view.SlideViewerFrame;
 
@@ -24,7 +20,7 @@ public class ApplicationController extends KeyAdapter{
 	private SlideViewerFrame frame;
 	//private Theme theme;
 	
-	public ApplicationController(PresentationController presController, String[] args) {
+	public ApplicationController(PresentationController presController) {
 		
 		presentationController = presController;
 		
