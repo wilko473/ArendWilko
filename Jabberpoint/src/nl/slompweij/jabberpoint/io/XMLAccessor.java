@@ -108,8 +108,8 @@ public class XMLAccessor extends Accessor {
 				Element themeElement = (Element)doc.getElementsByTagName("theme").item(0);
 				NodeList styles = themeElement.getElementsByTagName("style");
 				NodeList defaultItems = ((Element)themeElement.getElementsByTagName("defaultItems").item(0)).getElementsByTagName("item");
-				ThemeFactory themeFactory = new ThemeFactory();
-				Theme t = themeFactory.createTheme(theme, styles, defaultItems);
+				
+				Theme t = ThemeFactory.createTheme(theme, styles, defaultItems);
 				result.setTheme(t);
 			}			
 		} 

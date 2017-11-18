@@ -28,7 +28,7 @@ public class ThemeFactory {
 		return new Font(fontname, type, size);
 	}
 	
-	public Theme createTheme(NodeList theme, NodeList styleList, NodeList defaultItems) {
+	public static Theme createTheme(NodeList theme, NodeList styleList, NodeList defaultItems) {
 		/*
 		 * <theme>
 	   <background>#000000</background>
