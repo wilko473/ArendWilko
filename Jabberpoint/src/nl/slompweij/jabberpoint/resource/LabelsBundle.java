@@ -1,4 +1,4 @@
-package nl.slompweij.jabberpoint.view;
+package nl.slompweij.jabberpoint.resource;
 
 import java.util.ListResourceBundle;
 import java.util.Locale;

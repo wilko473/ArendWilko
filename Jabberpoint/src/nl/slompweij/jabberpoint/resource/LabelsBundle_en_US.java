@@ -1,4 +1,4 @@
-package nl.slompweij.jabberpoint.view;
+package nl.slompweij.jabberpoint.resource;
 
 /**
  * Resourcebundle class to contain the labels of the application.
