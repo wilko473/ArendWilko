@@ -2,7 +2,8 @@ package nl.slompweij.jabberpoint.view;
 import java.awt.Frame;
 import javax.swing.JOptionPane;
 
-/**De About-box voor JabberPoint.
+/**
+ * The About box of the JabberPoint application.
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -10,6 +11,7 @@ import javax.swing.JOptionPane;
  * @version 1.4 2007/07/16 Sylvia Stuurman
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
+ * @version 2.0 2017/11/18 Arend and Wilko
  */
 
 public class AboutBox {
@@ -21,7 +23,7 @@ public class AboutBox {
 				"Copyright (c) 1995-1997 by Ian F. Darwin, ian@darwinsys.com.\n" +
 				"Adapted by Gert Florijn (version 1.1) and " +
 				"Sylvia Stuurman (version 1.2 and higher) for the Open" +
-				"University of the Netherlands, 2002 -- now." +
+				"University of the Netherlands, 2002 -- now.\n" +
 				"Author's version available from http://www.darwinsys.com/",
 				"About JabberPoint",
 				JOptionPane.INFORMATION_MESSAGE
