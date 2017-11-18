@@ -17,8 +17,11 @@ import nl.slompweij.jabberpoint.model.SlideItem;
 import nl.slompweij.jabberpoint.model.Style;
 import nl.slompweij.jabberpoint.model.Theme;
 
-
-/** <p>SlideViewerComponent is een grafische component die Slides kan laten zien.</p>
+/**
+ * <p>
+ * SlideViewerComponent is the view component that shows the slides.
+ * </p>
+ * 
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -31,26 +34,22 @@ import nl.slompweij.jabberpoint.model.Theme;
 
 public class SlideViewerComponent extends JComponent implements Observer {
 	private Presentation presentation = null;
-	private Font labelFont = null; // het font voor labels
-	
+	private Font labelFont = null;
+
 	private static final long serialVersionUID = 227L;
-	
-	public final static int PREFERRED_WIDTH = 1200;// TODO: afhankelijkheid weghalen en private maken
-	private final static int PREFERRED_HEIGHT = 800;
-		
-	private static final Color SLIDENR_COLOR = Color.black;// TODO: from theme
-	
+
+	public final static int PREFERRED_WIDTH = 1200;
+	public final static int PREFERRED_HEIGHT = 800;
+
+	private static final Color SLIDENR_COLOR = Color.black;
+
 	private static final String FONTNAME = "Dialog";
 	private static final int FONTSTYLE = Font.BOLD;
 	private static final int FONTHEIGHT = 10;
 	private static final int XPOS = 1100;
 	private static final int YPOS = 20;
-	
-	public final static int DEFAULT_WIDTH = 1200;
-	public final static int DEFAULT_HEIGHT = 800;
 
 	public SlideViewerComponent() {
-		//setBackground(BG_COLOR); 
 		labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
 	}
 
@@ -65,38 +64,36 @@ public class SlideViewerComponent extends JComponent implements Observer {
 		}
 		Theme theme = presentation.getThemeForCurrentSlide();
 		Slide slide = presentation.getCurrentSlide();
-		
+
 		drawSlide(g, slide, theme);
 	}
-	
+
 	private void drawSlide(Graphics g, Slide slide, Theme theme) {
 		// Set background colour from theme
 		g.setColor(theme.getBackgroundColour());
 		g.fillRect(0, 0, getSize().width, getSize().height);
-		
-		// Draw slide number with hardcoded style. TODO: move to theme? 
+
+		// Draw slide number with hardcoded style. TODO: move to theme?
 		g.setFont(labelFont);
 		g.setColor(SLIDENR_COLOR);
-		g.drawString("Slide " + (1 + presentation.getCurrentSlideNumber()) + " of " +
-				presentation.getNumberOfSlides(), XPOS, YPOS);
-		
+		g.drawString("Slide " + (1 + presentation.getCurrentSlideNumber()) + " of " + presentation.getNumberOfSlides(),
+				XPOS, YPOS);
+
 		// Calculate some drawing properties
 		Rectangle drawingArea = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 		float scale = getScale(drawingArea);
 		int y = drawingArea.y;
-		
-		if (theme.getThemeSlideItems()!= null) {
-			for (SlideItem themeSlideItem : theme.getThemeSlideItems())
-			{
+
+		if (theme.getThemeSlideItems() != null) {
+			for (SlideItem themeSlideItem : theme.getThemeSlideItems()) {
 				y = drawSlideItem(g, theme, drawingArea, scale, y, themeSlideItem);
 			}
 		}
-		
-		SlideItem slideItemTitle = SlideItemFactory.createTextItem(0, slide.getTitle());
-		
-		y+= drawSlideItem(g, theme, drawingArea, scale, y, slideItemTitle);
 
-		
+		SlideItem slideItemTitle = SlideItemFactory.createTextItem(0, slide.getTitle());
+
+		y += drawSlideItem(g, theme, drawingArea, scale, y, slideItemTitle);
+
 		for (SlideItem slideItem : slide.getSlideItems()) {
 			y = drawSlideItem(g, theme, drawingArea, scale, y, slideItem);
 		}
@@ -110,8 +107,8 @@ public class SlideViewerComponent extends JComponent implements Observer {
 	}
 
 	private float getScale(Rectangle drawingArea) {
-		return Math.min(((float) drawingArea.width) / ((float) DEFAULT_WIDTH),
-				((float) drawingArea.height) / ((float) DEFAULT_HEIGHT));
+		return Math.min(((float) drawingArea.width) / ((float) PREFERRED_WIDTH),
+				((float) drawingArea.height) / ((float) PREFERRED_HEIGHT));
 	}
 
 	@Override

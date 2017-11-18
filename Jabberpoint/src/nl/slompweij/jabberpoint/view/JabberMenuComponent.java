@@ -70,7 +70,7 @@ public class JabberMenuComponent extends MenuBar {
 		fileMenu.add(menuItem = mkMenuItem(labels.getString(LabelsBundle_en_US.Label.EXIT.name())));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				applicationController.ExitApplication();			
+				applicationController.exitApplication();			
 			}
 		});
 		add(fileMenu);
