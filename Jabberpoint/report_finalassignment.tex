@@ -159,6 +159,7 @@ The Observer pattern decouples the JabberPoint model from the view. This is part
 
 \subsection{Factories}
 The design consists of factories to have a single point for object creation for each type of object. This supports the \textit{program to interface} idiom, because the factories create the concrete implementations, while the application only depends on the abstract concepts. The factory classes are named XxxxFactory and are put in the factory package to make them recognizable.
+Currently we have factories for the classes SlideItem, Slide, Presentation, Style and Theme. With the factories we provide an single way to insantiate the classes needed.
 
 \section{Choices}
 The report and documentation are in English, not Dutch. English is the obvious choice as software development is often cross-border. Main reason: flexibility regarding the future developments of the product without much initial investments. Besides this, it is a good exercise for students.
@@ -171,7 +172,8 @@ Bugs are fixed. These refers to clear bugs that can be fixed without big risks o
 
 We redesign the application according to the  
 
-The themes are implemented in an XML file or hard-coded? TODO
+We made a choice to provide the themes with the presentation files. In this case there can be modifications to the theme and when transferring the presentation it is still posible to see the presentation as intended. We made the choice to be backward compatible. When there is no theme information in the presentation file the default theme will be used. In the application we build hard coded several themes. Normally we would have done this done using an specific theme xml file which contains the different themes. However due to the time this would take to implement this we made the choice to just hard code these themes \(they are reachable using the View->Theme menu. \) In the hard coded themes we only changed the font name. We didn't implement different colors in the hard coded themes. Using the presentation file you can set this information.
+
 
 
 
