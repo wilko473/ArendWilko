@@ -102,16 +102,16 @@ public class JabberMenuComponent extends MenuBar {
 			
 		}
 		
-		themeMenu.add(menuItem = mkMenuItem("AStijl 1"));
+		themeMenu.add(menuItem = mkMenuItem("A Stijl"));
 		menuItem.addActionListener(new ThemeAction(1, applicationController));
 		
-		themeMenu.add(menuItem = mkMenuItem("BStijl 2"));
+		themeMenu.add(menuItem = mkMenuItem("B Stijl"));
 		menuItem.addActionListener(new ThemeAction(2, applicationController));
 		
-		themeMenu.add(menuItem = mkMenuItem("CStijl 3"));
+		themeMenu.add(menuItem = mkMenuItem("C Stijl"));
 		menuItem.addActionListener(new ThemeAction(3, applicationController));
 		
-		themeMenu.add(menuItem = mkMenuItem("DStijl 4"));
+		themeMenu.add(menuItem = mkMenuItem("D Stijl"));
 		menuItem.addActionListener(new ThemeAction(4, applicationController));
 		
 		
