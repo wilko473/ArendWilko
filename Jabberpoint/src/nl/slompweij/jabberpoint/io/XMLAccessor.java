@@ -63,7 +63,7 @@ public class XMLAccessor extends Accessor {
 	@Override
 	
     
-	public Presentation loadFile(String filename) throws IOException {
+	public Presentation loadPresentation(String filename) throws IOException {
 		int slideNumber, itemNumber, maxItems = 0;
 		Presentation result=null;
 		try {

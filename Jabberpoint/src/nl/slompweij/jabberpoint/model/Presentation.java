@@ -90,8 +90,7 @@ public abstract class Presentation extends Observable {
 		return slides;
 	}
 
-	public Theme getThemeForCurrentSlide() {
-		// TODO Auto-generated method stub
+	public Theme getThemeForCurrentSlide() {	
 		return theme;
 	}
 
