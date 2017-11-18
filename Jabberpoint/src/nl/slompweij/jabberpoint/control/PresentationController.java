@@ -2,6 +2,8 @@ package nl.slompweij.jabberpoint.control;
 
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 import nl.slompweij.jabberpoint.factory.PresentationFactory;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Theme;
@@ -49,8 +51,10 @@ public class PresentationController {
 	public void setPresentation(String[] params) {
 		try {
 			presentation = PresentationFactory.createPresentation(params);
-		} catch (IOException e) {		
-			e.printStackTrace();
+		} catch (IOException e) 
+		{	
+			JOptionPane.showMessageDialog(null, "Bestand "+params[0]+" kon niet worden gelezen");
+			
 		}
 		setCurrentSlideNumber(0);
 		if (presentation.getTheme() == null) {

@@ -5,11 +5,12 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 
 import nl.slompweij.jabberpoint.model.ConcreteTheme;
+import nl.slompweij.jabberpoint.model.SlideItem;
 import nl.slompweij.jabberpoint.model.Style;
 import nl.slompweij.jabberpoint.model.Theme;
 
@@ -27,7 +28,7 @@ public class ThemeFactory {
 		return new Font(fontname, type, size);
 	}
 	
-	public Theme createTheme(NodeList theme, NodeList styleList) {
+	public Theme createTheme(NodeList theme, NodeList styleList, NodeList defaultItems) {
 		/*
 		 * <theme>
 	   <background>#000000</background>
@@ -40,7 +41,7 @@ public class ThemeFactory {
 	</theme>
 		 */
 		List<Style> styles = new ArrayList<Style>();
-		
+		List<SlideItem> items = new ArrayList<SlideItem>();
 		for (int i=0; i< styleList.getLength(); i++)
 		{
 			NamedNodeMap attributes = styleList.item(i).getAttributes();
@@ -55,7 +56,12 @@ public class ThemeFactory {
 			
 		}
 		
-		return new ConcreteTheme("theme1", styles, null);
+		for (int i=0; i<defaultItems.getLength(); i++)
+		{							
+				items.add(SlideItemFactory.createSlideItem((Element)defaultItems.item(i)));
+			
+		}
+		return new ConcreteTheme("theme1", styles, items);
 	}
 
 	public static Theme getPredefined(int optie) {

@@ -20,8 +20,7 @@ public class ApplicationController extends KeyAdapter{
 	protected static final String JABVERSION = "Jabberpoint 1.6 - OU version";
 
 	
-	private PresentationController presentationController;
-	private KeyController keyController;
+	private PresentationController presentationController;	
 	private SlideViewerFrame frame;
 	//private Theme theme;
 	
