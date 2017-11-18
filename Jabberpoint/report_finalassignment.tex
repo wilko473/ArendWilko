@@ -42,9 +42,13 @@ Here we describe how we handled the assignment together. The numbers indicate th
 2. After a couple of days we met at Wilkos place for the first time to discuss the assignment. Together we went through the assignment, the program code, the running application and we discussed possible solutions on conceptual level as well on implementation level. Just exchanging ideas, brain storming and discussing about possible solutions. We also discussed the tools to use (Eclipse with Papyrus plugin) and the format of the report (Latex).
 Furthermore we looked together at the git repository, the usage of github.com and how to operate it locally. We also discussed the planning of the assignment.  
 
-3. We both started working on the assignment separately. We both agreed to do most of the work separately, but based on our discussions and compare solutions. From our discussions we decided to have a different focus, but still do the work both. Arend focusing on the class diagrams and Wilko focusing on the problem analysis.
+3. We both started working on the assignment separately. We both agreed to do most of the work separately, but based on our discussions and compare solutions. From our discussions we decided to have a different focus, but still do the work both. Arend focusing on the class diagrams already and Wilko focusing on the problem analysis.
 
-4. About a week after the first meeting, we met again to discuss our progress. This time at Arends place. We still had a lot to discuss. We went through the code, annotating it with TODO’s at places with strange code or remarkable design. We went through two more documents from you learn: \textit{Guidelines redesign} and \textit{Beoordeling Design patterns}. The work to be done seemed more than the expectations we had after the first meeting. Again we agreed to do both the work with focus on different items. Arend puts together both reports and looks at the design, while Wilko does the CVA, choices and description of design patterns to be used.
+4. About a week after the first meeting, we met again to discuss our progress. This time at Arends place. We still had a lot to discuss. We went through the code, annotating it with TODOs at places with strange code or remarkable design. We went through two more documents from you learn: \textit{Guidelines redesign} and \textit{Beoordeling Design patterns}. The work to be done seemed more than the expectations we had after the first meeting. Again we agreed to do both the work with focus on different items. Arend puts together both reports and looks at the design, while Wilko does the CVA, choices and description of design patterns to be used.
+
+5. We both continued work on the assignment separately, but together. Thinking and about the problem analysis and the design, drawing diagrams, looking at code and already cleaning up code.
+
+6. Three days before the deadline we met again. We discussed our progress and the priorities of the  
 
 
 \section{Problem analysis}
@@ -65,26 +69,30 @@ An invalid parameter value results in an application without any presentation lo
 
 The view of the application consists of a program window with a menubar at the top. The application is operated by a pointing device and a keyboard. 
 
-Application and file actions:
+Menu items and key assignments:
 \begin{itemize}
-\item{Open}
+\item{Open} goal unclear, should let the user open a presentation? 
 \item{New} clears the current presentation
-\item{Save} saves the presentation (writes theme?)
-\item{Exit}
+\item{Save} saves the presentation (writes theme)
+\item{Exit} Exits the application. Key: q or Q
 \end{itemize}
 
 Slide actions:
 \begin{itemize}
-\item{Next slide} menu, key
-\item{Previous slide} menu, key
-\item{Goto slide} menu, shortcut
+\item{Next slide} show next slide. Keys: <page down>, <arrow down>, <enter> or '+'
+\item{Previous slide} show previous slide. Keys: <page up>, <arrow up> or '-'
+\item{Goto slide} show the slide with specified number. menu, shortcut
+\end{itemize}
+
+Help actions:
+\begin{itemize}
+\item{About} show a popup with information about JabberPoint.
 \end{itemize}
 
 New action:
 \begin{itemize}
-\item{Select theme}
+\item{Select theme} Let the user select a theme. 
 \end{itemize}
-
 
 The presentation content could be read from a file or otherwise a demo presentation from within the application is read
 
@@ -96,29 +104,75 @@ A \textit{presentation} consists of a number of sequential slides, which a user 
  
 A \textit{slide} is a page in a presentation that contains display elements like text and graphics. The display elements are displayed according to predefined styles. Every slide has a title.
 
-A slide contains \textit{item}s such as text and graphical elements. All these items have varying and some overlapping  behaviours, such as: font type, text size, background colour and size. The items on a slide have a indentation, which is also related with the appearance or style of the item. 
+A slide contains \textit{item}s such as text and images. All these items have varying and some overlapping  behaviours, such as: font type, text size, background colour and size. The items on a slide have a indentation, which is also related with the appearance or style of the item. 
 
 \textit{Theme}s arange the displaying of the elements of a presentation. A theme consists of styles that control the display behaviour such as background colour, text colour and font size. The styles within the theme are stacked and the levels are leading when a theme is applied to a slide.  
 
 A \textit{style} prescribes the displaying behaviour of items on slides. 
 
-The \textit{view} of the application consists of a window that has a menubar at the top left. The remainder of the window is used to render the slides of a presentation.
+The \textit{view} of the application consists of a window that has a menubar at the top left. The remainder of the window is used to render the slides of a presentation according to the styles that are defined for that side.
 
 The application is able to read a XML file that contains a presentation according to a defined structure.    
 
-\subsection{Commonality and Variability analysis}
-\todo{cva and or following the video}
-Presentation: multiple slides, not changing. 
+\begin{table}[!htpb]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Commonality} & \textbf{Variability} & \textbf{Knows} & \textbf{Can}\\
+\hline
+\hline
+Presentation & One of a kind & Title, theme, slides, current slide & Step through slides.\\
+\hline
+Slide & One of a kind & Title, items on slide & None\\ 
+\hline
+Items on slide & Text, image & Level, specific properties & None\\
+\hline
+Theme & One of a kind & Name, styles and background color & None\\
+\hline
+Style & One of a kind & Indent, line spacing, font properties & None\\
+\hline
+\end{tabular}
+\caption{Things}
+\label{tab:template}
+\end{table}
 
-Slide
+\subsection{Rules}
+In the problem domain there are rules the concepts adhere to:
+\begin{itemize}
+\item{Depending on the startup parameter a demo \textit{presentation} or a presentation read from disk is shown.}
+\item{The \textit{level} of a \textit{style} in a \textit{theme} matches the \textit{level} of a n\textit{item} on a \textit{slide}.}
+\item{The \textit{items} on a \textit{slide} are displayed from top to bottom.}
+\end{itemize}
 
-Slide items
+\subsection{Actions}
 
-Theme
-
-Style
-
-Reader
+\begin{table}[!htpb]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Action} & \textbf{Description}\\
+\hline
+\hline
+Open & Goal within the application unclear, expected to open a \textit{presentation}.\\
+\hline
+Save & Stores the \textit{presentation} with the currently selected \textit{theme}.\\ 
+\hline
+Exit & Ends the \textit{application}.\\
+\hline
+Next & Step to the next \textit{slide} of the \textit{presentation}, if possible.\\
+\hline
+Previous & Step to the previous \textit{slide} of the \textit{presentation}, if possible.\\
+\hline
+Go to & Step to a specific \textit{slide} of the \textit{presentation}, if possible.\\
+\hline
+Select theme & Select a \textit{theme} to apply to the current \textit{presentation}.\\
+\hline
+Show slide & Draw the current \textit{slide} with \textit{item}s according to the correct \textit{style}s.\\
+\hline
+\end{tabular}
+\caption{Actions}
+\label{tab:template}
+\end{table}
 
 \subsection{Assumptions}
 Assumption is that altering the supported file format is allowed, as long as the application is backwards compatible.
@@ -159,7 +213,7 @@ The Observer pattern decouples the JabberPoint model from the view. This is part
 
 \subsection{Factories}
 The design consists of factories to have a single point for object creation for each type of object. This supports the \textit{program to interface} idiom, because the factories create the concrete implementations, while the application only depends on the abstract concepts. The factory classes are named XxxxFactory and are put in the factory package to make them recognizable.
-Currently we have factories for the classes SlideItem, Slide, Presentation, Style and Theme. With the factories we provide an single way to insantiate the classes needed.
+Currently we have factories for the classes SlideItem, Slide, Presentation, Style and Theme. With the factories we provide an single way to instantiate the classes needed.
 
 \section{Choices}
 The report and documentation are in English, not Dutch. English is the obvious choice as software development is often cross-border. Main reason: flexibility regarding the future developments of the product without much initial investments. Besides this, it is a good exercise for students.
@@ -170,12 +224,17 @@ The file format is allowed to alter, but the implementation must be backwards co
 
 Bugs are fixed. These refers to clear bugs that can be fixed without big risks of introducing unexpected behaviour. Quality of the application and user experience are important.
 
-We redesign the application according to the  
+We redesign the application according to the \textit{Redesign guidelines} document to achieve better quality in design and implementation. This choice shall result in better maintainability and more flexibility. We see this as an investment in future developments that will prove prosperous in the end.
 
-We made a choice to provide the themes with the presentation files. In this case there can be modifications to the theme and when transferring the presentation it is still posible to see the presentation as intended. We made the choice to be backward compatible. When there is no theme information in the presentation file the default theme will be used. In the application we build hard coded several themes. Normally we would have done this done using an specific theme xml file which contains the different themes. However due to the time this would take to implement this we made the choice to just hard code these themes \(they are reachable using the View->Theme menu. \) In the hard coded themes we only changed the font name. We didn't implement different colors in the hard coded themes. Using the presentation file you can set this information.
+We made a choice to provide the themes with the presentation files. In this case there can be modifications to the theme and when transferring the presentation it is still possible to see the presentation as intended. We made the choice to be backward compatible. When there is no theme information in the presentation file the default theme will be used. In the application we build hard coded several themes. Normally we would have done this done using an specific theme xml file which contains the different themes. However due to the time this would take to implement this we made the choice to just hard code these themes \(they are reachable using the View->Theme menu. \) In the hard coded themes we only changed the font name. We didn't implement different colours in the hard coded themes. Using the presentation file you can set this information.
 
+The menu item \textit{Open} is implemented to let the user open a new presentation. This menu item did not provide this functionality. We assume that users appreciate this implementation. There were no specifications, but we believe the behaviour of the \textit{Open} menu item is what users expect without much discussion. It can be extended with functionality, such as for example file filters, later on.
 
+The menu item \textit{New} is removed, because the user experience of just removing the presentation was not good. The no editing nature regarding presentations did not correspond to the creation of a new empty presentation. In the context of clear and unambiguous functionality, we decided to remove the menu item completely.
 
+The menu item \textit{Save} was kept, because it allows a user to save a theme selection. We decided that if a user has selected a theme for a presentation then the expected behaviour of the application that it would apply that theme to the presentation automatically. The user can store the theme by choosing the menu item.
+
+We decided to keep two switch statements because these are both clear and simple. There is a switch statement in a factory class, where occasionally switches or if statements are necessary to handle different parameter values. And there is a switch statement to handle the key that was pressed by the user. Different implementations like a strategy pattern or something else would result in more complex, thus less maintainable code. 
 
 \section{Sourcecode}
 
