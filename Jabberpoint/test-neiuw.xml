@@ -50,7 +50,7 @@
 	</slide>	
 	<theme appliesTo="1">
 	   <defaultItems>
-	      <!-- <item kind="image"  level="1" x="700" y="300">plaatje.jpg</item>-->
+	      <item kind="image"  level="1" x="700" y="300">JabberPoint.jpg</item>
 	      <item kind="text"  level="1">Het Arend en Wilko Theme</item>
 	   </defaultItems>
 	   <background>#000000</background>
