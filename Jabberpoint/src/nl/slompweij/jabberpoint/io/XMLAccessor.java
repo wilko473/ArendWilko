@@ -71,18 +71,14 @@ public class XMLAccessor extends Accessor {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();    
 			Document document = builder.parse(new File(filename)); // maak een JDOM document
 			Element doc = document.getDocumentElement();
-			//presentation.setTitle(getTitle(doc, SHOWTITLE));
-
-			//String presentationTitle = getTitle(doc, SHOWTITLE);
 			List<Slide> slides = new ArrayList<Slide>();
 			
 			NodeList slideNodes = doc.getElementsByTagName(SLIDE);
 			for (slideNumber = 0; slideNumber < slideNodes.getLength(); slideNumber++) {
 				Element xmlSlide = (Element) slideNodes.item(slideNumber);
-				//Slide slide = new Slide();
-				//slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
+				
 				String slideTitle = getTitle(xmlSlide, SLIDETITLE);
-				//presentation.append(slide);
+				
 				
 				List<SlideItem> slideItems = new ArrayList<SlideItem>();
 				NodeList slideItemNodes = xmlSlide.getElementsByTagName(ITEM);
