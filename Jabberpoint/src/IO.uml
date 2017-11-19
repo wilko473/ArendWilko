@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:PapyrusJava="http://www.eclipse.org/papyrus/PapyrusJava/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Model xmi:id="_9jW1IM1CEeeRsuQdJ4MonA" name="model2">
+    <packagedElement xmi:type="uml:Package" xmi:id="__bolYM1CEeeRsuQdJ4MonA" name="Jabberpoint">
+      <packagedElement xmi:type="uml:Package" xmi:id="__drMwM1CEeeRsuQdJ4MonA" name="nl">
+        <packagedElement xmi:type="uml:Package" xmi:id="__drMwc1CEeeRsuQdJ4MonA" name="slompweij">
+          <packagedElement xmi:type="uml:Package" xmi:id="__drMws1CEeeRsuQdJ4MonA" name="jabberpoint">
+            <packagedElement xmi:type="uml:Package" xmi:id="__drMw81CEeeRsuQdJ4MonA" name="io">
+              <packagedElement xmi:type="uml:Class" xmi:id="__dtpAM1CEeeRsuQdJ4MonA" name="Accessor" visibility="public" isAbstract="true">
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="__hbEUM1CEeeRsuQdJ4MonA" name="Accessor" specification="__duQEM1CEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+</body>
+                </ownedBehavior>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="__duQEM1CEeeRsuQdJ4MonA" name="Accessor" visibility="public" method="__hbEUM1CEeeRsuQdJ4MonA"/>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="__hjAIM1CEeeRsuQdJ4MonA" name="loadPresentation" visibility="public" isAbstract="true" raisedException="__humUM1CEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="__hqU4M1CEeeRsuQdJ4MonA" type="__hmqgM1CEeeRsuQdJ4MonA" direction="return"/>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="__hrjAM1CEeeRsuQdJ4MonA" name="params" type="__heusM1CEeeRsuQdJ4MonA">
+                    <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__hsxIM1CEeeRsuQdJ4MonA"/>
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__htYMM1CEeeRsuQdJ4MonA" value="*"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="__hy3wM1CEeeRsuQdJ4MonA" name="saveFile" visibility="public" isAbstract="true" raisedException="__humUM1CEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="__h0s8M1CEeeRsuQdJ4MonA" name="p" type="__hmqgM1CEeeRsuQdJ4MonA"/>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="__h17EM1CEeeRsuQdJ4MonA" name="fn" type="__heusM1CEeeRsuQdJ4MonA"/>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_AfAt8M1DEeeRsuQdJ4MonA" name="DemoPresentation" visibility="public">
+                <generalization xmi:type="uml:Generalization" xmi:id="_AfE_YM1DEeeRsuQdJ4MonA" general="__dtpAM1CEeeRsuQdJ4MonA"/>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_AfIpwM1DEeeRsuQdJ4MonA" name="loadPresentation" specification="_AfFmcM1DEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    List&lt;Slide> slides = new ArrayList&lt;Slide>();&#xD;
+    List&lt;SlideItem> slideItems0 = new ArrayList&lt;SlideItem>();&#xD;
+    slideItems0.add(SlideItemFactory.createTextItem(1, &quot;Het Java Presentatie Tool&quot;));&#xD;
+    slideItems0.add(SlideItemFactory.createTextItem(2, &quot;Copyright (c) 1996-2000: Ian Darwin&quot;));&#xD;
+    slideItems0.add(SlideItemFactory.createTextItem(2, &quot;Copyright (c) 2000-now:&quot;));&#xD;
+    slideItems0.add(SlideItemFactory.createTextItem(2, &quot;Gert Florijn en Sylvia Stuurman&quot;));&#xD;
+    slideItems0.add(SlideItemFactory.createTextItem(4, &quot;JabberPoint aanroepen zonder bestandsnaam&quot;));&#xD;
+    slideItems0.add(SlideItemFactory.createTextItem(4, &quot;laat deze presentatie zien&quot;));&#xD;
+    slideItems0.add(SlideItemFactory.createTextItem(1, &quot;Navigeren:&quot;));&#xD;
+    slideItems0.add(SlideItemFactory.createTextItem(3, &quot;Volgende slide: PgDn of Enter&quot;));&#xD;
+    slideItems0.add(SlideItemFactory.createTextItem(3, &quot;Vorige slide: PgUp of up-arrow&quot;));&#xD;
+    slideItems0.add(SlideItemFactory.createTextItem(3, &quot;Stoppen: q or Q&quot;));&#xD;
+    slides.add(SlideFactory.createSlide(&quot;JabberPoint&quot;, slideItems0));&#xD;
+    List&lt;SlideItem> slideItems1 = new ArrayList&lt;SlideItem>();&#xD;
+    slideItems1.add(SlideItemFactory.createTextItem(1, &quot;Level 1&quot;));&#xD;
+    slideItems1.add(SlideItemFactory.createTextItem(2, &quot;Level 2&quot;));&#xD;
+    slideItems1.add(SlideItemFactory.createTextItem(1, &quot;Nogmaals level 1&quot;));&#xD;
+    slideItems1.add(SlideItemFactory.createTextItem(1, &quot;Level 1 heeft stijl nummer 1&quot;));&#xD;
+    slideItems1.add(SlideItemFactory.createTextItem(2, &quot;Level 2 heeft stijl nummer 2&quot;));&#xD;
+    slideItems1.add(SlideItemFactory.createTextItem(3, &quot;Zo ziet level 3 er uit&quot;));&#xD;
+    slideItems1.add(SlideItemFactory.createTextItem(4, &quot;En dit is level 4&quot;));&#xD;
+    slides.add(SlideFactory.createSlide(&quot;Demonstratie van levels en stijlen&quot;, slideItems1));&#xD;
+    List&lt;SlideItem> slideItems2 = new ArrayList&lt;SlideItem>();&#xD;
+    slideItems2.add(SlideItemFactory.createTextItem(1, &quot;Om een nieuwe presentatie te openen,&quot;));&#xD;
+    slideItems2.add(SlideItemFactory.createTextItem(2, &quot;gebruik File->Open uit het menu.&quot;));&#xD;
+    slideItems2.add(SlideItemFactory.createTextItem(1, &quot; &quot;));&#xD;
+    slideItems2.add(SlideItemFactory.createTextItem(1, &quot;Dit is het einde van de presentatie.&quot;));&#xD;
+    slideItems2.add(SlideItemFactory.createBitmapItem(1, &quot;JabberPoint.jpg&quot;));&#xD;
+    slides.add(SlideFactory.createSlide(&quot;De derde slide&quot;, slideItems2));&#xD;
+    return new ConcretePresentation(&quot;Demo Presentation&quot;, slides);&#xD;
+</body>
+                </ownedBehavior>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_AfKe8M1DEeeRsuQdJ4MonA" name="saveFile" specification="_AfIpwc1DEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    throw new IOException(&quot;Demo presentatie kan niet worden opgeslagen&quot;);&#xD;
+</body>
+                </ownedBehavior>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_AfFmcM1DEeeRsuQdJ4MonA" name="loadPresentation" visibility="public" method="_AfIpwM1DEeeRsuQdJ4MonA" raisedException="__humUM1CEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_AfGNgM1DEeeRsuQdJ4MonA" type="__hmqgM1CEeeRsuQdJ4MonA" direction="return"/>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_AfGNgc1DEeeRsuQdJ4MonA" name="fn" type="__heusM1CEeeRsuQdJ4MonA">
+                    <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AfG0kM1DEeeRsuQdJ4MonA"/>
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AfG0kc1DEeeRsuQdJ4MonA" value="*"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_AfIpwc1DEeeRsuQdJ4MonA" name="saveFile" visibility="public" method="_AfKe8M1DEeeRsuQdJ4MonA" raisedException="__humUM1CEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_AfJQ0M1DEeeRsuQdJ4MonA" name="p" type="__hmqgM1CEeeRsuQdJ4MonA"/>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_AfJ34M1DEeeRsuQdJ4MonA" name="fn" type="__heusM1CEeeRsuQdJ4MonA"/>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_pnPaEM1EEeeRsuQdJ4MonA" name="XMLAccessor" visibility="public">
+                <generalization xmi:type="uml:Generalization" xmi:id="_pnQoMM1EEeeRsuQdJ4MonA" general="__dtpAM1CEeeRsuQdJ4MonA"/>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_pnR2UM1EEeeRsuQdJ4MonA" name="DEFAULT_API_TO_USE" visibility="protected" isLeaf="true" isStatic="true" type="__heusM1CEeeRsuQdJ4MonA" isUnique="false">
+                  <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_pnR2Uc1EEeeRsuQdJ4MonA" name="defaultValue">
+                    <language>JAVA</language>
+                    <body>&quot;dom&quot;</body>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_pnSdYM1EEeeRsuQdJ4MonA" name="SHOWTITLE" visibility="protected" isLeaf="true" isStatic="true" type="__heusM1CEeeRsuQdJ4MonA" isUnique="false">
+                  <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_pnTEcM1EEeeRsuQdJ4MonA" name="defaultValue">
+                    <language>JAVA</language>
+                    <body>&quot;showtitle&quot;</body>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_pnTEcc1EEeeRsuQdJ4MonA" name="SLIDETITLE" visibility="protected" isLeaf="true" isStatic="true" type="__heusM1CEeeRsuQdJ4MonA" isUnique="false">
+                  <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_pnTrgM1EEeeRsuQdJ4MonA" name="defaultValue">
+                    <language>JAVA</language>
+                    <body>&quot;title&quot;</body>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_pnUSkM1EEeeRsuQdJ4MonA" name="SLIDE" visibility="protected" isLeaf="true" isStatic="true" type="__heusM1CEeeRsuQdJ4MonA" isUnique="false">
+                  <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_pnUSkc1EEeeRsuQdJ4MonA" name="defaultValue">
+                    <language>JAVA</language>
+                    <body>&quot;slide&quot;</body>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_pnU5oM1EEeeRsuQdJ4MonA" name="ITEM" visibility="protected" isLeaf="true" isStatic="true" type="__heusM1CEeeRsuQdJ4MonA" isUnique="false">
+                  <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_pnU5oc1EEeeRsuQdJ4MonA" name="defaultValue">
+                    <language>JAVA</language>
+                    <body>&quot;item&quot;</body>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_pnVgsM1EEeeRsuQdJ4MonA" name="THEME" visibility="protected" isLeaf="true" isStatic="true" type="__heusM1CEeeRsuQdJ4MonA" isUnique="false">
+                  <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_pnWHwM1EEeeRsuQdJ4MonA" name="defaultValue">
+                    <language>JAVA</language>
+                    <body>&quot;theme&quot;</body>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_pnWu0M1EEeeRsuQdJ4MonA" name="TITEL" visibility="protected" isLeaf="true" isStatic="true" type="__heusM1CEeeRsuQdJ4MonA" isUnique="false">
+                  <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_pnWu0c1EEeeRsuQdJ4MonA" name="defaultValue">
+                    <language>JAVA</language>
+                    <body>&quot;titel&quot;</body>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_pnXV4M1EEeeRsuQdJ4MonA" name="PCE" visibility="protected" isLeaf="true" isStatic="true" type="__heusM1CEeeRsuQdJ4MonA" isUnique="false">
+                  <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_pnXV4c1EEeeRsuQdJ4MonA" name="defaultValue">
+                    <language>JAVA</language>
+                    <body>&quot;Parser Configuration Exception&quot;</body>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_pnhG4M1EEeeRsuQdJ4MonA" name="getTitle" specification="_pnfRsM1EEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    NodeList titles = element.getElementsByTagName(tagName);&#xD;
+    return titles.item(0).getTextContent();&#xD;
+</body>
+                </ownedBehavior>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_pnlYUM1EEeeRsuQdJ4MonA" name="loadPresentation" specification="_pnht8M1EEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    int slideNumber, itemNumber, maxItems = 0;&#xD;
+    String filename = parameters[0];&#xD;
+    Presentation result = null;&#xD;
+    try {&#xD;
+        DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();&#xD;
+        // maak een JDOM document&#xD;
+        Document document = builder.parse(new File(filename));&#xD;
+        Element doc = document.getDocumentElement();&#xD;
+        List&lt;Slide> slides = new ArrayList&lt;Slide>();&#xD;
+        NodeList slideNodes = doc.getElementsByTagName(SLIDE);&#xD;
+        for (slideNumber = 0; slideNumber &lt; slideNodes.getLength(); slideNumber++) {&#xD;
+            Element xmlSlide = (Element) slideNodes.item(slideNumber);&#xD;
+            String slideTitle = getTitle(xmlSlide, SLIDETITLE);&#xD;
+            List&lt;SlideItem> slideItems = new ArrayList&lt;SlideItem>();&#xD;
+            NodeList slideItemNodes = xmlSlide.getElementsByTagName(ITEM);&#xD;
+            maxItems = slideItemNodes.getLength();&#xD;
+            for (itemNumber = 0; itemNumber &lt; maxItems; itemNumber++) {&#xD;
+                Element item = (Element) slideItemNodes.item(itemNumber);&#xD;
+                //loadSlideItem(slide, item);&#xD;
+                SlideItem slideItem = SlideItemFactory.createSlideItem(item);&#xD;
+                slideItems.add(slideItem);&#xD;
+            }&#xD;
+            Slide slide = SlideFactory.createSlide(slideTitle, slideItems);&#xD;
+            slides.add(slide);&#xD;
+        }&#xD;
+        // TODO: Magic strings laten verdwijnen&#xD;
+        result = new ConcretePresentation(&quot;titel&quot;, slides);&#xD;
+        NodeList theme = doc.getElementsByTagName(THEME);&#xD;
+        if (theme.getLength() > 0) {&#xD;
+            Element themeElement = (Element) doc.getElementsByTagName(THEME).item(0);&#xD;
+            Theme t = ThemeFactory.createTheme(themeElement);&#xD;
+            result.setTheme(t);&#xD;
+        }&#xD;
+    } catch (IOException iox) {&#xD;
+        System.err.println(iox.toString());&#xD;
+    } catch (SAXException sax) {&#xD;
+        System.err.println(sax.getMessage());&#xD;
+    } catch (ParserConfigurationException pcx) {&#xD;
+        System.err.println(PCE);&#xD;
+    }&#xD;
+    return result;&#xD;
+</body>
+                </ownedBehavior>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_pnn0kM1EEeeRsuQdJ4MonA" name="saveFile" specification="_pnl_YM1EEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    PrintWriter out = new PrintWriter(new FileWriter(filename));&#xD;
+    out.println(&quot;&lt;?xml version=\&quot;1.0\&quot;?>&quot;);&#xD;
+    out.println(&quot;&lt;!DOCTYPE presentation SYSTEM \&quot;jabberpoint.dtd\&quot;>&quot;);&#xD;
+    out.println(&quot;&lt;presentation>&quot;);&#xD;
+    out.print(&quot;&lt;showtitle>&quot;);&#xD;
+    out.print(presentation.getTitle());&#xD;
+    out.println(&quot;&lt;/showtitle>&quot;);&#xD;
+    for (Slide slide : presentation.getSlides()) {&#xD;
+        out.println(&quot;&lt;slide>&quot;);&#xD;
+        out.println(&quot;&lt;title>&quot; + slide.getTitle() + &quot;&lt;/title>&quot;);&#xD;
+        List&lt;SlideItem> slideItems = slide.getSlideItems();&#xD;
+        for (int itemNumber = 0; itemNumber &lt; slideItems.size(); itemNumber++) {&#xD;
+            SlideItem slideItem = (SlideItem) slideItems.get(itemNumber);&#xD;
+            out.print(&quot;&lt;item kind=&quot;);&#xD;
+            if (slideItem instanceof TextItem) {&#xD;
+                out.print(&quot;\&quot;text\&quot; level=\&quot;&quot; + slideItem.getLevel() + &quot;\&quot;>&quot;);&#xD;
+                out.print(((TextItem) slideItem).getText());&#xD;
+            } else {&#xD;
+                if (slideItem instanceof ImageItem) {&#xD;
+                    out.print(&quot;\&quot;image\&quot; level=\&quot;&quot; + slideItem.getLevel() + &quot;\&quot;>&quot;);&#xD;
+                    out.print(((ImageItem) slideItem).getImageName());&#xD;
+                } else {&#xD;
+                    System.out.println(&quot;Ignoring &quot; + slideItem);&#xD;
+                }&#xD;
+            }&#xD;
+            out.println(&quot;&lt;/item>&quot;);&#xD;
+        }&#xD;
+        out.println(&quot;&lt;/slide>&quot;);&#xD;
+    }&#xD;
+    out.println(&quot;&lt;theme>&quot;);&#xD;
+    out.println(&quot;&lt;styles>&quot;);&#xD;
+    int teller = 0;&#xD;
+    for (Style c : presentation.getTheme().getStyles()) {&#xD;
+        out.println(&quot;&lt;style level=&quot; + teller + &quot; color=&quot; + c.getFontColor() + &quot; font-face='&quot; + c.getFont().getFontName() + &quot;' font-size=&quot; + c.getFontSize() + &quot;/>&quot;);&#xD;
+    }&#xD;
+    out.println(&quot;&lt;/styles>&quot;);&#xD;
+    out.println(&quot;&lt;/theme&quot;);&#xD;
+    out.println(&quot;&lt;/presentation>&quot;);&#xD;
+    out.close();&#xD;
+</body>
+                </ownedBehavior>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_pnfRsM1EEeeRsuQdJ4MonA" name="getTitle" visibility="private" method="_pnhG4M1EEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_pnf4wM1EEeeRsuQdJ4MonA" type="__heusM1CEeeRsuQdJ4MonA" direction="return"/>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_pnf4wc1EEeeRsuQdJ4MonA" name="element" type="_pnYkAc1EEeeRsuQdJ4MonA"/>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_pngf0M1EEeeRsuQdJ4MonA" name="tagName" type="__heusM1CEeeRsuQdJ4MonA"/>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_pnht8M1EEeeRsuQdJ4MonA" name="loadPresentation" visibility="public" method="_pnlYUM1EEeeRsuQdJ4MonA" raisedException="__humUM1CEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_pniVAM1EEeeRsuQdJ4MonA" type="__hmqgM1CEeeRsuQdJ4MonA" direction="return"/>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_pni8EM1EEeeRsuQdJ4MonA" name="parameters" type="__heusM1CEeeRsuQdJ4MonA">
+                    <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pni8Ec1EEeeRsuQdJ4MonA"/>
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pni8Es1EEeeRsuQdJ4MonA" value="*"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_pnl_YM1EEeeRsuQdJ4MonA" name="saveFile" visibility="public" method="_pnn0kM1EEeeRsuQdJ4MonA" raisedException="__humUM1CEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_pnmmcM1EEeeRsuQdJ4MonA" name="presentation" type="__hmqgM1CEeeRsuQdJ4MonA"/>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_pnmmcc1EEeeRsuQdJ4MonA" name="filename" type="__heusM1CEeeRsuQdJ4MonA"/>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_wVYGAM1EEeeRsuQdJ4MonA" name="PresentationFactory" visibility="public">
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_wVZUIM1EEeeRsuQdJ4MonA" name="accessor" visibility="private" isStatic="true" type="__dtpAM1CEeeRsuQdJ4MonA" isUnique="false">
+                  <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_wVZ7MM1EEeeRsuQdJ4MonA" name="defaultValue">
+                    <language>JAVA</language>
+                    <body>null</body>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_PF2Jks1FEeeRsuQdJ4MonA" name="accessor" type="__dtpAM1CEeeRsuQdJ4MonA" association="_PF1igM1FEeeRsuQdJ4MonA">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PF2woM1FEeeRsuQdJ4MonA"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PF2woc1FEeeRsuQdJ4MonA" value="1"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_LVC8As1GEeeRsuQdJ4MonA" name="presentation" type="_B4gJEM1GEeeRsuQdJ4MonA" association="_LVCU8M1GEeeRsuQdJ4MonA">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LVC8A81GEeeRsuQdJ4MonA"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LVC8BM1GEeeRsuQdJ4MonA" value="1"/>
+                </ownedAttribute>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_wVcXcM1EEeeRsuQdJ4MonA" name="createPresentation" specification="_wVaiQM1EEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    Presentation result = null;&#xD;
+    if (parameters == null || parameters.length == 0) {&#xD;
+        accessor = new DemoPresentation();&#xD;
+    } else {&#xD;
+        accessor = new XMLAccessor();&#xD;
+    }&#xD;
+    result = accessor.loadPresentation(parameters);&#xD;
+    return result;&#xD;
+</body>
+                </ownedBehavior>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_wVfawM1EEeeRsuQdJ4MonA" name="savePresentation" specification="_wVc-gM1EEeeRsuQdJ4MonA">
+                  <ownedAttribute xmi:type="uml:Property" xmi:id="_JK4nAM1FEeeRsuQdJ4MonA" name="accessor" type="__dtpAM1CEeeRsuQdJ4MonA" association="_JK3Y4M1FEeeRsuQdJ4MonA">
+                    <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JK4nAc1FEeeRsuQdJ4MonA"/>
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JK5OEM1FEeeRsuQdJ4MonA" value="1"/>
+                  </ownedAttribute>
+                  <language>JAVA</language>
+                  <body>&#xD;
+    try {&#xD;
+        accessor.saveFile(presentation, filename);&#xD;
+    } catch (IOException e) {&#xD;
+        JOptionPane.showMessageDialog(null, &quot;Failed to save the presentation.&quot; + e.getMessage());&#xD;
+    }&#xD;
+</body>
+                </ownedBehavior>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_wVaiQM1EEeeRsuQdJ4MonA" name="createPresentation" visibility="public" isStatic="true" method="_wVcXcM1EEeeRsuQdJ4MonA" raisedException="__humUM1CEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_wVaiQc1EEeeRsuQdJ4MonA" type="__hmqgM1CEeeRsuQdJ4MonA" direction="return"/>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_wVbJUM1EEeeRsuQdJ4MonA" name="parameters" type="__heusM1CEeeRsuQdJ4MonA">
+                    <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wVbwYM1EEeeRsuQdJ4MonA"/>
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wVbwYc1EEeeRsuQdJ4MonA" value="*"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_wVc-gM1EEeeRsuQdJ4MonA" name="savePresentation" visibility="public" isStatic="true" method="_wVfawM1EEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_wVdlkM1EEeeRsuQdJ4MonA" name="presentation" type="__hmqgM1CEeeRsuQdJ4MonA"/>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_wVezsM1EEeeRsuQdJ4MonA" name="filename" type="__heusM1CEeeRsuQdJ4MonA"/>
+                </ownedOperation>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_B4cesM1GEeeRsuQdJ4MonA" name="model">
+              <packagedElement xmi:type="uml:Class" xmi:id="_B4gJEM1GEeeRsuQdJ4MonA" name="Presentation" visibility="public" isAbstract="true">
+                <generalization xmi:type="uml:Generalization" xmi:id="_B4mPsM1GEeeRsuQdJ4MonA" general="_B4gwIc1GEeeRsuQdJ4MonA"/>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_B4m2wM1GEeeRsuQdJ4MonA" name="title" visibility="private" type="__heusM1CEeeRsuQdJ4MonA" isUnique="false">
+                  <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_B4nd0M1GEeeRsuQdJ4MonA" name="defaultValue">
+                    <language>JAVA</language>
+                    <body>null</body>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_B4sWUM1GEeeRsuQdJ4MonA" name="slides" visibility="private" type="_B4or8M1GEeeRsuQdJ4MonA" isUnique="false">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_B4s9YM1GEeeRsuQdJ4MonA"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_B4s9Yc1GEeeRsuQdJ4MonA" value="*"/>
+                  <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_B4s9Ys1GEeeRsuQdJ4MonA" name="defaultValue">
+                    <language>JAVA</language>
+                    <body>null</body>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_B4yc8M1GEeeRsuQdJ4MonA" name="theme" visibility="private" type="_B4tkcM1GEeeRsuQdJ4MonA" isUnique="false">
+                  <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_B4yc8c1GEeeRsuQdJ4MonA" name="defaultValue">
+                    <language>JAVA</language>
+                    <body>null</body>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_B5N6wM1GEeeRsuQdJ4MonA" name="currentSlideNumber" visibility="private" isUnique="false">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+                  <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_B5Oh0M1GEeeRsuQdJ4MonA" name="defaultValue">
+                    <language>JAVA</language>
+                    <body>0</body>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_B5ckQs1GEeeRsuQdJ4MonA" name="Presentation" specification="_B5PI4M1GEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    if (title == null) {&#xD;
+        throw new IllegalArgumentException(&quot;Title is required&quot;);&#xD;
+    }&#xD;
+    if (slides == null) {&#xD;
+        throw new IllegalArgumentException(&quot;Slides is required&quot;);&#xD;
+    }&#xD;
+    this.title = title;&#xD;
+    this.slides = slides;&#xD;
+</body>
+                </ownedBehavior>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_B5eZcM1GEeeRsuQdJ4MonA" name="getNumberOfSlides" specification="_B5dLUM1GEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    return slides.size();&#xD;
+</body>
+                </ownedBehavior>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_B5fnkM1GEeeRsuQdJ4MonA" name="getTitle" specification="_B5eZcc1GEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    return title;&#xD;
+</body>
+                </ownedBehavior>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_B5g1sM1GEeeRsuQdJ4MonA" name="getTheme" specification="_B5fnkc1GEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    //.getThemeForSlide(currentSlideNumber);	&#xD;
+    return theme;&#xD;
+</body>
+                </ownedBehavior>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_B5iq4c1GEeeRsuQdJ4MonA" name="setTheme" specification="_B5iD0M1GEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    this.theme = theme;&#xD;
+    setChanged();&#xD;
+    notifyObservers();&#xD;
+</body>
+                </ownedBehavior>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_B5j5Ac1GEeeRsuQdJ4MonA" name="getCurrentSlide" specification="_B5jR8M1GEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    return slides.get(currentSlideNumber);&#xD;
+</body>
+                </ownedBehavior>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_B5mVQM1GEeeRsuQdJ4MonA" name="nextSlide" specification="_B5luMM1GEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    if (currentSlideNumber &lt; slides.size() - 1) {&#xD;
+        currentSlideNumber++;&#xD;
+        setChanged();&#xD;
+        notifyObservers();&#xD;
+    }&#xD;
+</body>
+                </ownedBehavior>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_B5njYM1GEeeRsuQdJ4MonA" name="previousSlide" specification="_B5mVQc1GEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    if (currentSlideNumber > 0) {&#xD;
+        currentSlideNumber--;&#xD;
+        setChanged();&#xD;
+        notifyObservers();&#xD;
+    }&#xD;
+</body>
+                </ownedBehavior>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_B5oxgM1GEeeRsuQdJ4MonA" name="getCurrentSlideNumber" specification="_B5njYc1GEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    return currentSlideNumber;&#xD;
+</body>
+                </ownedBehavior>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_B5sb4M1GEeeRsuQdJ4MonA" name="setCurrentSlideNumber" specification="_B5qmsM1GEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    if (newSlideNumber > -1 &amp;&amp; newSlideNumber &lt; slides.size() - 1) {&#xD;
+        this.currentSlideNumber = newSlideNumber;&#xD;
+        setChanged();&#xD;
+        notifyObservers();&#xD;
+    }&#xD;
+</body>
+                </ownedBehavior>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_B5u4IM1GEeeRsuQdJ4MonA" name="getSlides" specification="_B5sb4c1GEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    return slides;&#xD;
+</body>
+                </ownedBehavior>
+                <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_B5wGQc1GEeeRsuQdJ4MonA" name="getThemeForCurrentSlide" specification="_B5vfMM1GEeeRsuQdJ4MonA">
+                  <language>JAVA</language>
+                  <body>&#xD;
+    return theme.getThemeForSlide(currentSlideNumber);&#xD;
+</body>
+                </ownedBehavior>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_B5PI4M1GEeeRsuQdJ4MonA" name="Presentation" visibility="public" method="_B5ckQs1GEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_B5UBYM1GEeeRsuQdJ4MonA" name="title" type="__heusM1CEeeRsuQdJ4MonA"/>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_B5b9MM1GEeeRsuQdJ4MonA" name="slides" type="_B4or8M1GEeeRsuQdJ4MonA">
+                    <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_B5ckQM1GEeeRsuQdJ4MonA"/>
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_B5ckQc1GEeeRsuQdJ4MonA" value="*"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_B5dLUM1GEeeRsuQdJ4MonA" name="getNumberOfSlides" visibility="public" method="_B5eZcM1GEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_B5dyYM1GEeeRsuQdJ4MonA" direction="return">
+                    <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_B5eZcc1GEeeRsuQdJ4MonA" name="getTitle" visibility="public" method="_B5fnkM1GEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_B5fAgM1GEeeRsuQdJ4MonA" type="__heusM1CEeeRsuQdJ4MonA" direction="return"/>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_B5fnkc1GEeeRsuQdJ4MonA" name="getTheme" visibility="public" method="_B5g1sM1GEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_B5gOoM1GEeeRsuQdJ4MonA" type="_B4tkcM1GEeeRsuQdJ4MonA" direction="return"/>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_B5iD0M1GEeeRsuQdJ4MonA" name="setTheme" visibility="public" method="_B5iq4c1GEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_B5iq4M1GEeeRsuQdJ4MonA" name="theme" type="_B4tkcM1GEeeRsuQdJ4MonA"/>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_B5jR8M1GEeeRsuQdJ4MonA" name="getCurrentSlide" visibility="public" method="_B5j5Ac1GEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_B5j5AM1GEeeRsuQdJ4MonA" type="_B4or8M1GEeeRsuQdJ4MonA" direction="return"/>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_B5luMM1GEeeRsuQdJ4MonA" name="nextSlide" visibility="public" method="_B5mVQM1GEeeRsuQdJ4MonA"/>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_B5mVQc1GEeeRsuQdJ4MonA" name="previousSlide" visibility="public" method="_B5njYM1GEeeRsuQdJ4MonA"/>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_B5njYc1GEeeRsuQdJ4MonA" name="getCurrentSlideNumber" visibility="public" method="_B5oxgM1GEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_B5oKcM1GEeeRsuQdJ4MonA" direction="return">
+                    <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_B5qmsM1GEeeRsuQdJ4MonA" name="setCurrentSlideNumber" visibility="public" method="_B5sb4M1GEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_B5rNwM1GEeeRsuQdJ4MonA" name="newSlideNumber">
+                    <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_B5sb4c1GEeeRsuQdJ4MonA" name="getSlides" visibility="public" method="_B5u4IM1GEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_B5tqAM1GEeeRsuQdJ4MonA" type="_B4or8M1GEeeRsuQdJ4MonA" direction="return">
+                    <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_B5tqAc1GEeeRsuQdJ4MonA"/>
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_B5uREM1GEeeRsuQdJ4MonA" value="*"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_B5vfMM1GEeeRsuQdJ4MonA" name="getThemeForCurrentSlide" visibility="public" method="_B5wGQc1GEeeRsuQdJ4MonA">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_B5wGQM1GEeeRsuQdJ4MonA" type="_B4tkcM1GEeeRsuQdJ4MonA" direction="return"/>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_B4or8M1GEeeRsuQdJ4MonA" name="Slide"/>
+              <packagedElement xmi:type="uml:Class" xmi:id="_B4tkcM1GEeeRsuQdJ4MonA" name="Theme"/>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="__hdgkM1CEeeRsuQdJ4MonA" name="java">
+      <packagedElement xmi:type="uml:Package" xmi:id="__heHoM1CEeeRsuQdJ4MonA" name="java">
+        <packagedElement xmi:type="uml:Package" xmi:id="__heHoc1CEeeRsuQdJ4MonA" name="lang">
+          <packagedElement xmi:type="uml:Class" xmi:id="__heusM1CEeeRsuQdJ4MonA" name="String"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="__ht_QM1CEeeRsuQdJ4MonA" name="io">
+          <packagedElement xmi:type="uml:Interface" xmi:id="__humUM1CEeeRsuQdJ4MonA" name="IOException"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_B4gwIM1GEeeRsuQdJ4MonA" name="util">
+          <packagedElement xmi:type="uml:Class" xmi:id="_B4gwIc1GEeeRsuQdJ4MonA" name="Observable"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="__hkOQM1CEeeRsuQdJ4MonA" name="importedTypes">
+      <packagedElement xmi:type="uml:Package" xmi:id="__hk1UM1CEeeRsuQdJ4MonA" name="nl">
+        <packagedElement xmi:type="uml:Package" xmi:id="__hlcYM1CEeeRsuQdJ4MonA" name="slompweij">
+          <packagedElement xmi:type="uml:Package" xmi:id="__hmDcM1CEeeRsuQdJ4MonA" name="jabberpoint">
+            <packagedElement xmi:type="uml:Package" xmi:id="__hmDcc1CEeeRsuQdJ4MonA" name="model">
+              <packagedElement xmi:type="uml:Class" xmi:id="__hmqgM1CEeeRsuQdJ4MonA" name="Presentation"/>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_pnX88M1EEeeRsuQdJ4MonA" name="org">
+        <packagedElement xmi:type="uml:Package" xmi:id="_pnX88c1EEeeRsuQdJ4MonA" name="w3c">
+          <packagedElement xmi:type="uml:Package" xmi:id="_pnYkAM1EEeeRsuQdJ4MonA" name="dom">
+            <packagedElement xmi:type="uml:Class" xmi:id="_pnYkAc1EEeeRsuQdJ4MonA" name="Element"/>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Frnq0M1FEeeRsuQdJ4MonA"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_JK3Y4M1FEeeRsuQdJ4MonA" memberEnd="_JK4nAM1FEeeRsuQdJ4MonA _JK5OEc1FEeeRsuQdJ4MonA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JK3_8M1FEeeRsuQdJ4MonA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JK3_8c1FEeeRsuQdJ4MonA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_JK5OEc1FEeeRsuQdJ4MonA" name="presentationfactory" type="_wVfawM1EEeeRsuQdJ4MonA" association="_JK3Y4M1FEeeRsuQdJ4MonA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_PF1igM1FEeeRsuQdJ4MonA" memberEnd="_PF2Jks1FEeeRsuQdJ4MonA _PF2wos1FEeeRsuQdJ4MonA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_PF2JkM1FEeeRsuQdJ4MonA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_PF2Jkc1FEeeRsuQdJ4MonA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_PF2wos1FEeeRsuQdJ4MonA" name="presentationfactory" type="_wVYGAM1EEeeRsuQdJ4MonA" association="_PF1igM1FEeeRsuQdJ4MonA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_LVCU8M1GEeeRsuQdJ4MonA" memberEnd="_LVC8As1GEeeRsuQdJ4MonA _LVC8Bc1GEeeRsuQdJ4MonA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_LVC8AM1GEeeRsuQdJ4MonA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_LVC8Ac1GEeeRsuQdJ4MonA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_LVC8Bc1GEeeRsuQdJ4MonA" name="presentationfactory" type="_wVYGAM1EEeeRsuQdJ4MonA" association="_LVCU8M1GEeeRsuQdJ4MonA"/>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="__dEIwM1CEeeRsuQdJ4MonA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__dF98M1CEeeRsuQdJ4MonA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="__dY44M1CEeeRsuQdJ4MonA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__daHAM1CEeeRsuQdJ4MonA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/Codegen/1#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://Codegen_PROFILES/Codegen.profile.uml#_fPDsIBa-EearhdjjJ6cVzQ"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="__doJcM1CEeeRsuQdJ4MonA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__dowgM1CEeeRsuQdJ4MonA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Model>
+  <standard:Create xmi:id="__hZPIM1CEeeRsuQdJ4MonA" base_BehavioralFeature="__duQEM1CEeeRsuQdJ4MonA"/>
+  <PapyrusJava:External xmi:id="__hhyAM1CEeeRsuQdJ4MonA" name="java.lang.String" base_Classifier="__heusM1CEeeRsuQdJ4MonA"/>
+  <PapyrusJava:External xmi:id="__hpt0M1CEeeRsuQdJ4MonA" name="nl.slompweij.jabberpoint.model.Presentation" base_Classifier="__hmqgM1CEeeRsuQdJ4MonA"/>
+  <PapyrusJava:External xmi:id="__hxCkM1CEeeRsuQdJ4MonA" name="java.io.IOException" base_Classifier="__humUM1CEeeRsuQdJ4MonA"/>
+  <PapyrusJava:External xmi:id="_AfEYUM1DEeeRsuQdJ4MonA" name="Accessor" base_Classifier="__dtpAM1CEeeRsuQdJ4MonA"/>
+  <PapyrusJava:External xmi:id="_pneqoM1EEeeRsuQdJ4MonA" name="org.w3c.dom.Element" base_Classifier="_pnYkAc1EEeeRsuQdJ4MonA"/>
+  <PapyrusJava:External xmi:id="_B4lBkM1GEeeRsuQdJ4MonA" name="java.util.Observable" base_Classifier="_B4gwIc1GEeeRsuQdJ4MonA"/>
+  <PapyrusJava:External xmi:id="_B4rvQM1GEeeRsuQdJ4MonA" name="Slide" base_Classifier="_B4or8M1GEeeRsuQdJ4MonA"/>
+  <PapyrusJava:External xmi:id="_B4x14M1GEeeRsuQdJ4MonA" name="Theme" base_Classifier="_B4tkcM1GEeeRsuQdJ4MonA"/>
+  <standard:Create xmi:id="_B5SzQM1GEeeRsuQdJ4MonA" base_BehavioralFeature="_B5PI4M1GEeeRsuQdJ4MonA"/>
+</xmi:XMI>
