@@ -1,8 +1,11 @@
 package nl.slompweij.jabberpoint.model;
 
 import java.awt.Color;
+import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Represents a theme. 
@@ -11,7 +14,7 @@ public abstract class Theme {
 	private String name = null;
 	private Color backgroundColour = Color.WHITE;
 	private List<Style> styles = new ArrayList<Style>();
-	 
+	private HashMap<Integer, Theme> specificThemesForSlides = new HashMap<Integer, Theme>();
 	private List<SlideItem> defaultItems = new ArrayList<SlideItem>();
 	
 	public Theme(String name, List<Style> styles, List<SlideItem> defaultItems) {
@@ -35,6 +38,13 @@ public abstract class Theme {
 		return backgroundColour;
 	}
 
+	public Theme getThemeForSlide(int slidenumber)
+	{
+		
+		return specificThemesForSlides.getOrDefault(slidenumber, this);			
+		
+	}
+	
 	public List<SlideItem> getThemeSlideItems() {
 		return defaultItems;
 	}

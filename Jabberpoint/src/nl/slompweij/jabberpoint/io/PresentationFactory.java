@@ -8,24 +8,25 @@ import nl.slompweij.jabberpoint.model.Presentation;
 
 public class PresentationFactory {
 	
+	private static Accessor accessor = null;
 	public static Presentation createPresentation(String[] parameters) throws IOException {
 		Presentation result = null;
+		
 		if (parameters == null || parameters.length == 0) {
-			result = new DemoPresentation().loadPresentation("");
+			accessor = new DemoPresentation();			
 		} else {
-			Accessor accessor = new XMLAccessor();
-			result = accessor.loadPresentation(parameters[0]);
+			accessor = new XMLAccessor();			
 		}
+		result = accessor.loadPresentation(parameters);
 		return result;
 	}
 	
 	public static void savePresentation(Presentation presentation, String filename) {
-		Accessor accessor = new XMLAccessor();
+		
 		try {
 			accessor.saveFile(presentation, filename);
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, "Failed to save the presentation.");
-			
+			JOptionPane.showMessageDialog(null, "Failed to save the presentation."+e.getMessage());			
 		}
 	}
 }

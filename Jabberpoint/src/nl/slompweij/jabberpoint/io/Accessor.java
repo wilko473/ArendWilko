@@ -17,13 +17,11 @@ import nl.slompweij.jabberpoint.model.Presentation;
  */
 
 public abstract class Accessor {
-	public static final String DEMO_NAME = "Demonstratie presentatie";
-	public static final String DEFAULT_EXTENSION = ".xml";
 
 	public Accessor() {
 	}
 
-	abstract public Presentation loadPresentation(String fn) throws IOException;
+	abstract public Presentation loadPresentation(String[] params) throws IOException;
 
 	abstract public void saveFile(Presentation p, String fn) throws IOException;
 

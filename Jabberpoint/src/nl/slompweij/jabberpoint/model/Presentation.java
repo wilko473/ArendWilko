@@ -45,7 +45,7 @@ public abstract class Presentation extends Observable {
 	}
 	
 	public Theme getTheme() {
-		return theme;	
+		return theme;//.getThemeForSlide(currentSlideNumber);	
 	}
 	
 	public void setTheme(Theme theme) {
@@ -91,7 +91,7 @@ public abstract class Presentation extends Observable {
 	}
 
 	public Theme getThemeForCurrentSlide() {	
-		return theme;
+		return theme.getThemeForSlide(currentSlideNumber);
 	}
 
 }

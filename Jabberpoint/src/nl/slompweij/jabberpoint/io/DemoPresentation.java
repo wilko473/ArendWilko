@@ -25,7 +25,7 @@ import nl.slompweij.jabberpoint.model.SlideItemFactory;
 public class DemoPresentation extends Accessor {
 
 	@Override
-	public Presentation loadPresentation(String fn) throws IOException {
+	public Presentation loadPresentation(String[] fn) throws IOException {
 		
 
 			List<Slide> slides = new ArrayList<Slide>();
