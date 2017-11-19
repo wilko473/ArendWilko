@@ -11,12 +11,10 @@ import java.util.Observer;
 import javax.swing.JComponent;
 
 import nl.slompweij.jabberpoint.factory.SlideItemFactory;
-import nl.slompweij.jabberpoint.model.ImageItem;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Slide;
 import nl.slompweij.jabberpoint.model.SlideItem;
 import nl.slompweij.jabberpoint.model.Style;
-import nl.slompweij.jabberpoint.model.TextItem;
 import nl.slompweij.jabberpoint.model.Theme;
 
 /**
@@ -104,20 +102,10 @@ public class SlideViewerComponent extends JComponent implements Observer {
 	private int drawSlideItem(Graphics g, Theme theme, Rectangle drawingArea, float scale, int y, SlideItem slideItem) {
 		Style itemStyle = theme.getStyle(slideItem.getLevel());
 		
-		ItemDrawing itemDrawing = getItemDrawing(slideItem);
+		ItemDrawing itemDrawing = ItemDrawingFactory.getItemDrawing(slideItem);
 		itemDrawing.draw(drawingArea.x, y, scale, g, itemStyle, this);
-//		slideItem.draw(drawingArea.x, y, scale, g, itemStyle, this);
 		y += itemDrawing.getBoundingBox(g, this, scale, itemStyle).height;
 		return y;
-	}
-	
-	private ItemDrawing getItemDrawing(SlideItem slideItem) {
-		if (slideItem instanceof TextItem) {
-			return new TextDrawing(((TextItem) slideItem).getText());
-		} else if (slideItem instanceof ImageItem) {
-			return new ImageDrawing(((ImageItem) slideItem).getImageName());
-		}
-		return null;
 	}
 
 	private float getScale(Rectangle drawingArea) {
