@@ -37,7 +37,7 @@ public class PresentationController {
 	}
 
 	public Theme getTheme() {
-		return presentation.getTheme();
+		return presentation.getThemeForCurrentSlide();
 	}
 
 	public void setTheme(Theme theme) {

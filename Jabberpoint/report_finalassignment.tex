@@ -257,6 +257,9 @@ Currently we have factories for the classes SlideItem, Slide, Presentation, Styl
 \subsubsection{Strategy pattern}
 The strategy pattern facilitates the varying drawing behaviour of the slide items. The ItemDrawing interface defines the methods needed to draw slide items. The implementation of the draw function is executed according to the TextDrawing or ImageDrawing strategy. If  in the future another type of slide item is introduced, the ItemDrawing interface is implemented for the new algorithm. We looked at the composite pattern as well. SlideViewComponent has draw functionality and has multiple slide items such as text and images with draw functionality as well. The SlideViewComponent would be the composite. However, we judged this pattern as an overkill, because the structure is not a real tree. We already know where the leaves are and there is no need foreseen to interchange leaves with composites (slides in slides).
 
+\subsection{Decorator pattern}
+The decorator pattern allows the Theme to have subthemes. Subthemes in this case are themes which are specific to other slides. The factory will instantiate an Theme using the XML element of the file. From this factory there will be looked for slidethemes. If there is an slidetheme found, it will also be instantiated by this factory. The result will be stored in the Theme using a map, which has the specific slidepage where the theme applies to and the theme itself. By doing so it will be possible to get the theme of an specific page. To use the slidetheme or main theme there is an function which allows to get a specific slidetheme or the main theme of the presentation.
+
 \section{Choices}
 We embrace iterative development and work time-boxed. To respect the given deadline does not change our goal to deliver quality, but the application will not be perfect. This is a choice. We are convinced that we made great steps forward in the design and implementation of the JabberPoint implementation.
 
@@ -278,7 +281,8 @@ The menu item \textit{Open} is implemented to let the user open a new presentati
 
 The menu item \textit{New} is removed, because the user experience of just removing the presentation was not good. The no editing nature regarding presentations did not correspond to the creation of a new empty presentation. In the context of clear and unambiguous functionality, we decided to remove the menu item completely.
 
-The menu item \textit{Save} was kept, because it allows a user to save a theme selection. We decided that if a user has selected a theme for a presentation then the expected behaviour of the application that it would apply that theme to the presentation automatically. The user can store the theme by choosing the menu item.
+The menu item \textit{Save} was kept, because it allows a user to save a theme selection. We decided that if a user has selected a theme for a presentation then the expected behaviour of the application that it would apply that theme to the presentation automatically. The user can store the theme by choosing the menu item. We did implement this partially. Internally we have a structure to be able to save the theme. However we did not completely implement all the parts of the model we need to store. We however have an implementation of a test presentation which contains all the specifics we made. This functionality will be used when loading a file.
+As many textbooks write: saving the file is left as an excercise for the reader.
 
 We decided to keep two switch statements because these are both clear and simple. There is a switch statement in a factory class, where occasionally switches or if statements are necessary to handle different parameter values. And there is a switch statement to handle the key that was pressed by the user. Different implementations like a strategy pattern or something else would result in more complex, thus less maintainable code. That this is a reasonable decision is apparent from the implementation of java itself, where the switch statement is used often in high profile classes such as \texttt{java.awt.event.KeyEvent}.
 
@@ -301,8 +305,23 @@ To facilitate testing the application comes with two XML files:
 \end{itemize}
 
 \subsection{Domain classes}
+\begin{figure}[!htpb]
+  \includegraphics[width=\linewidth]{IO.png}
+  \caption{IO package}
+  \label{fig:packdiag}
+\end{figure}
 
+\begin{figure}[!htpb]
+  \includegraphics[width=\linewidth]{Model.png}
+  \caption{Model package}
+  \label{fig:packdiag}
+\end{figure}
 
+\begin{figure}[!htpb]
+  \includegraphics[width=\linewidth]{Main.png}
+  \caption{Main package and dependencies}
+  \label{fig:packdiag}
+\end{figure}
 \subsection{Show frame, slide and items}
 
 
