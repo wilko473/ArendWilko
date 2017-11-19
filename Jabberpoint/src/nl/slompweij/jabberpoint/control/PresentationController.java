@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import nl.slompweij.jabberpoint.io.PresentationFactory;
 import nl.slompweij.jabberpoint.model.Presentation;
-import nl.slompweij.jabberpoint.model.PresentationFactory;
 import nl.slompweij.jabberpoint.model.Theme;
 import nl.slompweij.jabberpoint.model.ThemeFactory;
 
