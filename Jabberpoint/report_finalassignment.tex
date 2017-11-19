@@ -197,7 +197,7 @@ Other guidelines or best practices are:
 \item Program to interfaces or abstract classes.
 \item Each interface should have one reason to change.
 \end{itemize}
-These principles and guidelines should lead to clarity, high cohesion and low coupling. These are ingredients for a flexible and easy to extend application. We think that is exactly what JabberPoint needs to be. We also incorporated the principle of healthy skeptism.
+These principles and guidelines should lead to clarity, high cohesion and low coupling. These are ingredients for a flexible and easy to extend application. We think that is exactly what JabberPoint needs to be. 
 
 \subsection{Design patterns}
 \subsection{Model-View-Controller (MVC)}
@@ -210,7 +210,7 @@ The MVC pattern separates the model, the controller and the view.
 Especially removing the view dependency from the model promotes flexibility of this design pattern. This prepares for changing or adding views without changes in the model.
 
 \subsection{Observer pattern}
-The Observer pattern decouples the JabberPoint model from the view. This is part of the MVC pattern. The view is registered as a listener, which is notified when the model changes.
+The Observer pattern decouples the JabberPoint model from the view. This is part of the MVC pattern. The view is registered as a listener, which is notified when the model changes. In the model the class Presentation is the Observable and the Observer is the SlideViewComponent class.
 
 \subsection{Factories}
 The design consists of factories to have a single point for object creation for each type of object. This supports the \textit{program to interface} idiom, because the factories create the concrete implementations, while the application only depends on the abstract concepts. The factory classes are named XxxxFactory and are put in the factory package to make them recognizable.
@@ -220,17 +220,21 @@ Currently we have factories for the classes SlideItem, Slide, Presentation, Styl
 The strategy pattern facilitates the varying drawing behaviour of the slide items. The ItemDrawing interface defines the methods needed to draw slide items. The implementation of the draw function is executed according to the TextDrawing or ImageDrawing strategy. If  in the future another type of slide item is introduced, the ItemDrawing interface is implemented for the new algorithm.
 
 \section{Choices}
+We embrace iterative development and work time-boxed. To respect the given deadline does not change our goal to deliver quality, but the application will not be perfect. This is a choice. We are convinced that we made great steps forward in the design and implementation of the JabberPoint implementation.
+
+We redesign the application according to the \textit{Redesign guidelines} document to achieve better quality in design and implementation. This choice results in better maintainability and more flexibility. We see this as an investment in future developments that will prove prosperous in the end. The alternative was to just implement the theme functionality while retaining the bad design and implementations. We could do it even faster and much uglier, without any satisfaction to end the users, the product owners and ourselves.
+
+Bugs are fixed. This choice refers to clear bugs that can be fixed without big risks of introducing unexpected behaviour. Quality of the application and user experience are important. The alternative of leaving all the bugs in was just no option to us.
+
+Given the major redesign and refactoring we decided to label the application version 2.0. We could have chosen version 1.7, but we think a major upgrade, with design and functionality changes, reflects a major version better. 
+
 The report and documentation are in English, not Dutch. English is the obvious choice as software development is often cross-border. Main reason: flexibility regarding the future developments of the product without much initial investments. Besides this, it is a good exercise for students.
 
-Support of the current file format is continued. The application will display the test.xml file correctly as well as files that are in the wild. Customer trust and satisfaction are essential.
+Support for the current file format is continued. The application will display the test.xml file correctly as well as files that are in the wild. Customer trust and satisfaction are essential. If we dropped support then users will get stuck with presentations that can only be opened with older JabberPoint versions.
  
-The file format is allowed to alter, but the implementation must be backwards compatible. This allows the introduction of new features while still supporting all presentations for all users.
+The file format is allowed to alter, but the implementation must be backwards compatible. This allows the introduction of new features while still supporting all presentations for all users. The alternative would be that the presentation file would not contain the theme. This could be done by not saving the theme at all or save it in another file that had to be related somehow with the presentation file. A good user experience and simplicity lead to the choice to alter the file format.
 
-Bugs are fixed. These refers to clear bugs that can be fixed without big risks of introducing unexpected behaviour. Quality of the application and user experience are important.
-
-We redesign the application according to the \textit{Redesign guidelines} document to achieve better quality in design and implementation. This choice shall result in better maintainability and more flexibility. We see this as an investment in future developments that will prove prosperous in the end.
-
-We made a choice to provide the themes with the presentation files. In this case there can be modifications to the theme and when transferring the presentation it is still possible to see the presentation as intended. We made the choice to be backward compatible. When there is no theme information in the presentation file the default theme will be used. In the application we build hard coded several themes. Normally we would have done this done using an specific theme xml file which contains the different themes. However due to the time this would take to implement this we made the choice to just hard code these themes \(they are reachable using the View->Theme menu. \) In the hard coded themes we only changed the font name. We didn't implement different colours in the hard coded themes. Using the presentation file you can set this information.
+We made a choice to provide the themes with the presentation files. In this case there can be modifications to the theme and when transferring the presentation it is still possible to see the presentation as intended. We made the choice to be backward compatible. When there is no theme information in the presentation file the default theme will be used. In the application we build hard coded several themes. Normally we would have done this using an specific theme xml file which contains the different themes. However due to the time this would take to implement this we made the choice to just hard code these themes \(they are reachable using the View->Theme menu. \) In the hard coded themes we only changed the font name. We didn't implement different colours in the hard coded themes. Using the presentation file you can set this information.
 
 The menu item \textit{Open} is implemented to let the user open a new presentation. This menu item did not provide this functionality. We assume that users appreciate this implementation. There were no specifications, but we believe the behaviour of the \textit{Open} menu item is what users expect without much discussion. It can be extended with functionality, such as for example file filters, later on.
 
@@ -238,7 +242,7 @@ The menu item \textit{New} is removed, because the user experience of just remov
 
 The menu item \textit{Save} was kept, because it allows a user to save a theme selection. We decided that if a user has selected a theme for a presentation then the expected behaviour of the application that it would apply that theme to the presentation automatically. The user can store the theme by choosing the menu item.
 
-We decided to keep two switch statements because these are both clear and simple. There is a switch statement in a factory class, where occasionally switches or if statements are necessary to handle different parameter values. And there is a switch statement to handle the key that was pressed by the user. Different implementations like a strategy pattern or something else would result in more complex, thus less maintainable code.
+We decided to keep two switch statements because these are both clear and simple. There is a switch statement in a factory class, where occasionally switches or if statements are necessary to handle different parameter values. And there is a switch statement to handle the key that was pressed by the user. Different implementations like a strategy pattern or something else would result in more complex, thus less maintainable code. That this is a reasonable decision is apparent from the implementation of java itself, where the switch statement is used often in high profile classes such as java.awt.event.KeyEvent.
 
 We decided to start with the implementation of localisation. For now it is kept simple, only supporting the en\_US locale. With this, the application has centralised labels and is prepared for other languages in the future.   
 
