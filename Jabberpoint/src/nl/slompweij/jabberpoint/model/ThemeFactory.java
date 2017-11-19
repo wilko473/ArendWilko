@@ -3,6 +3,7 @@ package nl.slompweij.jabberpoint.model;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.w3c.dom.Element;
@@ -19,7 +20,26 @@ public class ThemeFactory {
 		return new Font(fontname, type, size);
 	}
 	
-	public static Theme createTheme(NodeList theme, NodeList styleList, NodeList defaultItems, String bgColor) {
+	public static Theme createTheme(Element themeElement)
+	{
+		HashMap<Integer, Theme> slideTheme = new HashMap<Integer, Theme>();
+		NodeList styles = themeElement.getElementsByTagName("style");
+		NodeList defaultItems = ((Element)themeElement.getElementsByTagName("defaultItems").item(0)).getElementsByTagName("item");
+		String backgroundColor = themeElement.getElementsByTagName("background").item(0).getTextContent();
+		
+		NodeList slideThemes = themeElement.getElementsByTagName("slidetheme");
+		
+		for(int i=0; i<slideThemes.getLength(); i++)
+		{
+			Element tElement = ((Element)slideThemes.item(i));
+			slideTheme.put(Integer.parseInt(tElement.getAttribute("appliesTo")), createTheme(tElement));
+		}
+		Theme t = ThemeFactory.createTheme(styles, defaultItems, backgroundColor);
+		t.setSlideThemeForSlides(slideTheme);
+		return t;
+	}
+	
+	public static Theme createTheme(NodeList styleList, NodeList defaultItems, String bgColor) {
 		List<Style> styles = new ArrayList<Style>();
 		List<SlideItem> items = new ArrayList<SlideItem>();
 		

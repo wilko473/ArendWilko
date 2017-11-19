@@ -16,6 +16,7 @@ public abstract class Theme {
 	private List<Style> styles = new ArrayList<Style>();
 	private HashMap<Integer, Theme> specificThemesForSlides = new HashMap<Integer, Theme>();
 	private List<SlideItem> defaultItems = new ArrayList<SlideItem>();
+	private int appliesTo;
 	
 	public Theme(String name, List<Style> styles, List<SlideItem> defaultItems) {
 		if (name == null) {
@@ -28,12 +29,19 @@ public abstract class Theme {
 		this.defaultItems = defaultItems;
 		this.name = name;
 		this.styles = styles;
+		
 	}
 
 	public String getName() {
 		return name;
 	}
 
+	public int getAppliesTo()
+	{
+		return appliesTo;
+	}
+	
+	
 	public Color getBackgroundColour() {
 		return backgroundColour;
 	}
@@ -69,5 +77,10 @@ public abstract class Theme {
 	public List<Style> getStyles() {
 		
 		return styles;
+	}
+
+	public void setSlideThemeForSlides(HashMap<Integer, Theme> slideTheme) {
+		this.specificThemesForSlides = slideTheme;
+		
 	}
 }
