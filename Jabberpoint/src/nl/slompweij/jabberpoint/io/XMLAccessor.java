@@ -48,6 +48,8 @@ public class XMLAccessor extends Accessor {
     protected static final String SLIDETITLE = "title";
     protected static final String SLIDE = "slide";
     protected static final String ITEM = "item";
+    protected static final String THEME = "theme";
+    protected static final String TITEL = "titel";
     
     /** tekst van messages */
     protected static final String PCE = "Parser Configuration Exception";
@@ -82,6 +84,7 @@ public class XMLAccessor extends Accessor {
 				
 				
 				List<SlideItem> slideItems = new ArrayList<SlideItem>();
+				
 				NodeList slideItemNodes = xmlSlide.getElementsByTagName(ITEM);
 				maxItems = slideItemNodes.getLength();
 				for (itemNumber = 0; itemNumber < maxItems; itemNumber++) {
@@ -99,10 +102,10 @@ public class XMLAccessor extends Accessor {
 						
 			result=  new ConcretePresentation("titel", slides);
 			
-			NodeList theme = doc.getElementsByTagName("theme");
+			NodeList theme = doc.getElementsByTagName(THEME);
 			
 			if (theme.getLength() > 0) {
-				Element themeElement = (Element)doc.getElementsByTagName("theme").item(0);
+				Element themeElement = (Element)doc.getElementsByTagName(THEME).item(0);
 				
 				Theme t = ThemeFactory.createTheme(themeElement);
 				

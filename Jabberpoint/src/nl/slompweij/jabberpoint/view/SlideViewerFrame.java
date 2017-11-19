@@ -26,7 +26,7 @@ import nl.slompweij.jabberpoint.model.Presentation;
  */
 public class SlideViewerFrame extends JFrame implements PresentationObserver {
 	private static final long serialVersionUID = 3227L;
-	private static final String JABTITLE = "Jabberpoint 2.0 - OU";// TODO: Naar Labels
+	private static final String JABTITLE = "Jabberpoint 2.0 - OU";
 
 	private SlideViewerComponent slideViewerComponent = null;
 

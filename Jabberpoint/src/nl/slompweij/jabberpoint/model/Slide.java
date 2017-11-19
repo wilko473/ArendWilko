@@ -21,7 +21,8 @@ public abstract class Slide {
 	
 	private List<SlideItem> slideItems = null;
 
-	// TODO: title?
+	private String title;
+	
 	public Slide(String title, List<SlideItem> slideItems) {
 		if (title == null) {
 			throw new IllegalArgumentException("Title is required");
@@ -29,16 +30,17 @@ public abstract class Slide {
 		if (slideItems == null) {
 			throw new IllegalArgumentException("Slideitems are required");
 		}
-	
+
+		this.title = title;
 		this.slideItems = slideItems;
+		//slideItems.add(0, SlideItemFactory.createTextItem(0, title));
 	}
 
 	public String getTitle() {
-		if (slideItems != null && !slideItems.isEmpty() && slideItems.get(0) instanceof TextItem) {
-			return ((TextItem) slideItems.get(0)).getText();
-		}
-		throw new IllegalStateException("Title is not set. Should be first element.");
+		return title;
+		//throw new IllegalStateException("Title is not set. Should be first element.");
 	}
+	
 
 	public List<SlideItem> getSlideItems() {
 		return slideItems;

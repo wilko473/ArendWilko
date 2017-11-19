@@ -73,7 +73,7 @@ public class SlideViewerComponent extends JComponent implements Observer {
 		g.setColor(theme.getBackgroundColour());
 		g.fillRect(0, 0, getSize().width, getSize().height);
 
-		// Draw slide number with hardcoded style. TODO: move to theme?
+		
 		g.setFont(labelFont);
 		g.setColor(SLIDENR_COLOR);
 		g.drawString("Slide " + (1 + presentation.getCurrentSlideNumber()) + " of " + presentation.getNumberOfSlides(),
