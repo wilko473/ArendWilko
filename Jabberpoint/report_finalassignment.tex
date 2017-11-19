@@ -180,6 +180,19 @@ Assumption is that altering the supported file format is allowed, as long as the
 
 Assumption is that bug fixes are appreciated as long as functionality is not decreased. The behaviour of the next, previous and goto functionality is buggy. Several scenario's result in failures. For example the goto functionality does not validate input, resulting in errors and faulty behaviour for non-numerical and out of range values. Hitting next or previous slide quickly after each other let the presentation disappear (in MacOS with the menu options shortcuts).   
 
+\subsection {Responsibilities}
+The responsibilities of conceptual classes and interfaces are described here. None of the domain classes in the model package have the responsibility to know how to display themselves. Displaying is the responsibility of the classes in the view package.
+
+\texttt{Presentation} is responsible to know it's title, Theme, Slides and current slide number. It can let someone step through the slides or select a slide, managing the current slide number.
+
+\texttt{Slide} is responsible to know it's title and it's items. It can do nothing more than that.
+
+\texttt{SlideItem} is responsible to know its level. It can do nothing more than that. 
+
+\texttt{Theme} is responsible to know the styling information for a presentation. It can not do anything else. It holds the styles, the slides it applies to, the items to add to slides and background colour. It can do nothing more than that.
+
+\texttt{Style} is responsible to know it's indent, font, font colour, font size and leading.
+
 \section{Design for change}
 We redesigned the JabberPoint application to handle changes well. We all know changes will come. We tried to accommodate change on all levels from software design and architecture to programming code. In this section we elaborate on these levels.
 
