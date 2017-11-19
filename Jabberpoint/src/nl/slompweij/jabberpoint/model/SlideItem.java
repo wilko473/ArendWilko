@@ -1,16 +1,9 @@
 package nl.slompweij.jabberpoint.model;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
-
 /**
  * <p>
- * De abstracte klasse voor een item op een Slide
+ * Represents a slide item.
  * <p>
- * <p>
- * Alle SlideItems hebben tekenfunctionaliteit.
- * </p>
  * 
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
@@ -19,8 +12,8 @@ import java.awt.image.ImageObserver;
  * @version 1.4 2007/07/16 Sylvia Stuurman
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
+ * @version 2.0 2017/11/17 Arend and Wilko
  */
-
 public abstract class SlideItem {
 	private int level = 0;
 
@@ -28,18 +21,7 @@ public abstract class SlideItem {
 		this.level = level;
 	}
 
-	// public SlideItem() {
-	// this(0);
-	// }
-
-	// Geef het level
 	public int getLevel() {
 		return level;
 	}
-
-	// Geef de bounding box TODO: Move // TODO: geen verantwoordelijkheid van model
-	public abstract Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style);
-	
-	// teken het item TODO: move // TODO: geen verantwoordelijkheid van model
-	public abstract void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer);
 }

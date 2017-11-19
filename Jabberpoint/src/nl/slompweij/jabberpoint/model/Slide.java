@@ -21,6 +21,7 @@ public abstract class Slide {
 	
 	private List<SlideItem> slideItems = null;
 
+	// TODO: title?
 	public Slide(String title, List<SlideItem> slideItems) {
 		if (title == null) {
 			throw new IllegalArgumentException("Title is required");
@@ -39,27 +40,7 @@ public abstract class Slide {
 		throw new IllegalStateException("Title is not set. Should be first element.");
 	}
 
-	// verander de titel van de slide
-	// public void setTitle(String newTitle) {
-	// title = newTitle;
-	// }
-
-	// Maak een TextItem van String, en voeg het TextItem toe
-	// public void append(int level, String message) {
-	// append(new TextItem(level, message));
-	// }
-
-	// geef het betreffende SlideItem
-	// public SlideItem getSlideItem(int number) {
-	// return (SlideItem)items.elementAt(number);
-	// }
-
 	public List<SlideItem> getSlideItems() {
 		return slideItems;
 	}
-
-	// geef de afmeting van de Slide
-	// public int getSize() {
-	// return items.size();
-	// }
 }

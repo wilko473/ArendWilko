@@ -1,17 +1,11 @@
 package nl.slompweij.jabberpoint.model;
-import java.awt.Rectangle;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.File;
 
-import javax.imageio.ImageIO;
-
-import java.io.IOException;
-
-
-/** <p>De klasse voor een Bitmap item</p>
- * <p>Bitmap items hebben de verantwoordelijkheid om zichzelf te tekenen.</p>
+/**
+ * <p>
+ * Represents an image item. 
+ * The ImageDrawing class is responsible for the drawing.
+ * </p>
+ * 
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -19,51 +13,18 @@ import java.io.IOException;
  * @version 1.4 2007/07/16 Sylvia Stuurman
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
-*/
+ * @version 2.0 2017/11/18 Arend and Wilko
+ */
 public class ImageItem extends SlideItem {
-  private BufferedImage bufferedImage;
-  private String imageName;
-  
-  protected static final String FILE = "Bestand ";
-  protected static final String NOTFOUND = " niet gevonden";
+	private String imageName;
 
-// level staat voor het item-level; name voor de naam van het bestand met de afbeelding
-	public ImageItem(int level, String name) {
+	public ImageItem(int level, String imageName) {
 		super(level);
-		imageName = name;
-		try {
-			bufferedImage = ImageIO.read(new File(imageName));
-		}
-		catch (IOException e) {
-			System.err.println(FILE + imageName + NOTFOUND) ;
-		}
+		this.imageName = imageName;
 	}
 
-// Een leeg bitmap-item
-//	public ImageItem() {
-//		this(0, null);
-//	}
-
-// geef de bestandsnaam van de afbeelding
-	public String getName() {
+	public String getImageName() {
 		return imageName;
-	}
-
-// geef de bounding box van de afbeelding
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-		return new Rectangle((int) (myStyle.getIndent() * scale), 0,
-				(int) (bufferedImage.getWidth(observer) * scale),
-				((int) (myStyle.getLeading() * scale)) + 
-				(int) (bufferedImage.getHeight(observer) * scale));
-	}
-
-// teken de afbeelding
-	// TODO: geen verantwoordelijkheid van model
-	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
-		int width = x + (int) (myStyle.getIndent() * scale);
-		int height = y + (int) (myStyle.getLeading() * scale);
-		g.drawImage(bufferedImage, width, height,(int) (bufferedImage.getWidth(observer)*scale),
-                (int) (bufferedImage.getHeight(observer)*scale), observer);
 	}
 
 	public String toString() {
