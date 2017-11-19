@@ -2,10 +2,9 @@ package nl.slompweij.jabberpoint.main;
 
 import nl.slompweij.jabberpoint.control.ApplicationController;
 import nl.slompweij.jabberpoint.control.PresentationController;
-import nl.slompweij.jabberpoint.factory.ThemeFactory;
 import nl.slompweij.jabberpoint.view.SlideViewerFrame;
 
-/** JabberPoint Main Programma
+/** JabberPoint Main Program.
  * <p>This program is distributed under the terms of the accompanying
  * COPYRIGHT.txt file (which is NOT the GNU General Public License).
  * Please read it. Your use of the software constitutes acceptance
@@ -21,20 +20,17 @@ import nl.slompweij.jabberpoint.view.SlideViewerFrame;
  */
 
 public class JabberPoint {
-	
-	
 	private static final String JABVERSION = "2.0";
 
 	/** Het Main Programma */
 	public static void main(String args[]) {
-		PresentationController presController = new PresentationController(ThemeFactory.createTheme());
-		
+		PresentationController presController = new PresentationController();
+
 		ApplicationController appController = new ApplicationController(presController);
-		
+
 		SlideViewerFrame frame = new SlideViewerFrame(JABVERSION, appController);
 		appController.setFrame(frame);
 		frame.addKeyListener(appController);
 		appController.loadPresentation(args);
-		
 	}
 }

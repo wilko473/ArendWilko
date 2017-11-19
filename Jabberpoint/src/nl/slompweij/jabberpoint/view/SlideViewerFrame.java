@@ -23,7 +23,6 @@ import nl.slompweij.jabberpoint.control.ApplicationController;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  * @version 2.0 2017/11/16 Arend and Wilko
  */
-
 public class SlideViewerFrame extends JFrame {
 	private static final long serialVersionUID = 3227L;
 	private static final String JABTITLE = "Jabberpoint 2.0 - OU";// TODO: Naar Labels

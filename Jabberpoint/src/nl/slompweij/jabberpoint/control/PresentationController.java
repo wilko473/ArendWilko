@@ -5,18 +5,17 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 import nl.slompweij.jabberpoint.factory.PresentationFactory;
+import nl.slompweij.jabberpoint.factory.ThemeFactory;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Theme;
 
 public class PresentationController {
 
 	private Presentation presentation = null;
-	private Theme defaultTheme = null;
-	
-	
-	public PresentationController(Theme defaultTheme) {
-		this.defaultTheme = defaultTheme;
+
+	public PresentationController() {
 	}
+
 	public void nextSlide() {
 		presentation.nextSlide();
 	}
@@ -33,34 +32,24 @@ public class PresentationController {
 		return presentation;
 	}
 
-	/*public void setPresentation(Presentation p) {
-		presentation = p;
-		setCurrentSlideNumber(0);
-		if (presentation.getTheme() == null) {
-			presentation.setTheme(defaultTheme);
-		}
-	}*/
-
 	public Theme getTheme() {
 		return presentation.getTheme();
 	}
-	public void setTheme(Theme theme) {		
+
+	public void setTheme(Theme theme) {
 		presentation.setTheme(theme);
-		
 	}
+
 	public void setPresentation(String[] params) {
 		try {
 			presentation = PresentationFactory.createPresentation(params);
-		} catch (IOException e) 
-		{	
-			JOptionPane.showMessageDialog(null, "Bestand "+params[0]+" kon niet worden gelezen");
-			
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "Bestand " + params[0] + " kon niet worden gelezen");
 		}
 		setCurrentSlideNumber(0);
 		if (presentation.getTheme() == null) {
-			presentation.setTheme(defaultTheme);
+			presentation.setTheme(ThemeFactory.createDefaultTheme());
 		}
-		
-	}	
-	
+
+	}
 }
