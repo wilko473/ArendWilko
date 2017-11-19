@@ -9,6 +9,10 @@ import nl.slompweij.jabberpoint.factory.ThemeFactory;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Theme;
 
+/**
+ * Controller class for presentation related functionality.
+ * @author Arend and Wilko
+ */
 public class PresentationController {
 
 	private Presentation presentation = null;
@@ -44,12 +48,11 @@ public class PresentationController {
 		try {
 			presentation = PresentationFactory.createPresentation(params);
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, "Bestand " + params[0] + " kon niet worden gelezen");
+			JOptionPane.showMessageDialog(null, "Unable to read file " + params[0] + ".");
 		}
 		setCurrentSlideNumber(0);
 		if (presentation.getTheme() == null) {
 			presentation.setTheme(ThemeFactory.createDefaultTheme());
 		}
-
 	}
 }
