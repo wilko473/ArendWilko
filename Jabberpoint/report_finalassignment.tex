@@ -274,6 +274,17 @@ We decided to start with the implementation of localisation. For now it is kept 
 We designed the package structure according to the package-by-layer style. Generally, this style is easier to understand and more common than the package-by-feature style. If in the future a new view, like a web application, is required then we expect it to be easier to support as the view and controller classes are in well defined layers with well defined dependencies. Of course, the package-by-future style has advantages too, but we still preferred the layer style.
 
 \section{Sourcecode}
+\subsection{Startup and load presentation}
+The entry point of the application is the \texttt{JabberPoint} class which is located in the main package. The main method starts with the creation of the two controller classes: \texttt{PresentationController} and \texttt{ApplicationController}. The view is created via the \texttt{SlideViewerFrame} class and the \texttt{ApplicationController} is registered as a listener to it. The view is then registered as a listener or observer to the \texttt{Presentation}. Now, the application setup is finished so is the \texttt{JabberPoint} class. The last thing to  do is calling the method \texttt{loadPresentation} of the \texttt{ApplicationController} passing the optional command line parameter.
+
+The \texttt{ApplicationController} the delegates the creation of a \texttt{Presentation} to the \texttt{PresentationController} and the \texttt{PresentationFactory}. The method \texttt{createPresentation}  receives the optional command line parameter. The \texttt{PresentationFactory} instantiates an \texttt{Accessor} to load and return a \texttt{Presentation}. If no startup parameter was received then \texttt{DemoPresentation} is returning the \texttt{Presentation}, otherwise \texttt{XMLAccessor} will return a \texttt{Presentation} loaded from disk.
+
+The \texttt{ApplicationController} tells the view, which implements the \texttt{PresentationObserver} interface to listen to the created \texttt{Presentation} object. Setting the current slide to 0 triggers the view to display the current \texttt{Slide} of the \texttt{Presentation}.
+
+\subsection{Domain classes}
+
+
+\subsection{Show frame, slide and items}
 
 
 
