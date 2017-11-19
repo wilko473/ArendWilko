@@ -215,6 +215,9 @@ The Observer pattern decouples the JabberPoint model from the view. This is part
 The design consists of factories to have a single point for object creation for each type of object. This supports the \textit{program to interface} idiom, because the factories create the concrete implementations, while the application only depends on the abstract concepts. The factory classes are named XxxxFactory and are put in the factory package to make them recognizable.
 Currently we have factories for the classes SlideItem, Slide, Presentation, Style and Theme. With the factories we provide an single way to instantiate the classes needed.
 
+\subsection{Strategy pattern}
+The strategy pattern facilitates the varying drawing behaviour of the slide items. The ItemDrawing interface defines the methods needed to draw slide items. The implementation of the draw function is executed according to the TextDrawing or ImageDrawing strategy. If  in the future another type of slide item is introduced, the ItemDrawing interface is implemented for the new algorithm.
+
 \section{Choices}
 The report and documentation are in English, not Dutch. English is the obvious choice as software development is often cross-border. Main reason: flexibility regarding the future developments of the product without much initial investments. Besides this, it is a good exercise for students.
 
