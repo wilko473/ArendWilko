@@ -180,12 +180,14 @@ Assumption is that altering the supported file format is allowed, as long as the
 
 Assumption is that bug fixes are appreciated as long as functionality is not decreased. The behaviour of the next, previous and goto functionality is buggy. Several scenario's result in failures. For example the goto functionality does not validate input, resulting in errors and faulty behaviour for non-numerical and out of range values. Hitting next or previous slide quickly after each other let the presentation disappear (in MacOS with the menu options shortcuts).   
 
-\section{Design}
+\section{Design for change}
+We redesigned the JabberPoint application to handle changes well. We all know changes will come. We tried to accommodate change on all levels from software design and architecture to programming code. In this section we elaborate on these levels.
+
 \subsection{Guidelines and principles} 
 Design decisions during the design process are guided by design principles and guidelines that we describe briefly.
 We have a couple of design principles:
 \begin{itemize}
-\item Single responsibility principle. Do one thing and do it well, without side effects. Separate responsibilities lead to high cohesion. An class should be responsible for itself.
+\item Single responsibility principle. Do one thing and do it well, without side effects. Separated responsibilities lead to high cohesion. A class should be responsible for itself.
 \item Open-closed principle. Open for extension, closed for modification. Make future changes without breaking existing classes.
 \item Don't repeat yourself principle. There must be a lack of redundancy. Rules should be implemented once. One rule, one place.
 \item Liskov substitution principle. Subtypes should be substitutable for base types. Well designed inheritance. 
@@ -199,8 +201,26 @@ Other guidelines or best practices are:
 \end{itemize}
 These principles and guidelines should lead to clarity, high cohesion and low coupling. These are ingredients for a flexible and easy to extend application. We think that is exactly what JabberPoint needs to be. 
 
+\subsection{Package structure}
+We designed the package structure according to the package-by-layer style (see choices).
+The package dependencies are hierarchical and non-circular. 
+
+
+
+\subsection{Programming guidelines}
+At the code level we improved the JabberPoint application significantly.
+A list of optimisations :
+\begin{itemize} 
+\item Incorporate general code standards.
+\item Naming conventions for variables, constants, methods, classes and packages
+\item Access modifiers for constants, variables and methods 
+\item Javadoc when necessary
+\item Removed duplicate constants, variables, methods and code.
+\end{itemize} 
+We expect it would be even better if we had incorporated specialised tools to check things such as the code style, the structuring and bugs. 
+
 \subsection{Design patterns}
-\subsection{Model-View-Controller (MVC)}
+\subsubsection{Model-View-Controller (MVC)}
 The MVC pattern separates the model, the controller and the view.   
 \begin{itemize}
 \item The model manages the data, logic and rules of the application.
@@ -209,15 +229,15 @@ The MVC pattern separates the model, the controller and the view.
 \end{itemize}
 Especially removing the view dependency from the model promotes flexibility of this design pattern. This prepares for changing or adding views without changes in the model.
 
-\subsection{Observer pattern}
+\subsubsection{Observer pattern}
 The Observer pattern decouples the JabberPoint model from the view. This is part of the MVC pattern. The view is registered as a listener, which is notified when the model changes. In the model the class Presentation is the Observable and the Observer is the SlideViewComponent class.
 
-\subsection{Factories}
+\subsubsection{Factories}
 The design consists of factories to have a single point for object creation for each type of object. This supports the \textit{program to interface} idiom, because the factories create the concrete implementations, while the application only depends on the abstract concepts. The factory classes are named XxxxFactory and are put in the factory package to make them recognizable.
 Currently we have factories for the classes SlideItem, Slide, Presentation, Style and Theme. With the factories we provide an single way to instantiate the classes needed.
 
-\subsection{Strategy pattern}
-The strategy pattern facilitates the varying drawing behaviour of the slide items. The ItemDrawing interface defines the methods needed to draw slide items. The implementation of the draw function is executed according to the TextDrawing or ImageDrawing strategy. If  in the future another type of slide item is introduced, the ItemDrawing interface is implemented for the new algorithm.
+\subsubsection{Strategy pattern}
+The strategy pattern facilitates the varying drawing behaviour of the slide items. The ItemDrawing interface defines the methods needed to draw slide items. The implementation of the draw function is executed according to the TextDrawing or ImageDrawing strategy. If  in the future another type of slide item is introduced, the ItemDrawing interface is implemented for the new algorithm. We looked at the composite pattern as well. SlideViewComponent has draw functionality and has multiple slide items such as text and images with draw functionality as well. The SlideViewComponent would be the composite. However, we judged this pattern as an overkill, because the structure is not a real tree. We already know where the leaves are and there is no need foreseen to interchange leaves with composites (slides in slides).
 
 \section{Choices}
 We embrace iterative development and work time-boxed. To respect the given deadline does not change our goal to deliver quality, but the application will not be perfect. This is a choice. We are convinced that we made great steps forward in the design and implementation of the JabberPoint implementation.
@@ -246,6 +266,9 @@ We decided to keep two switch statements because these are both clear and simple
 
 We decided to start with the implementation of localisation. For now it is kept simple, only supporting the en\_US locale. With this, the application has centralised labels and is prepared for other languages in the future.   
 
+We designed the package structure according to the package-by-layer style. Generally, this style is easier to understand and more common than the package-by-feature style. If in the future a new view, like a web application, is required then we expect it to be easier to support as the view and controller classes are in well defined layers with well defined dependencies. Of course, the package-by-future style has advantages too, but we still preferred the layer style.
+
 \section{Sourcecode}
+
 
 \end{document}
