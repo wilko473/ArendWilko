@@ -92,7 +92,7 @@ public class SlideViewerComponent extends JComponent implements Observer {
 
 		SlideItem slideItemTitle = SlideItemFactory.createTextItem(0, slide.getTitle());
 
-		y += drawSlideItem(g, theme, drawingArea, scale, y, slideItemTitle);
+		y = drawSlideItem(g, theme, drawingArea, scale, y, slideItemTitle);
 
 		for (SlideItem slideItem : slide.getSlideItems()) {
 			y = drawSlideItem(g, theme, drawingArea, scale, y, slideItem);
