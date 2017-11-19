@@ -1,4 +1,4 @@
-package nl.slompweij.jabberpoint.factory;
+package nl.slompweij.jabberpoint.model;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -8,11 +8,6 @@ import java.util.List;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
-
-import nl.slompweij.jabberpoint.model.ConcreteTheme;
-import nl.slompweij.jabberpoint.model.SlideItem;
-import nl.slompweij.jabberpoint.model.Style;
-import nl.slompweij.jabberpoint.model.Theme;
 
 public class ThemeFactory {
 

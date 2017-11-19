@@ -15,17 +15,17 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import nl.slompweij.jabberpoint.factory.SlideFactory;
-import nl.slompweij.jabberpoint.factory.SlideItemFactory;
-import nl.slompweij.jabberpoint.factory.ThemeFactory;
 import nl.slompweij.jabberpoint.model.ConcretePresentation;
 import nl.slompweij.jabberpoint.model.ImageItem;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Slide;
+import nl.slompweij.jabberpoint.model.SlideFactory;
 import nl.slompweij.jabberpoint.model.SlideItem;
+import nl.slompweij.jabberpoint.model.SlideItemFactory;
 import nl.slompweij.jabberpoint.model.Style;
 import nl.slompweij.jabberpoint.model.TextItem;
 import nl.slompweij.jabberpoint.model.Theme;
+import nl.slompweij.jabberpoint.model.ThemeFactory;
 
 
 /** XMLAccessor, reads and writes XML files

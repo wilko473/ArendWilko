@@ -1,4 +1,4 @@
-package nl.slompweij.jabberpoint.factory;
+package nl.slompweij.jabberpoint.model;
 
 import java.io.IOException;
 
@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
 import nl.slompweij.jabberpoint.io.Accessor;
 import nl.slompweij.jabberpoint.io.DemoPresentation;
 import nl.slompweij.jabberpoint.io.XMLAccessor;
-import nl.slompweij.jabberpoint.model.Presentation;
 
 public class PresentationFactory {
 	

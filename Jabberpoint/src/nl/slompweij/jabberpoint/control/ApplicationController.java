@@ -3,9 +3,9 @@ package nl.slompweij.jabberpoint.control;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import nl.slompweij.jabberpoint.factory.PresentationFactory;
-import nl.slompweij.jabberpoint.factory.ThemeFactory;
+import nl.slompweij.jabberpoint.model.PresentationFactory;
 import nl.slompweij.jabberpoint.model.Theme;
+import nl.slompweij.jabberpoint.model.ThemeFactory;
 import nl.slompweij.jabberpoint.view.SlideViewerFrame;
 
 public class ApplicationController extends KeyAdapter {

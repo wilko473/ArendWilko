@@ -1,11 +1,7 @@
-package nl.slompweij.jabberpoint.factory;
+package nl.slompweij.jabberpoint.model;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
-
-import nl.slompweij.jabberpoint.model.ImageItem;
-import nl.slompweij.jabberpoint.model.SlideItem;
-import nl.slompweij.jabberpoint.model.TextItem;
 
 public class SlideItemFactory {
 	

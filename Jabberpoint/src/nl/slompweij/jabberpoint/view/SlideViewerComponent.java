@@ -10,10 +10,10 @@ import java.util.Observer;
 
 import javax.swing.JComponent;
 
-import nl.slompweij.jabberpoint.factory.SlideItemFactory;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Slide;
 import nl.slompweij.jabberpoint.model.SlideItem;
+import nl.slompweij.jabberpoint.model.SlideItemFactory;
 import nl.slompweij.jabberpoint.model.Style;
 import nl.slompweij.jabberpoint.model.Theme;
 

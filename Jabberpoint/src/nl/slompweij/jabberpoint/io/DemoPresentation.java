@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import nl.slompweij.jabberpoint.factory.SlideFactory;
-import nl.slompweij.jabberpoint.factory.SlideItemFactory;
 import nl.slompweij.jabberpoint.model.ConcretePresentation;
 import nl.slompweij.jabberpoint.model.Presentation;
 import nl.slompweij.jabberpoint.model.Slide;
+import nl.slompweij.jabberpoint.model.SlideFactory;
 import nl.slompweij.jabberpoint.model.SlideItem;
+import nl.slompweij.jabberpoint.model.SlideItemFactory;
 
 /** Een ingebouwde demo-presentatie
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
