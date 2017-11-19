@@ -46,10 +46,11 @@ Furthermore we looked together at the git repository, the usage of github.com an
 
 4. About a week after the first meeting, we met again to discuss our progress. This time at Arends place. We still had a lot to discuss. We went through the code, annotating it with TODOs at places with strange code or remarkable design. We went through two more documents from you learn: \textit{Guidelines redesign} and \textit{Beoordeling Design patterns}. The work to be done seemed more than the expectations we had after the first meeting. Again we agreed to do both the work with focus on different items. Arend puts together both reports and looks at the design, while Wilko does the CVA, choices and description of design patterns to be used.
 
-5. We both continued work on the assignment separately, but together. Thinking and about the problem analysis and the design, drawing diagrams, looking at code and already cleaning up code.
+5. We both continued work on the assignment separately, but together. Thinking and about the problem analysis and the design, drawing diagrams, looking at code and already cleaning up code. 
 
-6. Three days before the deadline we met again. We discussed our progress and the priorities of the  
+6. Three days before the deadline we met again. We discussed our progress and the priorities of the remaining work. 
 
+7. We divided the work again and started polishing things up. We had to put an amount of work to document all the notes and diagrams we had written and drawn during our discussions. Tools to draw UML diagrams are handy and even indispensable, but during discussions and brainstorming a paper and pen are superior.
 
 \section{Problem analysis}
 The assignment is to redesign the existing application JabberPoint to support multiple themes. The feature request is to let the user pick one of the available themes and apply the new styles to the content of the presentation. The selected theme should be applied to the current application and the current slide.
@@ -239,7 +240,7 @@ The menu item \textit{Save} was kept, because it allows a user to save a theme s
 
 We decided to keep two switch statements because these are both clear and simple. There is a switch statement in a factory class, where occasionally switches or if statements are necessary to handle different parameter values. And there is a switch statement to handle the key that was pressed by the user. Different implementations like a strategy pattern or something else would result in more complex, thus less maintainable code.
 
-We decided to start with the implementation of localisation. For now it is kept simple, only supporting the en_US locale. With this, the application has centralised labels and is prepared for other languages in the future.   
+We decided to start with the implementation of localisation. For now it is kept simple, only supporting the en\_US locale. With this, the application has centralised labels and is prepared for other languages in the future.   
 
 \section{Sourcecode}
 
