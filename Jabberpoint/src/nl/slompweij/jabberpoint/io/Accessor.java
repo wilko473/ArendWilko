@@ -17,8 +17,6 @@ import nl.slompweij.jabberpoint.model.Presentation;
  */
 
 public abstract class Accessor {
-	public static final String DEMO_NAME = "Demonstratie presentatie";
-	public static final String DEFAULT_EXTENSION = ".xml";
 
 	public Accessor() {
 	}
