@@ -3,10 +3,10 @@ import java.awt.Color;
 import java.awt.Font;
 
 /** <p>Style staat voor Indent, Color, Font and Leading.</p>
- * <p>TODO waarschijnlijk moet de koppeling indirect, gezien deze opmerking: 
+ * 
  * De koppeling tussen style-nummer en item-level is nu direct:
  * in Slide wordt de style opgehaald voor een item
- * met als style-nummer het item-level.</p>
+ * met als style-nummer het item-level.
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman

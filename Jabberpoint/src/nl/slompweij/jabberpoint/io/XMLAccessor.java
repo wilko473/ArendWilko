@@ -96,9 +96,8 @@ public class XMLAccessor extends Accessor {
 				
 				Slide slide = SlideFactory.createSlide(slideTitle, slideItems);
 				slides.add(slide);
-			}
-			
-			// TODO: Magic strings laten verdwijnen
+			}		
+	
 						
 			result=  new ConcretePresentation("titel", slides);
 			
