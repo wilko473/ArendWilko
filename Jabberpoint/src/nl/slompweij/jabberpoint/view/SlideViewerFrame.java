@@ -3,11 +3,12 @@ package nl.slompweij.jabberpoint.view;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Observable;
 
 import javax.swing.JFrame;
 
 import nl.slompweij.jabberpoint.control.ApplicationController;
+import nl.slompweij.jabberpoint.control.PresentationObserver;
+import nl.slompweij.jabberpoint.model.Presentation;
 
 /**
  * <p>
@@ -23,7 +24,7 @@ import nl.slompweij.jabberpoint.control.ApplicationController;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  * @version 2.0 2017/11/16 Arend and Wilko
  */
-public class SlideViewerFrame extends JFrame {
+public class SlideViewerFrame extends JFrame implements PresentationObserver {
 	private static final long serialVersionUID = 3227L;
 	private static final String JABTITLE = "Jabberpoint 2.0 - OU";// TODO: Naar Labels
 
@@ -52,7 +53,8 @@ public class SlideViewerFrame extends JFrame {
 		setVisible(true);
 	}
 
-	public void observe(Observable presentation) {
-		presentation.addObserver(slideViewerComponent);
+	@Override
+	public void observe(Presentation presentation) {
+		presentation.addObserver(slideViewerComponent);	
 	}
 }

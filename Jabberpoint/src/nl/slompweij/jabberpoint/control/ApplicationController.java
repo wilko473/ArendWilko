@@ -6,12 +6,11 @@ import java.awt.event.KeyEvent;
 import nl.slompweij.jabberpoint.io.PresentationFactory;
 import nl.slompweij.jabberpoint.model.Theme;
 import nl.slompweij.jabberpoint.model.ThemeFactory;
-import nl.slompweij.jabberpoint.view.SlideViewerFrame;
 
 public class ApplicationController extends KeyAdapter {
 
 	private PresentationController presentationController;
-	private SlideViewerFrame frame;
+	private PresentationObserver presentationObserver = null;
 
 	public ApplicationController(PresentationController presController) {
 		presentationController = presController;
@@ -57,7 +56,7 @@ public class ApplicationController extends KeyAdapter {
 
 	public void loadPresentation(String[] params) {
 		presentationController.setPresentation(params);
-		frame.observe(presentationController.getPresentation());
+		presentationObserver.observe(presentationController.getPresentation());
 		presentationController.setCurrentSlideNumber(0);
 	}
 
@@ -73,7 +72,7 @@ public class ApplicationController extends KeyAdapter {
 		presentationController.setTheme(ThemeFactory.getPredefined(optie));
 	}
 
-	public void setFrame(SlideViewerFrame frame) {
-		this.frame = frame;
+	public void setPresentationObserver(PresentationObserver presentationObserver) {
+		this.presentationObserver = presentationObserver;
 	}
 }
