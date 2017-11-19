@@ -267,7 +267,7 @@ The menu item \textit{New} is removed, because the user experience of just remov
 
 The menu item \textit{Save} was kept, because it allows a user to save a theme selection. We decided that if a user has selected a theme for a presentation then the expected behaviour of the application that it would apply that theme to the presentation automatically. The user can store the theme by choosing the menu item.
 
-We decided to keep two switch statements because these are both clear and simple. There is a switch statement in a factory class, where occasionally switches or if statements are necessary to handle different parameter values. And there is a switch statement to handle the key that was pressed by the user. Different implementations like a strategy pattern or something else would result in more complex, thus less maintainable code. That this is a reasonable decision is apparent from the implementation of java itself, where the switch statement is used often in high profile classes such as java.awt.event.KeyEvent.
+We decided to keep two switch statements because these are both clear and simple. There is a switch statement in a factory class, where occasionally switches or if statements are necessary to handle different parameter values. And there is a switch statement to handle the key that was pressed by the user. Different implementations like a strategy pattern or something else would result in more complex, thus less maintainable code. That this is a reasonable decision is apparent from the implementation of java itself, where the switch statement is used often in high profile classes such as \texttt{java.awt.event.KeyEvent}.
 
 We decided to start with the implementation of localisation. For now it is kept simple, only supporting the en\_US locale. With this, the application has centralised labels and is prepared for other languages in the future.   
 
@@ -280,6 +280,12 @@ The entry point of the application is the \texttt{JabberPoint} class which is lo
 The \texttt{ApplicationController} the delegates the creation of a \texttt{Presentation} to the \texttt{PresentationController} and the \texttt{PresentationFactory}. The method \texttt{createPresentation}  receives the optional command line parameter. The \texttt{PresentationFactory} instantiates an \texttt{Accessor} to load and return a \texttt{Presentation}. If no startup parameter was received then \texttt{DemoPresentation} is returning the \texttt{Presentation}, otherwise \texttt{XMLAccessor} will return a \texttt{Presentation} loaded from disk.
 
 The \texttt{ApplicationController} tells the view, which implements the \texttt{PresentationObserver} interface to listen to the created \texttt{Presentation} object. Setting the current slide to 0 triggers the view to display the current \texttt{Slide} of the \texttt{Presentation}.
+
+To facilitate testing the application comes with two XML files: 
+\begin{itemize}
+\item \texttt{test.xml}: the original file delivered with the assignment
+\item \texttt{test-new.xml}: showcase of new functionality
+\end{itemize}
 
 \subsection{Domain classes}
 
