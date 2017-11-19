@@ -262,7 +262,7 @@ Currently we have factories for the classes SlideItem, Slide, Presentation, Styl
 \subsubsection{Strategy pattern}
 The strategy pattern facilitates the varying drawing behaviour of the slide items. The ItemDrawing interface defines the methods needed to draw slide items. The implementation of the draw function is executed according to the TextDrawing or ImageDrawing strategy. If  in the future another type of slide item is introduced, the ItemDrawing interface is implemented for the new algorithm. We looked at the composite pattern as well. SlideViewComponent has draw functionality and has multiple slide items such as text and images with draw functionality as well. The SlideViewComponent would be the composite. However, we judged this pattern as an overkill, because the structure is not a real tree. We already know where the leaves are and there is no need foreseen to interchange leaves with composites (slides in slides).
 
-\subsection{Decorator pattern}
+\subsubsection{Decorator pattern}
 The decorator pattern allows the Theme to have subthemes. Subthemes in this case are themes which are specific to other slides. The factory will instantiate an Theme using the XML element of the file. From this factory there will be looked for slidethemes. If there is an slidetheme found, it will also be instantiated by this factory. The result will be stored in the Theme using a map, which has the specific slidepage where the theme applies to and the theme itself. By doing so it will be possible to get the theme of an specific page. To use the slidetheme or main theme there is an function which allows to get a specific slidetheme or the main theme of the presentation.
 
 \section{Choices}
@@ -324,7 +324,7 @@ To facilitate testing the application comes with two XML files:
 
 \begin{figure}[!htpb]
   \includegraphics[width=\linewidth]{ViewPackage.png}
-  \caption{Main package and dependencies}
+  \caption{View package}
   \label{fig:packdiag}
 \end{figure}
 \begin{figure}[!htpb]
