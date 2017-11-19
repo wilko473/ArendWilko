@@ -35,6 +35,14 @@
                     <body>0</body>
                   </defaultValue>
                 </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_fCbCks1nEeeRsuQdJ4MonA" name="theme" type="_zaGecs1IEeeRsuQdJ4MonA" association="_fCYmUM1nEeeRsuQdJ4MonA">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fCbpoM1nEeeRsuQdJ4MonA"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fCbpoc1nEeeRsuQdJ4MonA" value="1"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_vyRrE81nEeeRsuQdJ4MonA" name="slide" type="_zaBl8M1IEeeRsuQdJ4MonA" association="_vyRrEM1nEeeRsuQdJ4MonA">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vySSIM1nEeeRsuQdJ4MonA"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_vySSIc1nEeeRsuQdJ4MonA" value="1"/>
+                </ownedAttribute>
                 <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_zaqfIc1IEeeRsuQdJ4MonA" name="Presentation" specification="_zahVMM1IEeeRsuQdJ4MonA">
                   <language>JAVA</language>
                   <body>&#xD;
@@ -185,9 +193,9 @@
                   </defaultValue>
                 </ownedAttribute>
                 <ownedAttribute xmi:type="uml:Property" xmi:id="_0LrFUM1IEeeRsuQdJ4MonA" name="title" visibility="private" type="_zZ8tcM1IEeeRsuQdJ4MonA" isUnique="false"/>
-                <ownedAttribute xmi:type="uml:Property" xmi:id="_3iyVo81JEeeRsuQdJ4MonA" name="presentation" type="_zWLAsM1IEeeRsuQdJ4MonA" association="_3iyVoM1JEeeRsuQdJ4MonA">
-                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3iy8sM1JEeeRsuQdJ4MonA"/>
-                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3iy8sc1JEeeRsuQdJ4MonA" value="1"/>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_t5SJIc1nEeeRsuQdJ4MonA" name="slideitem" type="_0Lmz4M1IEeeRsuQdJ4MonA" association="_t5RiEM1nEeeRsuQdJ4MonA">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_t5SJIs1nEeeRsuQdJ4MonA"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_t5SJI81nEeeRsuQdJ4MonA" value="1"/>
                 </ownedAttribute>
                 <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_0LxzAM1IEeeRsuQdJ4MonA" name="Slide" specification="_0LrFUc1IEeeRsuQdJ4MonA">
                   <language>JAVA</language>
@@ -398,9 +406,9 @@
                     <body>0</body>
                   </defaultValue>
                 </ownedAttribute>
-                <ownedAttribute xmi:type="uml:Property" xmi:id="_V7OwMs1JEeeRsuQdJ4MonA" name="slide" type="_zaBl8M1IEeeRsuQdJ4MonA" association="_V7OJIM1JEeeRsuQdJ4MonA">
-                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_V7PXQM1JEeeRsuQdJ4MonA"/>
-                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_V7PXQc1JEeeRsuQdJ4MonA" value="1"/>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_jQvdIs1nEeeRsuQdJ4MonA" name="theme" type="_zaGecs1IEeeRsuQdJ4MonA" association="_jQu2EM1nEeeRsuQdJ4MonA">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jQwEMM1nEeeRsuQdJ4MonA"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jQwEMc1nEeeRsuQdJ4MonA" value="1"/>
                 </ownedAttribute>
                 <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_E47s0M1JEeeRsuQdJ4MonA" name="SlideItem" specification="_E420Us1JEeeRsuQdJ4MonA">
                   <language>JAVA</language>
@@ -531,6 +539,10 @@
                 </ownedOperation>
               </packagedElement>
               <packagedElement xmi:type="uml:Class" xmi:id="_1ojTAM1IEeeRsuQdJ4MonA" name="StyleFactory" visibility="public">
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_0wkKA81nEeeRsuQdJ4MonA" name="style" type="_00XdAM1IEeeRsuQdJ4MonA" association="_0wkKAM1nEeeRsuQdJ4MonA">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0wkxEM1nEeeRsuQdJ4MonA"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0wkxEc1nEeeRsuQdJ4MonA" value="1"/>
+                </ownedAttribute>
                 <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_1ooykc1IEeeRsuQdJ4MonA" name="createStyle" specification="_1okhIM1IEeeRsuQdJ4MonA">
                   <language>JAVA</language>
                   <body>&#xD;
@@ -556,6 +568,10 @@
                     <language>JAVA</language>
                     <body>null</body>
                   </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_lqoFo81nEeeRsuQdJ4MonA" name="slideitemfactory" type="_KDnpAM1JEeeRsuQdJ4MonA" association="_lqoFoM1nEeeRsuQdJ4MonA">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lqossM1nEeeRsuQdJ4MonA"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lqossc1nEeeRsuQdJ4MonA" value="1"/>
                 </ownedAttribute>
                 <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_3sm1cM1IEeeRsuQdJ4MonA" name="TextItem" specification="_3shV4c1IEeeRsuQdJ4MonA">
                   <language>JAVA</language>
@@ -596,6 +612,10 @@
               <packagedElement xmi:type="uml:Class" xmi:id="_46Q7YM1IEeeRsuQdJ4MonA" name="ImageItem" visibility="public">
                 <generalization xmi:type="uml:Generalization" xmi:id="_46RicM1IEeeRsuQdJ4MonA" general="_0Lmz4M1IEeeRsuQdJ4MonA"/>
                 <ownedAttribute xmi:type="uml:Property" xmi:id="_46SJgM1IEeeRsuQdJ4MonA" name="imageName" visibility="private" type="_zZ8tcM1IEeeRsuQdJ4MonA" isUnique="false"/>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_mUPqY81nEeeRsuQdJ4MonA" name="slideitemfactory" type="_KDnpAM1JEeeRsuQdJ4MonA" association="_mUPqYM1nEeeRsuQdJ4MonA">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mUQRcM1nEeeRsuQdJ4MonA"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mUQRcc1nEeeRsuQdJ4MonA" value="1"/>
+                </ownedAttribute>
                 <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_46XCAc1IEeeRsuQdJ4MonA" name="ImageItem" specification="_46SwkM1IEeeRsuQdJ4MonA">
                   <language>JAVA</language>
                   <body>&#xD;
@@ -725,6 +745,10 @@
                 </ownedOperation>
               </packagedElement>
               <packagedElement xmi:type="uml:Class" xmi:id="_eclGMM1JEeeRsuQdJ4MonA" name="ThemeFactory" visibility="public">
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_y5ZNAs1nEeeRsuQdJ4MonA" name="theme" type="_zaGecs1IEeeRsuQdJ4MonA" association="_y5Yl8M1nEeeRsuQdJ4MonA">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_y5ZNA81nEeeRsuQdJ4MonA"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_y5ZNBM1nEeeRsuQdJ4MonA" value="1"/>
+                </ownedAttribute>
                 <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ecmUUc1JEeeRsuQdJ4MonA" name="createDefaultTheme" specification="_ecltQM1JEeeRsuQdJ4MonA">
                   <language>JAVA</language>
                   <body>&#xD;
@@ -836,17 +860,53 @@
         </packagedElement>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_V7OJIM1JEeeRsuQdJ4MonA" memberEnd="_V7OwMs1JEeeRsuQdJ4MonA _V7PXQs1JEeeRsuQdJ4MonA">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_V7OwMM1JEeeRsuQdJ4MonA" source="org.eclipse.papyrus">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_V7OwMc1JEeeRsuQdJ4MonA" key="nature" value="UML_Nature"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_fCYmUM1nEeeRsuQdJ4MonA" memberEnd="_fCbCks1nEeeRsuQdJ4MonA _fCbpos1nEeeRsuQdJ4MonA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fCbCkM1nEeeRsuQdJ4MonA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fCbCkc1nEeeRsuQdJ4MonA" key="nature" value="UML_Nature"/>
       </eAnnotations>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_V7PXQs1JEeeRsuQdJ4MonA" name="slideitem" type="_0Lmz4M1IEeeRsuQdJ4MonA" association="_V7OJIM1JEeeRsuQdJ4MonA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_fCbpos1nEeeRsuQdJ4MonA" name="presentation" type="_zWLAsM1IEeeRsuQdJ4MonA" association="_fCYmUM1nEeeRsuQdJ4MonA"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_3iyVoM1JEeeRsuQdJ4MonA" memberEnd="_3iyVo81JEeeRsuQdJ4MonA _3iy8ss1JEeeRsuQdJ4MonA">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3iyVoc1JEeeRsuQdJ4MonA" source="org.eclipse.papyrus">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3iyVos1JEeeRsuQdJ4MonA" key="nature" value="UML_Nature"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_jQu2EM1nEeeRsuQdJ4MonA" memberEnd="_jQvdIs1nEeeRsuQdJ4MonA _jQwEMs1nEeeRsuQdJ4MonA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jQvdIM1nEeeRsuQdJ4MonA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jQvdIc1nEeeRsuQdJ4MonA" key="nature" value="UML_Nature"/>
       </eAnnotations>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_3iy8ss1JEeeRsuQdJ4MonA" name="slide" type="_zaBl8M1IEeeRsuQdJ4MonA" association="_3iyVoM1JEeeRsuQdJ4MonA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_jQwEMs1nEeeRsuQdJ4MonA" name="slideitem" type="_0Lmz4M1IEeeRsuQdJ4MonA" association="_jQu2EM1nEeeRsuQdJ4MonA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_lqoFoM1nEeeRsuQdJ4MonA" memberEnd="_lqoFo81nEeeRsuQdJ4MonA _lqosss1nEeeRsuQdJ4MonA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lqoFoc1nEeeRsuQdJ4MonA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_lqoFos1nEeeRsuQdJ4MonA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_lqosss1nEeeRsuQdJ4MonA" name="textitem" type="_3sgHwM1IEeeRsuQdJ4MonA" association="_lqoFoM1nEeeRsuQdJ4MonA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mUPqYM1nEeeRsuQdJ4MonA" memberEnd="_mUPqY81nEeeRsuQdJ4MonA _mUQRcs1nEeeRsuQdJ4MonA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mUPqYc1nEeeRsuQdJ4MonA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mUPqYs1nEeeRsuQdJ4MonA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_mUQRcs1nEeeRsuQdJ4MonA" name="imageitem" type="_46Q7YM1IEeeRsuQdJ4MonA" association="_mUPqYM1nEeeRsuQdJ4MonA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_t5RiEM1nEeeRsuQdJ4MonA" memberEnd="_t5SJIc1nEeeRsuQdJ4MonA _t5SJJM1nEeeRsuQdJ4MonA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_t5RiEc1nEeeRsuQdJ4MonA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_t5SJIM1nEeeRsuQdJ4MonA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_t5SJJM1nEeeRsuQdJ4MonA" name="slide" type="_zaBl8M1IEeeRsuQdJ4MonA" association="_t5RiEM1nEeeRsuQdJ4MonA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_vyRrEM1nEeeRsuQdJ4MonA" memberEnd="_vyRrE81nEeeRsuQdJ4MonA _vySSIs1nEeeRsuQdJ4MonA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vyRrEc1nEeeRsuQdJ4MonA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vyRrEs1nEeeRsuQdJ4MonA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_vySSIs1nEeeRsuQdJ4MonA" name="presentation" type="_zWLAsM1IEeeRsuQdJ4MonA" association="_vyRrEM1nEeeRsuQdJ4MonA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_y5Yl8M1nEeeRsuQdJ4MonA" memberEnd="_y5ZNAs1nEeeRsuQdJ4MonA _y5ZNBc1nEeeRsuQdJ4MonA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_y5ZNAM1nEeeRsuQdJ4MonA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y5ZNAc1nEeeRsuQdJ4MonA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_y5ZNBc1nEeeRsuQdJ4MonA" name="themefactory" type="_eclGMM1JEeeRsuQdJ4MonA" association="_y5Yl8M1nEeeRsuQdJ4MonA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_0wkKAM1nEeeRsuQdJ4MonA" memberEnd="_0wkKA81nEeeRsuQdJ4MonA _0wkxEs1nEeeRsuQdJ4MonA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0wkKAc1nEeeRsuQdJ4MonA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0wkKAs1nEeeRsuQdJ4MonA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_0wkxEs1nEeeRsuQdJ4MonA" name="stylefactory" type="_1ojTAM1IEeeRsuQdJ4MonA" association="_0wkKAM1nEeeRsuQdJ4MonA"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_zVS28M1IEeeRsuQdJ4MonA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zVVTMM1IEeeRsuQdJ4MonA" source="http://www.eclipse.org/uml2/2.0.0/UML">
